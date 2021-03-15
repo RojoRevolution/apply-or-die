@@ -1,7 +1,6 @@
 import React from "react";
 import Dashboard from "./pages/Dashboard";
 import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // The app will not render correctly until you setup a Route component.
@@ -11,7 +10,6 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route component={NoMatch} />

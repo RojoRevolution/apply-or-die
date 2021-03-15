@@ -1,8 +1,12 @@
 import axios from "axios";
 
+
+
+
+
 export default {
-  getBooks: function () {
-    return axios.get("/api/books");
+  getJobs: function () {
+    return axios.get();
   },
   getBook: function (id) {
     return axios.get("/api/books/" + id);
