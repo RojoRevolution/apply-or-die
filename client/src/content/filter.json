@@ -1,0 +1,26 @@
+[
+    {
+        "text": "Applied",
+        "id": "applied"
+    },
+    {
+        "text": "Ghosted",
+        "id": "noResponse"
+    },
+    {
+        "text": "Rejected",
+        "id": "rejected"
+    },
+    {
+        "text": "Screen",
+        "id": "screen"
+    },
+    {
+        "text": "Interview",
+        "id": "interview"
+    },
+    {
+        "text": "Offer",
+        "id": "offer"
+    }
+]

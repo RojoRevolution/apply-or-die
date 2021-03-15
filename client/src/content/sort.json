@@ -1,0 +1,18 @@
+[
+    {
+        "text": "Newest",
+        "id": "Newest"
+    },
+    {
+        "text": "Oldest",
+        "id": "Oldest"
+    },
+    {
+        "text": "Company A-Z",
+        "id": "A-Z"
+    },
+    {
+        "text": "Company Z-A",
+        "id": "Z-A"
+    }
+]

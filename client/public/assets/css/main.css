@@ -1,0 +1,190 @@
+  /* ================ */
+/* Universal */
+/* ================ */
+
+html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+      background-color: #FBFBFD;
+  }
+
+  h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    margin: 8px 0 10px 0;
+  }
+
+  h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size:1rem;
+    font-weight: 400;
+  }
+
+  p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+  }
+  
+
+  /* ================ */
+/* Helper Classes */
+/* ================ */
+
+.img-size {
+    width: 99%;
+}
+
+.margin-none {
+  margin:0;
+}
+
+.disp-inline {
+  display: inline-block;
+}
+
+
+
+
+/* ================ */
+/* Dashboard Sidebar */
+/* ================ */
+
+  .sidebar {
+      max-width: 300px;
+      width: 100%;
+      border-right: 1px solid #DDE1E6;
+      height: 100vh;
+      position:fixed;
+  }
+
+  .logo {
+      width: 65px;
+      margin:0 auto;
+  }
+
+  .divider {
+      border-bottom: 1px solid #DDE1E6;
+  }
+
+  .sortBtn {
+     font-family: 'Open Sans', sans-serif;
+      font-size:.9rem;
+      color: #464866;
+      background: #ffffff;
+      border-radius:3rem;
+      border: 1px solid  #464866;
+      margin: 5px;
+      transition:.5s;
+  }
+
+  .sortBtn:hover {
+    color: #ffffff;
+    background: #464866;
+    border: 1px solid  #464866;
+    transition:.5s;
+ }
+
+ #dashNav ul {
+    margin:0;
+    padding:0;
+ }
+
+ #dashNav li {
+    font-family: 'Open Sans', sans-serif;
+    font-size:1rem;
+    font-weight: 400;
+    list-style-type:none;
+    padding:.5rem;
+}
+
+ #dashNav li a {
+     color: #464866;
+     text-decoration: none;
+ }
+
+ #dashNav li a:hover {
+     color: #DDE1E6;
+ }
+
+ .copyright {
+     font-size:.6rem;
+ }
+
+ /* ================ */
+/* Dashboard Content */
+/* ================ */
+
+.mainContainer {
+    padding-left:320px;
+}
+
+.addNewBtn, .viewBtn {
+    font-family: 'Open Sans', sans-serif;
+    font-size:1rem;
+    color: #ffffff;
+    background: #464866;
+    border-radius:5px;
+    border: 1px solid  #464866;
+    margin: 5px;
+    transition:.25s;
+    padding: 6px 20px;
+}
+
+.addNewBtn:hover, .viewBtn:hover {
+    color:#83859D;
+    /* background: #83859D; */
+    box-shadow: 0px 0px 0px 6px rgba(221,225,230,1)
+}
+
+
+.results {
+  width: 100%;
+}
+
+.results-row {
+  background:#ffffff;
+  padding: 1.5rem;
+  border:2px solid #DDE1E6;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px 0px rgba(214,225,230, .75)
+}
+
+.status {
+  font-family: 'Open Sans', sans-serif;
+  font-size:.9rem;
+  color: #ffffff;
+  background: #464866;
+  border-radius:3rem;
+  border: 1px solid  #464866;
+  padding: 5px 20px;
+  margin: 0 5px;
+  transition:.5s;
+}
+
+.viewBtnCol {
+  padding-top:35px;
+}
+
+.viewBtn {
+  color: #464866;
+  background: #ffffff;
+}
+
+.viewBtn:hover {
+  color: #83859D;
+}
+
+/* Status BG Colors */
+.Applied {background:#7276B8} .Ghosted{background:#838383} .Rejected{background:#FC4445} .Screen{background:#A9AF53} .Interview{background:#62AF53} .Offer{background: #53AF7E};
+
+

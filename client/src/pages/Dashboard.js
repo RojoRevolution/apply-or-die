@@ -1,4 +1,6 @@
 import React from "react";
+import SideBar from "../components/SideBar/SideBar";
+import Applications from "../components/DashboardContent/Applications";
 // import API from "../utils/API"
 
 function Dashboard() {
@@ -22,7 +24,8 @@ function Dashboard() {
 
   return (
     <div>
-      <h1>Hello</h1>
+      <SideBar />
+      <Applications />
     </div>
   );
 }
