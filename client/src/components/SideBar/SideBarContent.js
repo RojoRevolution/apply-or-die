@@ -8,7 +8,7 @@ function Logo() {
         <div className="container-fluid px-3 mb-3">
             <div className="divider">
                 <div className="logo py-3">
-                    <img src="/assets/images/logo/ApplyOrDie.gif" className="img-size" />
+                    <a href="/"><img src="/assets/images/logo/ApplyOrDie.gif" className="img-size" /></a>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@ function Navigation() {
                 <nav id="dashNav" className="my-4">
                     <ul>
                         <li>
-                            <a href="">Search Jobs</a>
+                            <a href="/search">Search Jobs</a>
                         </li>
                         <li>
                             <a href="">View Stats</a>

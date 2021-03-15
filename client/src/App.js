@@ -1,5 +1,6 @@
 import React from "react";
 import Dashboard from "./pages/Dashboard";
+import Search from "./pages/Search";
 import NoMatch from "./pages/NoMatch";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -12,6 +13,7 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/" component={Dashboard} />
+          <Route exact path="/search" component={Search} />
           <Route component={NoMatch} />
         </Switch>
         {/* <Books /> */}

@@ -1,15 +1,15 @@
 import React from "react";
-import dummyDB from "../../content/dummyDBresults.json";
+// import dummyDB from "../../content/dummyDBresults.json";
 
 
-function UserDataTable() {
+function UserDataTable(props) {
 
-    // REPLACE dummyDB with actual MongoDB when ready
+    // REPLACE dummyDB with actual MongoDB or API Call when ready
 
     return (
-        <div id="userData" className="container-fluid py-5">
+        <div id="userData" className="container-fluid py-3">
             <table className="results">
-                {dummyDB.map(content => (
+                {props.data.map(content => (
                     <tr key={content.id} className="row justify-content-between my-4 results-row">
                         <td className="col-10">
                             <p><span className={`status ${content.status}`}>{content.status}</span>{content.date}</p>
