@@ -2,12 +2,14 @@ import React from "react";
 
 
 function ResultsTable(props) {
+    console.log('PROPS', props.search)
+    // props.search.filter(input => input.company.toLowerCase().includes(props.search)).
 
     function RenderTable() {
         if (window.location.pathname === "/") {
             return (
                 <React.Fragment>
-                    {props.data.map(content => (
+                    {props.data.filter(input => input.company.toLowerCase().includes(props.search)).map(content => (
                         <tr key={content._id} className="row justify-content-between my-4 card-container">
                             <td className="col-10">
                                 <p><span className={`status ${content.status}`}>{content.status}</span>{content.date}</p>
