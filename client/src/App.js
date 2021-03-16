@@ -1,7 +1,8 @@
 import React from "react";
-import Dashboard from "./pages/Dashboard";
-import Search from "./pages/Search";
-import NoMatch from "./pages/NoMatch";
+import Dashboard from "./Pages/Dashboard";
+import Search from "./Pages/Search";
+import NoMatch from "./Pages/NoMatch";
+import NewEntry from "./Pages/NewEntry";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // The app will not render correctly until you setup a Route component.
@@ -14,9 +15,9 @@ function App() {
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/search" component={Search} />
+          <Route exact path="/new" component={NewEntry} />
           <Route component={NoMatch} />
         </Switch>
-        {/* <Books /> */}
       </div>
     </Router>
   );

@@ -5,16 +5,16 @@ import axios from "axios";
 
 
 export default {
-  getJobs: function () {
+  getAll: function () {
     return axios.get();
   },
-  getBook: function (id) {
-    return axios.get("/api/books/" + id);
-  },
-  deleteBook: function (id) {
-    return axios.delete("/api/books/" + id);
-  },
-  saveBook: function (bookData) {
-    return axios.post("/api/books", bookData);
-  }
+  // getOne: function (id) {
+  //   return axios.get("/api/books/" + id);
+  // },
+  // deleteOne: function (id) {
+  //   return axios.delete("/api/books/" + id);
+  // },
+  // postOne: function (bookData) {
+  //   return axios.post("/api/books", bookData);
+  // }
 };

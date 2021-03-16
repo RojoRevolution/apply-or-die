@@ -8,7 +8,7 @@ function Logo() {
         <div className="container-fluid px-3 mb-3">
             <div className="divider">
                 <div className="logo py-3">
-                    <a href="/"><img src="/assets/images/logo/ApplyOrDie.gif" className="img-size" /></a>
+                    <a href="/"><img src="/assets/images/logo/ApplyOrDie.gif" alt="Apply or Die Logo" className="img-size" /></a>
                 </div>
             </div>
         </div>
@@ -83,6 +83,31 @@ function Navigation() {
     );
 };
 
+function GoBack() {
+    return (
+        <div className="container-fluid px-3 mb-3">
+            <div className="divider">
+                <nav id="dashNav" className="my-4">
+                    <ul>
+                        <li>
+                            <a href="/">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="/search">Search Jobs</a>
+                        </li>
+                        <li>
+                            <a href="">View Stats</a>
+                        </li>
+                        <li>
+                            <a href="">Log Out</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    );
+};
+
 function CopyRight() {
     return (
         <div className="container-fluid px-3 mb-3">
@@ -96,4 +121,4 @@ function CopyRight() {
 
 
 
-export { Logo, SearchContent, Sort, Filter, Navigation, CopyRight };
+export { Logo, SearchContent, Sort, Filter, Navigation, CopyRight, GoBack };

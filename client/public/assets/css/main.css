@@ -16,6 +16,7 @@ html {
   h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
+    font-size:2rem;
   }
 
   h2 {
@@ -125,10 +126,11 @@ html {
 /* ================ */
 
 .mainContainer {
-    padding-left:320px;
+    /* padding-left:320px; */
+    padding: 0 50px 0 340px;
 }
 
-.addNewBtn, .viewBtn {
+.addNewBtn, .viewBtn, .cancelBtn, .submitBtn {
     font-family: 'Open Sans', sans-serif;
     font-size:1rem;
     color: #ffffff;
@@ -140,10 +142,15 @@ html {
     padding: 6px 20px;
 }
 
-.addNewBtn:hover, .viewBtn:hover {
+.addNewBtn:hover, .viewBtn:hover, .cancelBtn:hover, .submitBtn:hover {
     color:#83859D;
     /* background: #83859D; */
     box-shadow: 0px 0px 0px 6px rgba(221,225,230,1)
+}
+
+.cancelBtn {
+  background: #bebfcd;
+  border: 1px solid #bebfcd;
 }
 
 
@@ -151,10 +158,9 @@ html {
   width: 100%;
 }
 
-.results-row {
+.card-container {
   background:#ffffff;
   padding: 1.5rem;
-  /* border:2px solid #DDE1E6; */
   border-radius: 1rem;
   box-shadow: 0px 0px 10px 0px rgba(214,225,230, .75)
 }
@@ -172,6 +178,10 @@ html {
 
 .viewBtnCol {
   padding-top:35px;
+}
+
+.viewBtnColAPI {
+  padding-top:15px;
 }
 
 .viewBtn {
