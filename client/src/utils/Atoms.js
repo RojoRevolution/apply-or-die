@@ -6,8 +6,9 @@ const sideBarContent = atom("/")
 const applications = atom({})
 
 const searchAtom = atom("")
+const filterStatus = atom({ 'status': "inactive", 'value': [] })
 
 
 
 
-export { dbState, apiState, sideBarContent, applications, searchAtom };
+export { dbState, apiState, sideBarContent, applications, searchAtom, filterStatus };

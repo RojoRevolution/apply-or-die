@@ -1,26 +1,26 @@
 [
     {
         "text": "Applied",
-        "id": "applied"
+        "id": "Applied"
     },
     {
         "text": "Ghosted",
-        "id": "noResponse"
+        "id": "Ghosted"
     },
     {
         "text": "Rejected",
-        "id": "rejected"
+        "id": "Rejected"
     },
     {
         "text": "Screen",
-        "id": "screen"
+        "id": "Screen"
     },
     {
         "text": "Interview",
-        "id": "interview"
+        "id": "Interview"
     },
     {
         "text": "Offer",
-        "id": "offer"
+        "id": "Offer"
     }
 ]

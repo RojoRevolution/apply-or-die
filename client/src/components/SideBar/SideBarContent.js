@@ -1,8 +1,11 @@
 import React from "react";
+import { useAtom } from "jotai";
+import { searchAtom, filterStatus } from "../../utils/Atoms"
 import { SortButton } from "../Buttons";
 import sortContent from "../../content/sort.json";
 import filterContent from "../../content/filter.json";
 
+// Logo Section
 function Logo() {
     return (
         <div className="container-fluid px-3 mb-3">
@@ -15,16 +18,28 @@ function Logo() {
     );
 };
 
-function SearchContent(props) {
+// Filter By Company Section
+function SearchContent() {
 
-    console.log(props.handleInputChange)
+    const [searchInput, setSearchInput] = useAtom(searchAtom);
+
+    // Search Form functions
+    function handleFormSubmit(event) {
+        event.preventDefault();
+    }
+
+    function handleInputChange(event) {
+        const input = event.target.value;
+        setSearchInput(input)
+    }
+
     return (
         <div className="container-fluid px-3 mb-3">
             <div className="divider">
                 <div className="py-4">
-                    <form onSubmit={props.handleFormSubmit}>
+                    <form onSubmit={handleFormSubmit}>
                         <div className="mb-3">
-                            <input type="input" className="form-control" id="searchByCompany" placeholder="Filter By Company:" onChange={props.handleInputChange} />
+                            <input type="input" className="form-control" id="searchByCompany" placeholder="Filter By Company:" onChange={handleInputChange} />
                         </div>
                     </form>
                 </div>
@@ -33,6 +48,7 @@ function SearchContent(props) {
     );
 };
 
+// Sort Results Section
 function Sort() {
     return (
         <div className="container-fluid px-3 mb-3">
@@ -48,14 +64,45 @@ function Sort() {
     );
 };
 
+// Filter by status Section
 function Filter() {
+
+    const [statusState, setStatusState] = useAtom(filterStatus);
+
+
+    function filterStatusHandler(event) {
+        const filterButton = document.getElementById(event.target.id)
+        const input = event.target.id
+        console.log(input)
+
+        if (statusState.value === "") {
+            setStatusState({
+                status: "fStatusActive",
+                value: [input],
+            });
+            filterButton.classList.add(statusState.status)
+        }
+        // else if (statusState === "active") {
+        //     setStatusState({
+        //         status: "",
+        //         value: [],
+        //     });
+        //     setStatusState({
+        //         status: "fStatusActive",
+        //         value: [input],
+        //     });
+        //     filterButton.classList.remove(statusState.status)
+        // }
+
+    }
+
     return (
         <div className="container-fluid px-3 mb-3">
             <div className="divider">
                 <div className="my-4">
                     <h3 className="ms-2">Filter by Status:</h3>
                     {filterContent.map(content => (
-                        <SortButton key={content.id} text={content.text} id={content.id} />
+                        <SortButton key={content.id} text={content.text} id={content.id} filterStatusHandler={filterStatusHandler} />
                     ))}
                 </div>
             </div>
@@ -63,6 +110,7 @@ function Filter() {
     );
 };
 
+// Navigation Section
 function Navigation() {
     return (
         <div className="container-fluid px-3 mb-3">
@@ -73,10 +121,10 @@ function Navigation() {
                             <a href="/search">Search Jobs</a>
                         </li>
                         <li>
-                            <a href="">View Stats</a>
+                            <a href="#">View Stats</a>
                         </li>
                         <li>
-                            <a href="">Log Out</a>
+                            <a href="#">Log Out</a>
                         </li>
                     </ul>
                 </nav>
@@ -85,6 +133,7 @@ function Navigation() {
     );
 };
 
+// Interior Navigation Section
 function GoBack() {
     return (
         <div className="container-fluid px-3 mb-3">
@@ -98,10 +147,10 @@ function GoBack() {
                             <a href="/search">Search Jobs</a>
                         </li>
                         <li>
-                            <a href="">View Stats</a>
+                            <a href="#">View Stats</a>
                         </li>
                         <li>
-                            <a href="">Log Out</a>
+                            <a href="#">Log Out</a>
                         </li>
                     </ul>
                 </nav>
@@ -110,6 +159,7 @@ function GoBack() {
     );
 };
 
+// Copyright text section
 function CopyRight() {
     return (
         <div className="container-fluid px-3 mb-3">

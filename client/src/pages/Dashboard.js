@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useAtom } from "jotai";
-import { applications, searchAtom } from "../utils/Atoms"
+import { searchAtom, filterStatus } from "../utils/Atoms"
 import API from "../utils/API"
 
 import { AddNew } from "../components/Buttons";
 import SideBar from "../components/SideBar/SideBar";
 import ResultsTable from "../components/DashboardContent/ResultsTable";
-import dummyDB from "../content/dummyDBresults.json";
+// import dummyDB from "../content/dummyDBresults.json";
 // import API from "../utils/API"
 
 function Dashboard() {
+
+  const [statusState] = useAtom(filterStatus);
 
   const [searchInput] = useAtom(searchAtom);
   // const [searchInput, setSearchInput] = useState("")
@@ -51,7 +53,6 @@ function Dashboard() {
           <a href="/new"><AddNew /></a>
         </div>
         <ResultsTable search={searchInput} data={appsData} id={appsData._id} date={appsData.date} title={appsData.title} company={appsData.company} location={appsData.location} />
-        {/* <ResultsTable data={dummyDB} id={dummyDB.id} date={dummyDB.date} title={dummyDB.title} comapny={dummyDB.company} location={dummyDB.location} /> */}
       </div>
     </div >
   );

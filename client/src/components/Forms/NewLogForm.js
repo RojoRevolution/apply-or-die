@@ -27,11 +27,11 @@ function LogForm() {
                 <p>Status:</p>
                 <div className="form-check form-check-inline">
                     <input className="form-check-input" type="radio" name="radioStatus" id="radioApplied" value="applied" />
-                    <label className="form-check-label" htmlFor="applied">Applied</label>
+                    <label className="form-check-label" htmlFor="checkApplied">Applied</label>
                 </div>
                 <div className="form-check form-check-inline">
                     <input className="form-check-input" type="radio" name="radioStatus" id="radioGhosted" value="ghosted" />
-                    <label className="form-check-label" htmlFor="ghosted">Ghosted</label>
+                    <label className="form-check-label" htmlFor="checkGhosted">Ghosted</label>
                 </div>
                 <div className="form-check form-check-inline">
                     <input className="form-check-input" type="radio" name="radioStatus" id="radioRejected" value="rejected" />
@@ -39,14 +39,14 @@ function LogForm() {
                 </div>
                 <div className="form-check form-check-inline">
                     <input className="form-check-input" type="radio" name="radioStatus" id="radioScreen" value="screen" />
-                    <label className="form-check-label" htmlFor="screen">Screen</label>
+                    <label className="form-check-label" htmlFor="checkScreen">Screen</label>
                 </div>
                 <div className="form-check form-check-inline">
                     <input className="form-check-input" type="radio" name="radioStatus" id="radioInterview" value="interview" />
-                    <label className="form-check-label" htmlFor="interview">Interview</label>
+                    <label className="form-check-label" htmlFor="checkInterview">Interview</label>
                 </div>
                 <div className="form-check form-check-inline">
-                    <input className="form-check-input" type="radio" name="radioStatus" id="radioOffer" value="offer" />
+                    <input className="form-check-input" type="radio" name="radioStatus" id="radioOffer" value="offer" htmlFor="checkOffer" />
                     <label className="form-check-label" htmlFor="offer">Offer</label>
                 </div>
             </div>

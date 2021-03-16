@@ -37,25 +37,6 @@ html {
   }
   
 
-  /* ================ */
-/* Helper Classes */
-/* ================ */
-
-.img-size {
-    width: 99%;
-}
-
-.margin-none {
-  margin:0;
-}
-
-.disp-inline {
-  display: inline-block;
-}
-
-
-
-
 /* ================ */
 /* Dashboard Sidebar */
 /* ================ */
@@ -120,6 +101,10 @@ html {
  .copyright {
      font-size:.6rem;
  }
+
+ .img-size {
+  width: 99%;
+}
 
  /* ================ */
 /* Dashboard Content */
@@ -197,3 +182,33 @@ html {
 .Applied {background:#7276B8} .Ghosted{background:#838383} .Rejected{background:#FC4445} .Screen{background:#A9AF53} .Interview{background:#62AF53} .Offer{background: #53AF7E};
 
 
+
+
+
+
+
+  /* ================ */
+/* Helper Classes */
+/* ================ */
+
+.img-size {
+  width: 99%;
+}
+
+.margin-none {
+margin:0;
+}
+
+.disp-inline {
+display: inline-block;
+}
+
+.inactive {
+color: #464866;
+background: #ffffff;
+}
+
+.active {
+color: #ffffff;
+background: #464866;
+}
