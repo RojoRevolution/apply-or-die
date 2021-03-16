@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { useAtom } from "jotai";
-import { searchAtom, filterStatus } from "../../utils/Atoms"
+import { searchAtom, filterStatus, filterValue } from "../../utils/Atoms"
 import { SortButton } from "../Buttons";
 import sortContent from "../../content/sort.json";
 import filterContent from "../../content/filter.json";
@@ -11,7 +13,7 @@ function Logo() {
         <div className="container-fluid px-3 mb-3">
             <div className="divider">
                 <div className="logo py-3">
-                    <a href="/"><img src="/assets/images/logo/ApplyOrDie.gif" alt="Apply or Die Logo" className="img-size" /></a>
+                    <Link to={"/"}><img src="/assets/images/logo/ApplyOrDie.gif" alt="Apply or Die Logo" className="img-size" /></Link>
                 </div>
             </div>
         </div>
@@ -67,25 +69,28 @@ function Sort() {
 // Filter by status Section
 function Filter() {
 
-    const [statusState, setStatusState] = useAtom(filterStatus);
+    // const [statusState, setStatusState] = useAtom(filterStatus);
+    const [statusFilter, setStatusFilter] = useAtom(filterValue);
+
 
 
     function filterStatusHandler(event) {
-        const filterButton = document.getElementById(event.target.id)
+        // const filterButton = document.getElementById(event.target.id)
         const input = event.target.id
-        console.log(input)
+        console.log("Input:", input)
 
-        if (statusState.value === "") {
-            setStatusState({
-                status: "fStatusActive",
-                value: [input],
-            });
-            filterButton.classList.add(statusState.status)
-        }
+        setStatusFilter(input)
+        console.log('StatusFilter:', statusFilter)
+
+        // if (statusState.value === "") {
+        //     setStatusState("active");
+        //     console.log(statusState)
+        //     filterButton.classList.add(statusState)
+        // }
         // else if (statusState === "active") {
         //     setStatusState({
         //         status: "",
-        //         value: [],
+        //         value: "",
         //     });
         //     setStatusState({
         //         status: "fStatusActive",

@@ -2,7 +2,7 @@ import React from "react";
 
 
 import SideBar from "../components/SideBar/SideBar";
-import NewContent from "../components/DashboardContent/NewContent";
+import ExistingContent from "../components/DashboardContent/ExistingContent";
 
 
 function AppLog() {
@@ -13,7 +13,7 @@ function AppLog() {
         <div>
             <SideBar />
             <div className="container-fluid py-5 mainContainer">
-                <NewContent />
+                <ExistingContent />
             </div>
         </div>
     );

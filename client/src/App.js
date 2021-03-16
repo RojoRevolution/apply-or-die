@@ -3,6 +3,7 @@ import Dashboard from "./Pages/Dashboard";
 import Search from "./Pages/Search";
 import NoMatch from "./Pages/NoMatch";
 import NewEntry from "./Pages/NewEntry";
+import SingleEntry from "./Pages/SingleEntry";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // The app will not render correctly until you setup a Route component.
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/new" component={NewEntry} />
+          <Route exact path="/logs/:id" component={SingleEntry} />
           <Route component={NoMatch} />
         </Switch>
       </div>

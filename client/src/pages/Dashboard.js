@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAtom } from "jotai";
-import { searchAtom, filterStatus } from "../utils/Atoms"
+import { searchAtom, filterStatus, filterValue } from "../utils/Atoms"
 import API from "../utils/API"
 
 import { AddNew } from "../components/Buttons";
@@ -11,9 +11,10 @@ import ResultsTable from "../components/DashboardContent/ResultsTable";
 
 function Dashboard() {
 
-  const [statusState] = useAtom(filterStatus);
+  // const [statusState] = useAtom(filterStatus);
 
   const [searchInput] = useAtom(searchAtom);
+  const [statusFilter] = useAtom(filterValue);
   // const [searchInput, setSearchInput] = useState("")
   const [appsData, setAppsData] = useState([])
 
@@ -25,7 +26,6 @@ function Dashboard() {
   function loadApps() {
     API.getApps()
       .then(res => {
-        console.log(res.data)
         setAppsData(res.data)
       })
       .catch(err => console.log(err));
@@ -52,7 +52,7 @@ function Dashboard() {
         <div className="text-center">
           <a href="/new"><AddNew /></a>
         </div>
-        <ResultsTable search={searchInput} data={appsData} id={appsData._id} date={appsData.date} title={appsData.title} company={appsData.company} location={appsData.location} />
+        <ResultsTable search={searchInput} statusFilter={statusFilter} data={appsData} id={appsData._id} date={appsData.date} title={appsData.title} company={appsData.company} location={appsData.location} />
       </div>
     </div >
   );

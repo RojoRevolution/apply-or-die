@@ -35,6 +35,24 @@ html {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
   }
+
+    /* ================ */
+/* Helper Classes */
+/* ================ */
+
+.img-size {
+  width: 99%;
+}
+
+.margin-none {
+margin:0;
+}
+
+.disp-inline {
+display: inline-block;
+}
+
+
   
 
 /* ================ */
@@ -102,9 +120,6 @@ html {
      font-size:.6rem;
  }
 
- .img-size {
-  width: 99%;
-}
 
  /* ================ */
 /* Dashboard Content */
@@ -187,28 +202,12 @@ html {
 
 
 
-  /* ================ */
-/* Helper Classes */
-/* ================ */
-
-.img-size {
-  width: 99%;
-}
-
-.margin-none {
-margin:0;
-}
-
-.disp-inline {
-display: inline-block;
-}
-
 .inactive {
-color: #464866;
-background: #ffffff;
-}
-
-.active {
-color: #ffffff;
-background: #464866;
-}
+  color: #464866;
+  background: #ffffff;
+  }
+  
+  .active {
+  color: #ffffff;
+  background: #464866;
+  }
