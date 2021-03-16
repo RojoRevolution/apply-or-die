@@ -1,37 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
+
 import API from "../../utils/API";
 
+function EditForm() {
 
 
-
-function EditForm(props) {
     // const [appData, setAppData] = useState([])
     const { id } = useParams()
     let history = useHistory();
     const [formObject, setFormObject] = useState({})
 
-    // useEffect(() => {
-    //     loadData()
-    // }, []);
+    useEffect(() => {
+        loadData()
+    }, []);
 
-    // function loadData() {
-    //     API.getOne(id)
-    //         .then(res => {
-    //             // setAppData(res.data)
-    //             setFormObject({
-    //                 status: res.status,
-    //                 title: res.title,
-    //                 company: res.company,
-    //                 location: res.location,
-    //                 listing: res.listing,
-    //                 description: res.description
-    //             })
+    function loadData() {
+        API.getOne(id)
+            .then(res => {
+                // setAppData(res.data)
+                setFormObject({
+                    status: res.status,
+                    title: res.title,
+                    company: res.company,
+                    location: res.location,
+                    listing: res.listing,
+                    description: res.description
+                })
 
-    //         })
-    //         .catch(err => console.log(err));
-    // };
+            })
+            .catch(err => console.log(err));
+    };
 
 
 

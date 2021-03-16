@@ -205,6 +205,14 @@ display: inline-block;
   right: 10px;
 }
 
+.closeIcon {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  opacity: .15;
+  transition:.25s;
+}
+
 .inactive {
   color: #464866;
   background: #ffffff;

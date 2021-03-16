@@ -4,12 +4,6 @@ import { filterStatus, filterValue } from "../../utils/Atoms"
 
 
 function SortButton(props) {
-
-    // const [statusState] = useAtom(filterStatus);
-    // const [filterValue, setStatusFilter] = useAtom(filterStatus);
-
-
-
     return (
         <React.Fragment>
             <button id={props.id} type="button" className='btn sortBtn' onClick={props.filterStatusHandler}>{props.text}</button>
@@ -25,4 +19,12 @@ function AddNew() {
     );
 };
 
-export { SortButton, AddNew };
+function DeleteEntry(props) {
+    return (
+        <React.Fragment>
+            <button id={props.id} type="button" className="btn-close bg-light closeIcon" aria-label="Close"></button>
+        </React.Fragment>
+    )
+}
+
+export { SortButton, AddNew, DeleteEntry };

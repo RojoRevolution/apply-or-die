@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
+
 import API from "../../../utils/API"
 
 
 function LogForm() {
+
     const [data, setData] = useState([])
 
     const { id } = useParams()
@@ -32,8 +34,6 @@ function LogForm() {
             <p className="margin-none"><a href="https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775">https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775</a></p>
             <label className="form-check-label" htmlFor="checkApplied">Description</label>
             <p className="margin-none">Id vivamus ullamcorper in neque litora imperdiet porta ultrices hac non iaculis malesuada cubilia sit odio habitant aenean etiam accumsan sapien cubilia hendrerit. Orci a imperdiet tempor fringilla egestas sociosqu a condimentum per donec nisl mi a non curae suscipit molestie ut nam id eleifend fermentum a </p>
-
-
         </div>
     )
 }

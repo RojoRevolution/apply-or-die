@@ -31,6 +31,13 @@ function Dashboard() {
       .catch(err => console.log(err));
   };
 
+  function deleteOne(id) {
+    console.log("DELETE CLICKED")
+    API.deleteBook(id)
+      .then(res => loadApps())
+      .catch(err => console.log(err));
+  }
+
   return (
     <div>
       <SideBar />
@@ -39,7 +46,7 @@ function Dashboard() {
         <div className="text-center">
           <Link to={"/new"}><AddNew /></Link>
         </div>
-        <ResultsTable search={searchInput} statusFilter={statusFilter} data={appsData} id={appsData._id} date={appsData.date} title={appsData.title} company={appsData.company} location={appsData.location} />
+        <ResultsTable search={searchInput} statusFilter={statusFilter} data={appsData} id={appsData._id} date={appsData.date} title={appsData.title} company={appsData.company} location={appsData.location} deleteLog={deleteOne} />
       </div>
     </div >
   );
