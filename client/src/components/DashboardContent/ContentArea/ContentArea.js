@@ -4,7 +4,7 @@ function MainContent() {
 
 
     return (
-        <div className="container-fluid py-5 mainContainer">
+        <div className="container-fluid py-5 mainContainer position-relative">
         </div>
     )
 

@@ -14,7 +14,7 @@ export default {
   // deleteOne: function (id) {
   //   return axios.delete("/api/books/" + id);
   // },
-  postOne: function (logData) {
+  saveData: function (logData) {
     return axios.post("/api/logs", logData);
   }
 };

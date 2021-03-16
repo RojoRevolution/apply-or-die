@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+
 import API from "../../../utils/API"
 
 
@@ -22,6 +23,7 @@ function LogForm() {
 
     return (
         <div>
+            <Link to={"/edit/" + data._id} data={data}><button className="btn viewBtn editPos" id={data._id}>Edit</button></Link>
             <p><span className={`status ${data.status}`}>{data.status}</span>{data.date}</p>
             <h2>{data.title}</h2>
             <p className="margin-none">{data.company} | {data.location}</p>

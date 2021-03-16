@@ -189,29 +189,32 @@ display: inline-block;
   background: #ffffff;
 }
 
-.viewBtn:hover {
+.viewBtn:hover{
   color: #83859D;
 }
 
 /* Status BG Colors */
-.Applied {background:#7276B8} .Ghosted{background:#838383} .Rejected{background:#FC4445} .Screen{background:#A9AF53} .Interview{background:#62AF53} .Offer{background: #53AF7E};
+.Applied {
+  background:#7276B8;} 
+.Ghosted{background:#838383;} .Rejected{background:#FC4445;} .Screen{background:#A9AF53;} .Interview{background:#62AF53;} .Offer{background: #53AF7E;}
 
 
-
-
-
-
+.editPos {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 
 .inactive {
   color: #464866;
   background: #ffffff;
-  }
-  
-  .active {
+}
+
+.active {
   color: #ffffff;
   background: #464866;
-  }
+}
 
-  .hide {
-    display:none;
-  }
+.hide {
+  display:none;
+}

@@ -4,6 +4,7 @@ import Search from "./Pages/Search";
 import NoMatch from "./Pages/NoMatch";
 import NewEntry from "./Pages/NewEntry";
 import SingleEntry from "./Pages/SingleEntry";
+import EditEntry from "./Pages/EditEntry";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // The app will not render correctly until you setup a Route component.
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/search" component={Search} />
           <Route exact path="/new" component={NewEntry} />
           <Route exact path="/logs/:id" component={SingleEntry} />
+          <Route exact path="/edit/:id" component={EditEntry} />
           <Route component={NoMatch} />
         </Switch>
       </div>

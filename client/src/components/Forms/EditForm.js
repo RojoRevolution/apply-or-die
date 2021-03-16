@@ -1,13 +1,39 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 import API from "../../utils/API";
 
 
-function LogForm() {
-    let history = useHistory();
 
+
+function EditForm(props) {
+    // const [appData, setAppData] = useState([])
+    const { id } = useParams()
+    let history = useHistory();
     const [formObject, setFormObject] = useState({})
+
+    // useEffect(() => {
+    //     loadData()
+    // }, []);
+
+    // function loadData() {
+    //     API.getOne(id)
+    //         .then(res => {
+    //             // setAppData(res.data)
+    //             setFormObject({
+    //                 status: res.status,
+    //                 title: res.title,
+    //                 company: res.company,
+    //                 location: res.location,
+    //                 listing: res.listing,
+    //                 description: res.description
+    //             })
+
+    //         })
+    //         .catch(err => console.log(err));
+    // };
+
+
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -68,27 +94,27 @@ function LogForm() {
             {/* Title */}
             <div className="mb-3">
                 <label htmlFor="formTitle" className="form-label">Title</label>
-                <input onChange={handleInputChange} type="input" className="form-control" id="formTitle" placeholder="Senior Web Designer" name="title" />
+                <input onChange={handleInputChange} type="input" className="form-control" id="formTitle" placeholder="Senior Web Designer" name="title" value={formObject.title} />
             </div>
             {/* Company */}
             <div className="mb-3">
                 <label htmlFor="formCompany" className="form-label">Company</label>
-                <input onChange={handleInputChange} type="input" className="form-control" id="formCompany" placeholder="" name="company" />
+                <input onChange={handleInputChange} type="input" className="form-control" id="formCompany" placeholder="" name="company" value={formObject.company} />
             </div>
             {/* Location */}
             <div className="mb-3">
                 <label htmlFor="formLocation" className="form-label">Location</label>
-                <input onChange={handleInputChange} type="input" className="form-control" id="formLocation" placeholder="" name="location" />
+                <input onChange={handleInputChange} type="input" className="form-control" id="formLocation" placeholder="" name="location" value={formObject.location} />
             </div>
             {/* URL */}
             <div className="mb-3">
                 <label htmlFor="formURL" className="form-label">Listing URL:</label>
-                <input onChange={handleInputChange} type="input" className="form-control" id="formURL" placeholder="indeed.com etc." name="listing" />
+                <input onChange={handleInputChange} type="input" className="form-control" id="formURL" placeholder="indeed.com etc." name="listing" value={formObject.listing} />
             </div>
             {/* Description */}
             <div className="mb-3">
                 <label htmlFor="formDescription" className="form-label">Listing Description</label>
-                <textarea onChange={handleInputChange} type="input" className="form-control" id="formDescription" placeholder="" name="description" >
+                <textarea onChange={handleInputChange} type="input" className="form-control" id="formDescription" placeholder="" name="description" value={formObject.description}>
                 </textarea>
             </div>
             {/* Buttons */}
@@ -99,4 +125,4 @@ function LogForm() {
     )
 }
 
-export default LogForm;
+export default EditForm;
