@@ -15,14 +15,16 @@ function Logo() {
     );
 };
 
-function SearchContent() {
+function SearchContent(props) {
+
+    console.log(props.handleInputChange)
     return (
         <div className="container-fluid px-3 mb-3">
             <div className="divider">
                 <div className="py-4">
-                    <form>
+                    <form onSubmit={props.handleFormSubmit}>
                         <div className="mb-3">
-                            <input type="input" className="form-control" id="searchByCompany" placeholder="Filter By Company:" />
+                            <input type="input" className="form-control" id="searchByCompany" placeholder="Filter By Company:" onChange={props.handleInputChange} />
                         </div>
                     </form>
                 </div>

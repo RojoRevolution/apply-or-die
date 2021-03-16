@@ -11,7 +11,8 @@ import dummyDB from "../content/dummyDBresults.json";
 
 function Dashboard() {
 
-  const [search, setSearch] = useAtom(searchAtom);
+  const [searchInput] = useAtom(searchAtom);
+  // const [searchInput, setSearchInput] = useState("")
   const [appsData, setAppsData] = useState([])
 
 
@@ -28,26 +29,28 @@ function Dashboard() {
       .catch(err => console.log(err));
   };
 
-  // Search Form functions
-  function handleFormSubmit(event) {
-    event.preventDefault();
-  }
+  // // Search Form functions
+  // function handleFormSubmit(event) {
+  //   event.preventDefault();
+  // }
 
-  function handleInputChange(event) {
-    const searchTerm = event.target.value.toLowerCase();
-    setSearch(searchTerm);
-  }
+  // function handleInputChange(event) {
+  //   const input = event.target.value;
+  //   console.log(input)
+  //   setSearchInput(input)
+  // }
 
 
 
   return (
     <div>
       <SideBar />
+      {/* <SideBar /> */}
       <div className="container-fluid py-5 mainContainer">
         <div className="text-center">
           <a href="/new"><AddNew /></a>
         </div>
-        <ResultsTable data={appsData} id={appsData._id} date={appsData.date} title={appsData.title} comapny={appsData.company} location={appsData.location} />
+        <ResultsTable search={searchInput} data={appsData} id={appsData._id} date={appsData.date} title={appsData.title} company={appsData.company} location={appsData.location} />
         {/* <ResultsTable data={dummyDB} id={dummyDB.id} date={dummyDB.date} title={dummyDB.title} comapny={dummyDB.company} location={dummyDB.location} /> */}
       </div>
     </div >
