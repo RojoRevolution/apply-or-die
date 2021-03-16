@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import { useAtom } from "jotai";
 import { searchAtom, filterStatus, filterValue } from "../utils/Atoms"
 import API from "../utils/API"
@@ -50,7 +52,7 @@ function Dashboard() {
       {/* <SideBar /> */}
       <div className="container-fluid py-5 mainContainer">
         <div className="text-center">
-          <a href="/new"><AddNew /></a>
+          <Link to={"/new"}><AddNew /></Link>
         </div>
         <ResultsTable search={searchInput} statusFilter={statusFilter} data={appsData} id={appsData._id} date={appsData.date} title={appsData.title} company={appsData.company} location={appsData.location} />
       </div>
