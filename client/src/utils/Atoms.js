@@ -9,7 +9,10 @@ const searchAtom = atom("")
 const filterStatus = atom("")
 const filterValue = atom("")
 
+const sideBarHide = atom("hide")
+const sideBarShow = atom("show")
 
 
 
-export { dbState, apiState, sideBarContent, applications, searchAtom, filterStatus, filterValue };
+
+export { dbState, apiState, sideBarContent, applications, searchAtom, filterStatus, filterValue, sideBarHide, sideBarShow };

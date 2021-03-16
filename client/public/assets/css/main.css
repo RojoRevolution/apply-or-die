@@ -211,3 +211,7 @@ display: inline-block;
   color: #ffffff;
   background: #464866;
   }
+
+  .hide {
+    display:none;
+  }

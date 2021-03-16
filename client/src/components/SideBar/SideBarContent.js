@@ -116,14 +116,14 @@ function Filter() {
 };
 
 // Navigation Section
-function Navigation() {
+function NavigationMain() {
     return (
         <div className="container-fluid px-3 mb-3">
             <div className="divider">
                 <nav id="dashNav" className="my-4">
                     <ul>
                         <li>
-                            <a href="/search">Search Jobs</a>
+                            <Link to={"/search"}>Search Jobs</Link>
                         </li>
                         <li>
                             <a href="#">View Stats</a>
@@ -138,18 +138,20 @@ function Navigation() {
     );
 };
 
+
+
 // Interior Navigation Section
-function GoBack() {
+function NavigationInterior() {
     return (
-        <div className="container-fluid px-3 mb-3">
+        <div className="container-fluid px-3 mb-3 hide">
             <div className="divider">
                 <nav id="dashNav" className="my-4">
                     <ul>
                         <li>
-                            <a href="/">Dashboard</a>
+                            <Link to={"/"}>Dashboard</Link>
                         </li>
                         <li>
-                            <a href="/search">Search Jobs</a>
+                            <Link to={"/search"}>Search Jobs</Link>
                         </li>
                         <li>
                             <a href="#">View Stats</a>
@@ -178,4 +180,4 @@ function CopyRight() {
 
 
 
-export { Logo, SearchContent, Sort, Filter, Navigation, CopyRight, GoBack };
+export { Logo, SearchContent, Sort, Filter, NavigationMain, CopyRight, NavigationInterior };

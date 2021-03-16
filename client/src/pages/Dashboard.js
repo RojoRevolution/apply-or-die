@@ -13,11 +13,9 @@ import ResultsTable from "../components/DashboardContent/ResultsTable";
 
 function Dashboard() {
 
-  // const [statusState] = useAtom(filterStatus);
 
   const [searchInput] = useAtom(searchAtom);
   const [statusFilter] = useAtom(filterValue);
-  // const [searchInput, setSearchInput] = useState("")
   const [appsData, setAppsData] = useState([])
 
 
@@ -32,19 +30,6 @@ function Dashboard() {
       })
       .catch(err => console.log(err));
   };
-
-  // // Search Form functions
-  // function handleFormSubmit(event) {
-  //   event.preventDefault();
-  // }
-
-  // function handleInputChange(event) {
-  //   const input = event.target.value;
-  //   console.log(input)
-  //   setSearchInput(input)
-  // }
-
-
 
   return (
     <div>
