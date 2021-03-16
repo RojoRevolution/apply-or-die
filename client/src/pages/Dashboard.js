@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAtom } from "jotai";
-import { applications } from "../utils/Atoms"
+import { applications, searchAtom } from "../utils/Atoms"
 import API from "../utils/API"
 
 import { AddNew } from "../components/Buttons";
@@ -11,7 +11,7 @@ import dummyDB from "../content/dummyDBresults.json";
 
 function Dashboard() {
 
-  // const [appsData, setAppsData] = useAtom(applications);
+  const [search, setSearch] = useAtom(searchAtom);
   const [appsData, setAppsData] = useState([])
 
 
@@ -27,6 +27,16 @@ function Dashboard() {
       })
       .catch(err => console.log(err));
   };
+
+  // Search Form functions
+  function handleFormSubmit(event) {
+    event.preventDefault();
+  }
+
+  function handleInputChange(event) {
+    const searchTerm = event.target.value.toLowerCase();
+    setSearch(searchTerm);
+  }
 
 
 
