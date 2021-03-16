@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useAtom } from "jotai";
 import { applications } from "../utils/Atoms"
 import API from "../utils/API"
@@ -11,7 +11,9 @@ import dummyDB from "../content/dummyDBresults.json";
 
 function Dashboard() {
 
-  const [appsData, setAppsData] = useAtom(applications);
+  // const [appsData, setAppsData] = useAtom(applications);
+  const [appsData, setAppsData] = useState([])
+
 
   useEffect(() => {
     loadApps()
@@ -20,35 +22,12 @@ function Dashboard() {
   function loadApps() {
     API.getApps()
       .then(res => {
-        console.log(res)
+        console.log(res.data)
         setAppsData(res.data)
       })
       .catch(err => console.log(err));
   };
 
-  console.log('AppsData', appsData)
-
-  // const apiID = 'acdc5b19';
-  // const apiKEY = '4e793282d539b513354aaab9e6fcbbb9';
-  // const results = '10';
-  // const search = 'Web%20Designer';
-  // const where = 'Austin%20Texas'
-
-  // const apiUrl = `https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=${apiID}&app_key=${apiKEY}&results_per_page=${results}&what=${search}&where=${where}`
-
-  // function getAll() {
-  //   fetch(`https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=acdc5b19&app_key=4e793282d539b513354aaab9e6fcbbb9&results_per_page=20&what=javascript%20developer&where=austin%20texas&content-type=application/json`)
-  //     .then(res => res.json())
-  //     // .then(res => setResults(res))
-  //     .then(res => console.log(res))
-  // }
-
-  // function getAll() {
-  //   setResults(dummyDB)
-  //   console.log(Results)
-  // }
-
-  // getAll()
 
 
   return (
@@ -58,7 +37,8 @@ function Dashboard() {
         <div className="text-center">
           <a href="/new"><AddNew /></a>
         </div>
-        <ResultsTable data={dummyDB} id={dummyDB.id} date={dummyDB.date} title={dummyDB.title} comapny={dummyDB.company} location={dummyDB.location} />
+        <ResultsTable data={appsData} id={appsData._id} date={appsData.date} title={appsData.title} comapny={appsData.company} location={appsData.location} />
+        {/* <ResultsTable data={dummyDB} id={dummyDB.id} date={dummyDB.date} title={dummyDB.title} comapny={dummyDB.company} location={dummyDB.location} /> */}
       </div>
     </div >
   );

@@ -8,7 +8,7 @@ function ResultsTable(props) {
             return (
                 <React.Fragment>
                     {props.data.map(content => (
-                        <tr key={content.id} className="row justify-content-between my-4 card-container">
+                        <tr key={content._id} className="row justify-content-between my-4 card-container">
                             <td className="col-10">
                                 <p><span className={`status ${content.status}`}>{content.status}</span>{content.date}</p>
                                 <h2>{content.title}</h2>
@@ -25,7 +25,7 @@ function ResultsTable(props) {
             return (
                 <React.Fragment>
                     {props.data.map(content => (
-                        <tr key={content.id} className="row justify-content-between my-4 card-container">
+                        <tr key={content._id} className="row justify-content-between my-4 card-container">
                             <td className="col-10">
                                 <h2>{content.title}</h2>
                                 <p className="margin-none">{content.company} | {content.location}</p>
