@@ -4,14 +4,13 @@ import { DeleteEntry } from "../../Buttons"
 import API from "../../../utils/API";
 
 import { useAtom } from "jotai";
-import { searchAtom, filterStatus, filterValue } from "../../../utils/Atoms"
+import { searchAtom } from "../../../utils/Atoms"
 
 
 
 function ResultsTable(props) {
 
     const [searchInput] = useAtom(searchAtom);
-    const [statusFilter] = useAtom(filterValue);
     const [appsData, setAppsData] = useState([])
 
 
@@ -29,7 +28,7 @@ function ResultsTable(props) {
 
     function deleteOne(id) {
         console.log("DELETE CLICKED")
-        API.deleteBook(id)
+        API.deleteOne(id)
             .then(res => loadApps())
             .catch(err => console.log(err));
     }
@@ -50,7 +49,7 @@ function ResultsTable(props) {
                                 <Link to={"/logs/" + content._id}><button id={content._id} className="viewBtn">View More</button></Link>
                             </td>
                             <td>
-                                <DeleteEntry id={content._id} onClick={() => deleteLog(content._id)} />
+                                <DeleteEntry id={content._id} onClick={() => deleteOne(content._id)} />
                             </td>
                         </tr>
                     ))}

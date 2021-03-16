@@ -1,6 +1,4 @@
 
-import { useAtom } from "jotai";
-import { sideBarHide, sideBarShow } from "../../utils/Atoms"
 import React from "react";
 
 

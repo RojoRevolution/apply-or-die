@@ -1,6 +1,4 @@
 import React from "react";
-import { useAtom } from "jotai";
-import { filterStatus, filterValue } from "../../utils/Atoms"
 
 
 function SortButton(props) {
@@ -22,7 +20,7 @@ function AddNew() {
 function DeleteEntry(props) {
     return (
         <React.Fragment>
-            <button id={props.id} type="button" className="btn-close bg-light closeIcon" aria-label="Close"></button>
+            <button {...props} type="button" className="btn-close bg-light closeIcon" aria-label="Close"></button>
         </React.Fragment>
     )
 }

@@ -1,7 +1,4 @@
 import React from "react";
-
-import NewLogForm from "../../Forms/NewLogForm"
-
 import Content from "./Content"
 
 function NewContent() {

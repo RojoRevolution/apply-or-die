@@ -57,9 +57,9 @@ function EditForm() {
     }
 
 
-    function Cancel() {
-        console.log('Cancel')
-    }
+    // function Cancel() {
+    //     console.log('Cancel')
+    // }
 
     return (
         <form className="pt-5" id="newLogForm" onSubmit={handleSubmit}>
