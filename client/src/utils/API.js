@@ -14,7 +14,7 @@ export default {
   // deleteOne: function (id) {
   //   return axios.delete("/api/books/" + id);
   // },
-  // postOne: function (bookData) {
-  //   return axios.post("/api/books", bookData);
-  // }
+  postOne: function (logData) {
+    return axios.post("/api/logs", logData);
+  }
 };
