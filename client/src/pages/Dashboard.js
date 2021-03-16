@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAtom } from "jotai";
+import { applications } from "../utils/Atoms"
+import API from "../utils/API"
 
 import { AddNew } from "../components/Buttons";
 import SideBar from "../components/SideBar/SideBar";
@@ -8,8 +11,22 @@ import dummyDB from "../content/dummyDBresults.json";
 
 function Dashboard() {
 
-  // const [Results, setResults] = useAtom(dbState);
+  const [appsData, setAppsData] = useAtom(applications);
 
+  useEffect(() => {
+    loadApps()
+  }, []);
+
+  function loadApps() {
+    API.getApps()
+      .then(res => {
+        console.log(res)
+        setAppsData(res.data)
+      })
+      .catch(err => console.log(err));
+  };
+
+  console.log('AppsData', appsData)
 
   // const apiID = 'acdc5b19';
   // const apiKEY = '4e793282d539b513354aaab9e6fcbbb9';

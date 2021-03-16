@@ -5,8 +5,8 @@ import axios from "axios";
 
 
 export default {
-  getAll: function () {
-    return axios.get();
+  getApps: function () {
+    return axios.get("/api/logs");
   },
   // getOne: function (id) {
   //   return axios.get("/api/books/" + id);
