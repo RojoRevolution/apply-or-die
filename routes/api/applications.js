@@ -7,8 +7,7 @@ router.route("/")
     .post(applicationController.create);
 
 // Matches with "/api/logs/:id"
-router
-    .route("/:id")
+router.route("/:id")
     .get(applicationController.findById)
     .put(applicationController.update)
     .delete(applicationController.remove);
