@@ -8,7 +8,6 @@ const userSchema = new Schema({
         lowercase: true,
         unique: true,
         required: 'Email address is required',
-        validate: [validateEmail, 'Valid email addres is required']
     },
     password: {
         type: String,
