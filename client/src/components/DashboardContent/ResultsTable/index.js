@@ -11,29 +11,31 @@ import { searchAtom, dbData, filterValue, } from "../../../utils/Atoms"
 function ResultsTable() {
 
     const [searchInput] = useAtom(searchAtom);
-    const [filterStatus] = useAtom(filterValue);
-    // const [appsData, setAppsData] = useState([])
-    const [appsData, setAppsData] = useState({
-        data: [],
-        statusState: "",
-        search: ""
-    })
+    // const [filterStatus] = useAtom(filterValue);
+    const [statusState, setStatusState] = useState("")
+    const [appsData, setAppsData] = useState([])
+    // const [appsData, setAppsData] = useState({
+    //     data: [],
+    //     statusState: "",
+    //     // search: ""
+    // })
 
 
     useEffect(() => {
         loadApps()
-        console.log(appsData)
+        // console.log('Data', appsData)
+        console.log('Status State', statusState)
     }, []);
 
     function loadApps() {
         API.getApps()
             .then(res => {
-                // setAppsData(res.data)
-                setAppsData({
-                    data: res.data,
-                    // statusState: filterStatus,
-                    // search: searchInput
-                })
+                setAppsData(res.data)
+                // setAppsData({
+                //     data: res.data,
+                //     // statusState: filterStatus,
+                //     // search: searchInput
+                // })
             }).then(res => console.log(appsData))
             .catch(err => console.log(err));
     };
@@ -45,6 +47,15 @@ function ResultsTable() {
             .catch(err => console.log(err));
     }
 
+    function handleStatus(event) {
+        event.preventDefault()
+        const status = event.target.id
+        console.log("Click:", status)
+        // setStatusState(status)
+        setStatusState(status)
+        console.log('StatusFilter:', status)
+    }
+
 
 
 
@@ -53,10 +64,10 @@ function ResultsTable() {
             <table className="results">
                 <tbody>
                     <React.Fragment>
-                        {appsData.data.filter(input => input.company.toLowerCase().includes(searchInput)).map(content => (
+                        {appsData.filter(input => input.company.toLowerCase().includes(searchInput)).map(content => (
                             <tr key={content._id} className="row justify-content-between position-relative my-4 card-container">
                                 <td className="col-10">
-                                    <p><span className={`status ${content.status}`}>{content.status}</span>{content.date}</p>
+                                    <p><span onClick={handleStatus} className={`status ${content.status}`} id={content.status}>{content.status}</span>{content.date}</p>
                                     <h2>{content.title}</h2>
                                     <p className="margin-none">{content.company} | {content.location}</p>
                                 </td>
