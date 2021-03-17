@@ -1,8 +1,8 @@
 import React from "react";
 // import API from '../utils/API
-import ResultsTable from "../components/DashboardContent/ResultsTable";
+import { APItable } from "../components/DashboardContent/ResultsTable";
 import dummyAPI from '../content/dummyAPI.json'
-import SideBar from "../components/SideBar/SideBar";
+import { InnerSideBar } from "../components/SideBar/SideBar";
 
 
 function SearchPage() {
@@ -33,9 +33,9 @@ function SearchPage() {
 
     return (
         <div>
-            <SideBar />
+            <InnerSideBar />
             <div className="container-fluid py-5 mainContainer">
-                <ResultsTable data={dummyAPI} id={dummyAPI.id} date={dummyAPI.date} title={dummyAPI.title} comapny={dummyAPI.company} location={dummyAPI.location} />
+                <APItable key={dummyAPI.id} data={dummyAPI} id={dummyAPI.id} date={dummyAPI.date} title={dummyAPI.title} company={dummyAPI.company} location={dummyAPI.location} />
             </div>
         </div>
     );

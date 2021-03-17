@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { AddNew } from "../components/Buttons";
-import SideBar from "../components/SideBar/SideBar";
-import ResultsTable from "../components/DashboardContent/ResultsTable";
+import { SideBar } from "../components/SideBar/SideBar";
+import { ResultsTable } from "../components/DashboardContent/ResultsTable";
 // import dummyDB from "../content/dummyDBresults.json";
 // import API from "../utils/API"
 

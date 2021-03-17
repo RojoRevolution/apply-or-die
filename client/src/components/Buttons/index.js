@@ -12,7 +12,7 @@ function SortButton(props) {
 function FilterButton(props) {
     return (
         <React.Fragment>
-            <button id={props.id} type="button" className='btn sortBtn' onClick={props.sort}>{props.text}</button>
+            <button id={props.id} type="button" className='btn sortBtn' onClick={props.filterStatusHandler}>{props.text}</button>
         </React.Fragment>
     );
 };

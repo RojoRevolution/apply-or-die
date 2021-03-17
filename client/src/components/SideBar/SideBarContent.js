@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useAtom } from "jotai";
@@ -65,7 +65,6 @@ function Sort() {
         })
         console.log('sortResults:', sortResults)
 
-
     }
 
     return (
@@ -93,10 +92,12 @@ function Filter() {
     function filterStatusHandler(event) {
         // const filterButton = document.getElementById(event.target.id)
         const click = event.target.id
-        // console.log("Input:", input)
+        console.log("Click:", click)
 
-        setStatusFilter("click")
+        setStatusFilter(click)
         console.log('StatusFilter:', statusFilter)
+
+
 
         // if (statusState.value === "") {
         //     setStatusState("active");
@@ -159,7 +160,7 @@ function NavigationMain() {
 // Interior Navigation Section
 function NavigationInterior() {
     return (
-        <div className="container-fluid px-3 mb-3 hide">
+        <div className="container-fluid px-3 mb-3">
             <div className="divider">
                 <nav id="dashNav" className="my-4">
                     <ul>

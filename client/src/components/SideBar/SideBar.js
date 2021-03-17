@@ -7,7 +7,6 @@ import { Logo, SearchContent, Sort, Filter, NavigationMain, CopyRight, Navigatio
 
 function SideBar() {
 
-
     return (
         <div className="sidebar">
             <div>
@@ -16,12 +15,22 @@ function SideBar() {
                 <Sort />
                 <Filter />
                 <NavigationMain />
-                <NavigationInterior />
                 <CopyRight />
             </div>
-            {/* <RenderSideBar /> */}
         </div>
     );
 }
 
-export default SideBar;
+function InnerSideBar() {
+    return (
+        <div className="sidebar">
+            <div>
+                <Logo />
+                <NavigationInterior />
+                <CopyRight />
+            </div>
+        </div>
+    );
+}
+
+export { SideBar, InnerSideBar };
