@@ -7,6 +7,7 @@ import SingleEntry from "./Pages/SingleEntry";
 import EditEntry from "./Pages/EditEntry";
 import Home from "./Pages/Home";
 import LogIn from "./Pages/LogIn";
+import NewNote from "./Pages/NewNote";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // The app will not render correctly until you setup a Route component.
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/new" component={NewEntry} />
           <Route exact path="/logs/:id" component={SingleEntry} />
           <Route exact path="/edit/:id" component={EditEntry} />
+          <Route exact path="/newnote/:id" component={NewNote} />
           <Route component={NoMatch} />
         </Switch>
       </div>

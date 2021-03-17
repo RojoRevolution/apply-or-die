@@ -22,8 +22,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function (req, res) {
+    console.log(req.params.id)
+    console.log(req.body)
     db.Application
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate(req.params.id, { $push: { notes: req.body } }, { new: true })
+      // .findOneAndUpdate({ _id: req.params.id }, { notes: notes.push(req.body) })
+
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

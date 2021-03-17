@@ -9,7 +9,7 @@ const applicationSchema = new Schema({
   location: { type: String, required: true },
   listing: { type: String, required: false },
   description: { type: String, required: false },
-  notes: [{ type: String, required: true }]
+  notes: [{ type: String, required: false }]
 });
 
 const Application = mongoose.model("Application", applicationSchema);

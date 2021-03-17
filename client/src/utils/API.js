@@ -16,5 +16,11 @@ export default {
   },
   saveData: function (logData) {
     return axios.post("/api/logs", logData);
+  },
+  updateData: function (id, logData) {
+    return axios.put(`/api/logs/${id}`, logData);
   }
+  // updateData: function (id) {
+  //   return axios.put("/api/logs/" + id);
+  // }
 };

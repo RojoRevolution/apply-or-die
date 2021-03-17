@@ -169,11 +169,22 @@ display: inline-block;
   box-shadow: 0px 0px 10px 0px rgba(214,225,230, .75)
 }
 
-.noteCard {
+.noteCard, .newNote {
+  vertical-align: top;
+  display: inline-block;
   background:#ffffff;
+  width: 99%;
   padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: 0px 0px 10px 0px rgba(214,225,230, .75)
+}
+
+.noteCard {
+  max-width:300px;
+}
+
+.newNote {
+  max-width: 1400px;
 }
 
 .status {
@@ -236,6 +247,10 @@ display: inline-block;
 
 .hide {
   display:none;
+}
+
+.show {
+  display:inline-block
 }
 
  /* ================ */

@@ -25,8 +25,7 @@ function LogForm() {
             listing: formObject.listing,
             description: formObject.description
         })
-            .then(res => console.log(res.data._id))
-            .then(history.push("/"))
+            .then(history.push("/dashboard"))
             .catch(err => console.log(err))
     }
 
