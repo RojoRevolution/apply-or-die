@@ -302,11 +302,12 @@ z-index: 2;
 }
 
 footer {
-  margin-top: 300px;
+  margin-top: 350px;
   background-color: #1C1C29;
 }
 
 footer p {
+  text-align:center;
   font-size: .7rem;
   color:#919191;
 }
