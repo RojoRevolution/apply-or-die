@@ -24,8 +24,8 @@ function ResultsTable() {
     useEffect(() => {
         loadApps()
         // console.log('Data', appsData)
-        console.log('Status State', statusState)
-    }, []);
+        console.log('Status UseEffect', statusState)
+    }, [statusState]);
 
     function loadApps() {
         API.getApps()
