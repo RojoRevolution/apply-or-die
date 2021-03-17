@@ -3,11 +3,11 @@ import { atom } from 'jotai'
 const dbState = atom({})
 const apiState = atom({})
 const sideBarContent = atom("/")
-const applications = atom({})
+const dbData = atom(["thisistext"])
 
 const searchAtom = atom("")
 const filterStatus = atom("")
-const filterValue = atom("")
+const filterValue = atom("All")
 const sortAtom = atom({
     click: "",
     sort: ""
@@ -19,4 +19,4 @@ const sideBarShow = atom("show")
 
 
 
-export { dbState, apiState, sideBarContent, applications, searchAtom, filterStatus, filterValue, sideBarHide, sideBarShow, sortAtom };
+export { dbState, apiState, sideBarContent, dbData, searchAtom, filterStatus, filterValue, sideBarHide, sideBarShow, sortAtom };

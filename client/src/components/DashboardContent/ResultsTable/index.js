@@ -4,25 +4,37 @@ import { DeleteEntry } from "../../Buttons"
 import API from "../../../utils/API";
 
 import { useAtom } from "jotai";
-import { searchAtom, filterValue, sortAtom } from "../../../utils/Atoms"
+import { searchAtom, dbData, filterValue, } from "../../../utils/Atoms"
 
 
 
 function ResultsTable() {
 
     const [searchInput] = useAtom(searchAtom);
-    const [filterStatus] = useAtom(sortAtom);
-    const [appsData, setAppsData] = useState([])
+    const [filterStatus] = useAtom(filterValue);
+    // const [appsData, setAppsData] = useState([])
+    const [appsData, setAppsData] = useState({
+        data: [],
+        statusState: "",
+        search: ""
+    })
+
 
     useEffect(() => {
         loadApps()
+        console.log(appsData)
     }, []);
 
     function loadApps() {
         API.getApps()
             .then(res => {
-                setAppsData(res.data)
-            })
+                // setAppsData(res.data)
+                setAppsData({
+                    data: res.data,
+                    // statusState: filterStatus,
+                    // search: searchInput
+                })
+            }).then(res => console.log(appsData))
             .catch(err => console.log(err));
     };
 
@@ -33,25 +45,7 @@ function ResultsTable() {
             .catch(err => console.log(err));
     }
 
-    // sortCompanyName = () => {
-    //     const sortedEmployees = this.state.results.sort((a, b) => {
-    //         if (b.name.first > a.name.first) {
-    //             return -1
-    //         }
-    //         if (a.name.first > b.name.first) {
-    //             return 1
-    //         }
-    //         return 0;
-    //     });
 
-    //     if (this.state.sortOrder === "DESC") {
-    //         sortedEmployees.reverse();
-    //         this.setState({ sortOrder: "ASC" });
-    //     } else {
-    //         this.setState({ sortOrder: "DESC" });
-    //     }
-    //     this.setState({ results: sortedEmployees })
-    // }
 
 
     return (
@@ -59,7 +53,7 @@ function ResultsTable() {
             <table className="results">
                 <tbody>
                     <React.Fragment>
-                        {appsData.filter(input => input.company.toLowerCase().includes(searchInput) || input.status.toLowerCase().includes(filterStatus)).map(content => (
+                        {appsData.data.filter(input => input.company.toLowerCase().includes(searchInput) || input.status.toLowerCase().match(appsData.statusState)).map(content => (
                             <tr key={content._id} className="row justify-content-between position-relative my-4 card-container">
                                 <td className="col-10">
                                     <p><span className={`status ${content.status}`}>{content.status}</span>{content.date}</p>
