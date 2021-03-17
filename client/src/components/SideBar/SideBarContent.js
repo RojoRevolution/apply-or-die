@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { useAtom } from "jotai";
-import { searchAtom, filterStatus, filterValue } from "../../utils/Atoms"
-import { SortButton } from "../Buttons";
+import { searchAtom, sortAtom, filterValue } from "../../utils/Atoms"
+import { SortButton, FilterButton } from "../Buttons";
 import sortContent from "../../content/sort.json";
 import filterContent from "../../content/filter.json";
 
@@ -52,13 +52,29 @@ function SearchContent() {
 
 // Sort Results Section
 function Sort() {
+
+    const [sortResults, setSortResults] = useAtom(sortAtom);
+
+    function sortHandler(event) {
+        event.preventDefault();
+        const click = event.target.id
+        console.log("Input:", click)
+
+        setSortResults({ click }, function () {
+            setSortResults({ sort: sortResults.click })
+        })
+        console.log('sortResults:', sortResults)
+
+
+    }
+
     return (
         <div className="container-fluid px-3 mb-3">
             <div className="divider">
                 <div className="my-4">
                     <h3 className="ms-2">Sort Results:</h3>
                     {sortContent.map(content => (
-                        <SortButton key={content.id} text={content.text} id={content.id} />
+                        <SortButton key={content.id} text={content.text} id={content.id} sort={sortHandler} />
                     ))}
                 </div>
             </div>
@@ -76,10 +92,10 @@ function Filter() {
 
     function filterStatusHandler(event) {
         // const filterButton = document.getElementById(event.target.id)
-        const input = event.target.id
-        console.log("Input:", input)
+        const click = event.target.id
+        // console.log("Input:", input)
 
-        setStatusFilter(input)
+        setStatusFilter("click")
         console.log('StatusFilter:', statusFilter)
 
         // if (statusState.value === "") {
@@ -107,7 +123,7 @@ function Filter() {
                 <div className="my-4">
                     <h3 className="ms-2">Filter by Status:</h3>
                     {filterContent.map(content => (
-                        <SortButton key={content.id} text={content.text} id={content.id} filterStatusHandler={filterStatusHandler} />
+                        <FilterButton key={content.id} text={content.text} id={content.id} filterStatusHandler={filterStatusHandler} />
                     ))}
                 </div>
             </div>

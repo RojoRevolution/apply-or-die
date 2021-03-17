@@ -4,7 +4,7 @@ import { DeleteEntry } from "../../Buttons"
 import API from "../../../utils/API";
 
 import { useAtom } from "jotai";
-import { searchAtom } from "../../../utils/Atoms"
+import { searchAtom, } from "../../../utils/Atoms"
 
 
 

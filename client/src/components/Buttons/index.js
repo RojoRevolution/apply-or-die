@@ -4,7 +4,15 @@ import React from "react";
 function SortButton(props) {
     return (
         <React.Fragment>
-            <button id={props.id} type="button" className='btn sortBtn' onClick={props.filterStatusHandler}>{props.text}</button>
+            <button id={props.id} type="button" className='btn sortBtn' onClick={props.sort}>{props.text}</button>
+        </React.Fragment>
+    );
+};
+
+function FilterButton(props) {
+    return (
+        <React.Fragment>
+            <button id={props.id} type="button" className='btn sortBtn' onClick={props.sort}>{props.text}</button>
         </React.Fragment>
     );
 };
@@ -25,4 +33,4 @@ function DeleteEntry(props) {
     )
 }
 
-export { SortButton, AddNew, DeleteEntry };
+export { SortButton, FilterButton, AddNew, DeleteEntry };

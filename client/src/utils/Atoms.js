@@ -8,6 +8,10 @@ const applications = atom({})
 const searchAtom = atom("")
 const filterStatus = atom("")
 const filterValue = atom("")
+const sortAtom = atom({
+    click: "",
+    sort: ""
+})
 
 const sideBarHide = atom("hide")
 const sideBarShow = atom("show")
@@ -15,4 +19,4 @@ const sideBarShow = atom("show")
 
 
 
-export { dbState, apiState, sideBarContent, applications, searchAtom, filterStatus, filterValue, sideBarHide, sideBarShow };
+export { dbState, apiState, sideBarContent, applications, searchAtom, filterStatus, filterValue, sideBarHide, sideBarShow, sortAtom };
