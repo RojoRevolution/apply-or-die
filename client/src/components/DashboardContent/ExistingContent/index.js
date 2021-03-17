@@ -34,12 +34,12 @@ function NewContent() {
                 <Content id={data._id} data={data} status={data.status} date={data.date} title={data.title} company={data.company} location={data.location} listing={data.listing} description={data.description} />
             </div>
             <div className="p-5 mt-5 position-relative card-container">
+                <button className="btn viewBtn editPos">Add new Note</button>
                 <h1>Notes:</h1>
                 <div className="row">
                     {notes.map((content, index) => (
                         <NoteCard key={index} note={content} />
                     ))}
-                    {/* <NoteCard notes={data.notes} /> */}
                 </div>
             </div>
         </React.Fragment>
