@@ -18,8 +18,9 @@ const appSeed = [
         title: "Mid Level Web Developer",
         company: "Google Inc.",
         location: "Austin, TX",
-        listing: "",
-        description: ""
+        listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
+        description: "A class condimentum parturient potenti iaculis a quam tempus vivamus condimentum rutrum eget a massa sit orci habitasse penatibus bibendum.",
+        notes: ["Note 1", "Note2"]
     },
     {
         // date: new Date(Date.now()),
@@ -28,8 +29,11 @@ const appSeed = [
         title: "React Developer",
         company: "Facebook",
         location: "Austin, Tx",
-        listing: "",
-        description: ""
+        listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
+        description: "A class condimentum parturient potenti iaculis a quam tempus vivamus condimentum rutrum eget a massa sit orci habitasse penatibus bibendum.",
+        notes: [{
+            noteEntry: "",
+        }]
     },
     {
         // date: new Date(Date.now()),
@@ -38,8 +42,11 @@ const appSeed = [
         title: "Full Stack Developer",
         company: "Frog",
         location: "Austin, Tx",
-        listing: "",
-        description: ""
+        listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
+        description: "A class condimentum parturient potenti iaculis a quam tempus vivamus condimentum rutrum eget a massa sit orci habitasse penatibus bibendum.",
+        notes: [{
+            noteEntry: "",
+        }]
     },
     {
         // date: new Date(Date.now()),
@@ -48,8 +55,11 @@ const appSeed = [
         title: "Front End Developer",
         company: "Helms Workshop",
         location: "Austin, Tx",
-        listing: "",
-        description: ""
+        listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
+        description: "Primis sem ac eget dui eros natoque consequat a per at dolor ultrices nullam parturient proin lectus magna cubilia ad ut. Donec vel quisque bibendum per iaculis enim condimentum a et litora facilisi accumsan adipiscing turpis torquent suspendisse scelerisque a.",
+        notes: [{
+            noteEntry: "",
+        }]
     },
     {
         // date: new Date(Date.now()),
@@ -58,8 +68,11 @@ const appSeed = [
         title: "React Developer",
         company: "Chimi",
         location: "Austin, Tx",
-        listing: "",
-        description: ""
+        listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
+        description: "Primis sem ac eget dui eros natoque consequat a per at dolor ultrices nullam parturient proin lectus magna cubilia ad ut. Donec vel quisque bibendum per iaculis enim condimentum a et litora facilisi accumsan adipiscing turpis torquent suspendisse scelerisque a.",
+        notes: [{
+            noteEntry: "",
+        }]
     },
 
 ];

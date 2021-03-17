@@ -169,6 +169,13 @@ display: inline-block;
   box-shadow: 0px 0px 10px 0px rgba(214,225,230, .75)
 }
 
+.noteCard {
+  background:#ffffff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px 0px rgba(214,225,230, .75)
+}
+
 .status {
   font-family: 'Open Sans', sans-serif;
   font-size:.9rem;
