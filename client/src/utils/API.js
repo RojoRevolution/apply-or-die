@@ -19,8 +19,12 @@ export default {
   },
   updateData: function (id, logData) {
     return axios.put(`/api/logs/${id}`, logData);
-  }
+  },
   // updateData: function (id) {
   //   return axios.put("/api/logs/" + id);
   // }
+  createUser: function (formData) {
+    return axios.post("/api/signup", formData);
+  },
+
 };

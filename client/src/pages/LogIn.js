@@ -1,9 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Exterior/Footer";
+import API from "../../../utils/API";
 
 
 function Home() {
+
+    const [formObject, setFormObject] = useState({})
+
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        setFormObject({ ...formObject, [name]: value })
+        console.log(formObject)
+    };
+
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        API.createUser({
+            email: formObject.email,
+            password: formObject.password,
+        })
+            .then(console.log('REDIRECTING TO LOGIN'))
+            .then(history.push("/login"))
+            .catch(err => console.log(err))
+    }
+
 
     return (
         <main>
@@ -24,11 +46,11 @@ function Home() {
                         <form>
                             <div className="mb-3">
                                 <label for="exampleFormControlInput1" className="form-label">Email address</label>
-                                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email" />
                             </div>
                             <div className="mb-3">
                                 <label for="exampleFormControlInput1" className="form-label">Password</label>
-                                <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="" />
+                                <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="" name="password" />
                             </div>
                             <div className="mb-3">
                                 <Link to={"/dashboard"}><button className="btn viewBtn width-full">Log In</button></Link>
