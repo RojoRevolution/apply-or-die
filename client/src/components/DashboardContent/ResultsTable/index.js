@@ -53,7 +53,7 @@ function ResultsTable() {
             <table className="results">
                 <tbody>
                     <React.Fragment>
-                        {appsData.data.filter(input => input.company.toLowerCase().includes(searchInput) || input.status.toLowerCase().match(appsData.statusState)).map(content => (
+                        {appsData.data.filter(input => input.company.toLowerCase().includes(searchInput)).map(content => (
                             <tr key={content._id} className="row justify-content-between position-relative my-4 card-container">
                                 <td className="col-10">
                                     <p><span className={`status ${content.status}`}>{content.status}</span>{content.date}</p>

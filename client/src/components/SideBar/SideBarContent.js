@@ -13,7 +13,7 @@ function Logo() {
         <div className="container-fluid px-3 mb-3">
             <div className="divider">
                 <div className="logo py-3">
-                    <Link to={"/"}><img src="/assets/images/logo/ApplyOrDie.gif" alt="Apply or Die Logo" className="img-size" /></Link>
+                    <Link to={"/dashboard"}><img src="/assets/images/logo/ApplyOrDie.gif" alt="Apply or Die Logo" className="img-size" /></Link>
                 </div>
             </div>
         </div>
@@ -146,7 +146,7 @@ function NavigationMain() {
                             <a href="#">View Stats</a>
                         </li>
                         <li>
-                            <a href="#">Log Out</a>
+                            <Link to={"/"}>Log Out</Link>
                         </li>
                     </ul>
                 </nav>
@@ -165,7 +165,7 @@ function NavigationInterior() {
                 <nav id="dashNav" className="my-4">
                     <ul>
                         <li>
-                            <Link to={"/"}>Dashboard</Link>
+                            <Link to={"/dashboard"}>Dashboard</Link>
                         </li>
                         <li>
                             <Link to={"/search"}>Search Jobs</Link>
@@ -174,7 +174,7 @@ function NavigationInterior() {
                             <a href="#">View Stats</a>
                         </li>
                         <li>
-                            <a href="#">Log Out</a>
+                            <Link to={"/"}>Log Out</Link>
                         </li>
                     </ul>
                 </nav>
