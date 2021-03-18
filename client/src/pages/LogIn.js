@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Exterior/Footer";
-import API from "../../../utils/API";
+import API from "../utils/API";
+import { useHistory } from "react-router-dom";
+
 
 
 function Home() {
+    let history = useHistory();
 
     const [formObject, setFormObject] = useState({})
 
@@ -22,7 +25,7 @@ function Home() {
             password: formObject.password,
         })
             .then(console.log('REDIRECTING TO LOGIN'))
-            .then(history.push("/login"))
+            .then(history.push("/dashboard"))
             .catch(err => console.log(err))
     }
 
@@ -43,17 +46,18 @@ function Home() {
                     </div>
                     <div className="card-container mt-5 userForm">
                         <h2 className="text-center">Log In</h2>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="mb-3">
-                                <label for="exampleFormControlInput1" className="form-label">Email address</label>
-                                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email" />
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
+                                <input onChange={handleInputChange} type="email" className="form-control" placeholder="name@example.com" name="email" />
                             </div>
                             <div className="mb-3">
-                                <label for="exampleFormControlInput1" className="form-label">Password</label>
-                                <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="" name="password" />
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
+                                <input onChange={handleInputChange} type="password" className="form-control" placeholder="" name="password" />
                             </div>
                             <div className="mb-3">
-                                <Link to={"/dashboard"}><button className="btn viewBtn width-full">Log In</button></Link>
+                                {/* <Link to={"/dashboard"}><button className="btn viewBtn width-full">Log In</button></Link> */}
+                                <button className="btn viewBtn width-full">Log In</button>
                             </div>
                             <div className="mb-3">
                                 <p className=" text-center formLink">Need an account?   <Link to={"/"}>Sign Up Here</Link></p>

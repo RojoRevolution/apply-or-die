@@ -24,7 +24,8 @@ export default {
   //   return axios.put("/api/logs/" + id);
   // }
   createUser: function (formData) {
-    return axios.post("/api/signup", formData);
+    console.log('CREATE USER FUNCTION')
+    return axios.post("/api/user/signup", formData);
   },
 
 };

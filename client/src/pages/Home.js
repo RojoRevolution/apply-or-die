@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Exterior/Footer";
+import API from "../utils/API";
+import { useHistory } from "react-router-dom";
 
 
 function Home() {
+    let history = useHistory();
+
+    const [formObject, setFormObject] = useState({})
+
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        setFormObject({ ...formObject, [name]: value })
+        console.log(formObject)
+    };
+
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log(formObject)
+        API.createUser({
+            email: formObject.email,
+            password: formObject.password,
+        })
+            .then(res => {
+                console.log(res)
+                if (res.data) {
+                    console.log("Successful SignUp")
+                        .then(history.push("/dashboard"))
+                }
+            })
+            .catch(err => console.log(err))
+    }
+
 
     return (
         <main>
@@ -22,14 +52,14 @@ function Home() {
                     </div>
                     <div className="card-container mt-5 userForm">
                         <h2 className="text-center">Sign up</h2>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className="mb-3">
-                                <label for="exampleFormControlInput1" className="form-label">Email address</label>
-                                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
+                                <input onChange={handleInputChange} type="email" className="form-control" placeholder="name@example.com" />
                             </div>
                             <div className="mb-3">
-                                <label for="exampleFormControlInput1" className="form-label">Password</label>
-                                <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="" />
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
+                                <input onChange={handleInputChange} type="password" className="form-control" placeholder="" />
                             </div>
                             <div className="mb-3">
                                 <button className="btn viewBtn width-full">Sign Up</button>
