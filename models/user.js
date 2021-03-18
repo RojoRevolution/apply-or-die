@@ -7,18 +7,12 @@ const userSchema = new Schema({
         type: String,
         trim: true,
         unique: true,
-        required: [true, "Username is required"]
+        // required: [true, "Username is required"]
     },
     password: {
         type: String,
         unique: false,
-        validate: {
-            validator: function (v) {
-                return /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/.test(v);
-            },
-            message: props => `${props.value} is not a valid password`
-        },
-        required: [true, "password is required"]
+        // required: [true, "password is required"]
     },
 
 });
