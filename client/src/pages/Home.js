@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Exterior/Footer";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
+import { useAtom } from "jotai";
+import { loggedInStatus } from "../utils/Atoms"
+
 
 
 function Home() {
     let history = useHistory();
+    const [loggedIn, setLoggedin] = useAtom(loggedInStatus);
 
     const [formObject, setFormObject] = useState({})
 
@@ -24,10 +28,10 @@ function Home() {
             password: formObject.password,
         })
             .then(res => {
-                console.log('RES DATA: ', res)
+                console.log('SignUp Res: ', res)
                 if (res.data) {
                     console.log("Successful SignUp")
-
+                    setLoggedin(true)
                     history.push("/dashboard")
                 }
             })

@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Exterior/Footer";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
-
+import { useAtom } from "jotai";
+import { loggedInStatus } from "../utils/Atoms"
 
 
 function Home() {
     let history = useHistory();
+    const [loggedIn, setLoggedin] = useAtom(loggedInStatus);
 
     const [formObject, setFormObject] = useState({})
 
@@ -23,9 +25,14 @@ function Home() {
         API.logIn({
             email: formObject.email,
             password: formObject.password,
+        }).then(res => {
+            console.log('Login Res: ', res)
+            if (res.data) {
+                console.log("Successful LogIn")
+                setLoggedin(true)
+                history.push("/dashboard")
+            }
         })
-            .then(console.log('REDIRECTING TO LOGIN'))
-            .then(history.push("/dashboard"))
             .catch(err => console.log(err))
     }
 
