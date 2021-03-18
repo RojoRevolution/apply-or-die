@@ -1,19 +1,36 @@
 const mongoose = require("mongoose");
+const bcrypt = require('../node_modules/bcryptjs');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     email: {
         type: String,
         trim: true,
-        // required: 'Email address is required',
+        unique: true,
+        required: [true, "Username is required"]
     },
     password: {
         type: String,
-        // required: true,
-        min: 4
+        unique: false,
+        validate: {
+            validator: function (v) {
+                return /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/.test(v);
+            },
+            message: props => `${props.value} is not a valid password`
+        },
+        required: [true, "password is required"]
     },
 
 });
+
+userSchema.methods.generateHash = function (password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+}
+
+userSchema.methods.validPassword = function (password, encrypted) {
+    return bcrypt.compareSync(password, encrypted);
+}
+
 
 const User = mongoose.model("User", userSchema);
 

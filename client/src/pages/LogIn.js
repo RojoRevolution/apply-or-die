@@ -17,7 +17,7 @@ function LogIn() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        API.createUser({
+        API.logIn({
             email: formObject.email,
             password: formObject.password
         })

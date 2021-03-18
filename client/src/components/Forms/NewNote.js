@@ -39,7 +39,7 @@ function NewNote(props) {
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="newNote" className="form-label">Add a New Note:</label>
-                    <textarea className="form-control" id="formTitle" rows="4" cols="4" name="newNote" onChange={handleInputChange}></textarea>
+                    <textarea className="form-control" id="formTitle" rows="4" cols="4" name="notes" onChange={handleInputChange}></textarea>
                 </div>
                 <div className="mb-3">
                     <Link to={"/logs/" + id}><button className="btn viewBtn">Cancel</button></Link>

@@ -19,10 +19,10 @@ export default {
   // updateData: function (id) {
   //   return axios.put("/api/logs/" + id);
   // }
-  createUser: function (formData) {
+  signUp: function (formData) {
     return axios.post("/api/user/signup", formData);
   },
-  logInUser: function (formData) {
+  logIn: function (formData) {
     console.log('LOGIN FUNCTION')
     return axios.post("/api/user/login", formData);
   },

@@ -17,7 +17,7 @@ function Home() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        API.createUser({
+        API.signUp({
             email: formObject.email,
             password: formObject.password
         })

@@ -26,7 +26,13 @@ module.exports = {
     console.log(req.params.id)
     console.log(req.body)
     db.Application
-      .findOneAndUpdate(req.params.id, { $push: { notes: req.body } }, { new: true })
+      .findByIdAndUpdate(
+        req.params.id,
+        {
+          $push:
+            { notes: req.body }
+        }
+      )
       // .findOneAndUpdate({ _id: req.params.id }, { notes: notes.push(req.body) })
 
       .then(dbModel => res.json(dbModel))
