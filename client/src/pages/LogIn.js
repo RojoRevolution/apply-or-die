@@ -39,11 +39,11 @@ function Home() {
 
     return (
         <main>
-            <div className="signUpBg">
+            <div className="logInBg">
                 <div className="homeLogIn">
                 </div>
                 <div className="bottomSlant py-5"></div>
-                <div className="signUpGradient py-5"></div>
+                <div className="logInGradient py-5"></div>
                 <div className="container">
                     <div>
                         <div className="logo py-5">

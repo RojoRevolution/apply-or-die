@@ -264,8 +264,9 @@ display: inline-block;
 }
 
 .logInBg {
-  
   background: #7276B8;
+  height:500px;
+  position:relative;
 }
 
 .bottomSlant {

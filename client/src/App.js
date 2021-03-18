@@ -32,9 +32,8 @@ function App() {
 
   const [loggedIn] = useAtom(loggedInStatus);
   console.log('LoggedIn: ', loggedIn)
-  // componentDidMount() {
-  // }
 
+  // Required Auth creates Authentication for all Interior Routes
   const RequireAuth = ({ children }) => {
     if (!loggedIn) {
       console.log("Not Logged In")
