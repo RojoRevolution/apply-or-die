@@ -26,7 +26,7 @@ router.post("/signup", function (req, res) {
             console.log('====================')
             console.log('REDIRECTING TO LOGIN')
             console.log('====================')
-            res.redirect(307, "/api/login");
+            res.redirect(307, "/api/user/login");
         })
         .catch(function (err) {
             res.status(401).json(err);
