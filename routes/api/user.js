@@ -15,22 +15,62 @@ router.post("/login", passport.authenticate("local"), function (req, res) {
 
 
 // router.route("/signup").post(userController.create);
-router.post("/signup", function (req, res) {
+
+// router.post("/signup", function (req, res) {
+//     console.log('//// API ROUTE ////')
+//     console.log("/signup req.body: ", req.body)
+//     db.User.create({
+//         email: req.body.email,
+//         password: req.body.password
+//     })
+//         .then(function () {
+//             console.log('====================')
+//             console.log('REDIRECTING TO LOGIN')
+//             console.log('====================')
+//             res.redirect(307, "/api/user/login");
+//         })
+//         .catch(function (err) {
+//             res.status(401).json(err);
+//         });
+// });
+router.post("/signup", function (req, res, next) {
     console.log('//// API ROUTE ////')
     console.log("/signup req.body: ", req.body)
-    db.User.create({
-        email: req.body.email,
-        password: req.body.password
+    console.log("/signup email: ", req.body.email)
+    db.User.findOne({ email: req.body.email }, function (err, user) {
+        if (err) throw err;
+        if (user) {
+            console.log("Account with this email already exists")
+            return res.json("Account with this email already exists");
+        }
+        if (!user) {
+            let newUser = new db.User({
+                email: req.body.username,
+                password: req.body.password
+            })
+            console.log("PW", newUser.password)
+            newUser.password = newUser.generateHash(req.body.password);
+            console.log('HASHED', newUser.password)
+            // newUser.create(function (err) {
+            //     if (err) throw err;
+            //     console.log("user saved!");
+            //     // redirects to the login route as a post route *307*
+            //     res.redirect(307, "/api/users/login")
+            // });
+            db.User.create({
+                email: newUser.email,
+                password: newUser.password
+            }).then(function () {
+                console.log('====================')
+                console.log('REDIRECTING TO LOGIN')
+                console.log('====================')
+                res.redirect(307, "/api/user/login");
+            })
+                .catch(function (err) {
+                    res.status(401).json(err);
+                });
+        }
     })
-        .then(function () {
-            console.log('====================')
-            console.log('REDIRECTING TO LOGIN')
-            console.log('====================')
-            res.redirect(307, "/api/user/login");
-        })
-        .catch(function (err) {
-            res.status(401).json(err);
-        });
 });
 
 
