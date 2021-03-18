@@ -26,12 +26,10 @@ module.exports = {
     console.log(req.params.id)
     console.log(req.body)
     db.Application
-      .findByIdAndUpdate(
-        req.params.id,
-        {
-          $push:
-            { notes: req.body }
-        }
+      .findByOneAndUpdate(
+        { _id: req.params.id },
+        { $push: { notes: req.body } }
+
       )
       // .findOneAndUpdate({ _id: req.params.id }, { notes: notes.push(req.body) })
 

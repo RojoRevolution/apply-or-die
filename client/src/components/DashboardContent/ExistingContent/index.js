@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import API from "../../../utils/API"
 import Content from "./Content"
 import NoteCard from "./NoteCard"
-import NewNote from "../../Forms/NewNote"
+import NewNote from "../../Forms/NewNoteForm"
 
 
 

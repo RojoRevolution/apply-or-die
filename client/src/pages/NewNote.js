@@ -2,7 +2,7 @@ import React from "react";
 
 
 import { InnerSideBar } from "../components/SideBar/SideBar";
-import NewNote from "../components/Forms/NewNote";
+import NewNoteForm from "../components/Forms/NewNoteForm";
 
 
 function SearchPage() {
@@ -13,7 +13,7 @@ function SearchPage() {
         <div>
             <InnerSideBar />
             <div className="container-fluid py-5 mainContainer">
-                <NewNote />
+                <NewNoteForm />
             </div>
         </div>
     );
