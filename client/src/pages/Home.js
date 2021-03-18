@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../components/Exterior/Footer";
 import API from "../utils/API";
+import { useHistory } from "react-router-dom";
+
 
 function Home() {
     let history = useHistory();
@@ -19,10 +21,15 @@ function Home() {
         event.preventDefault();
         API.signUp({
             email: formObject.email,
-            password: formObject.password
+            password: formObject.password,
         })
-            .then(console.log('REDIRECTING TO LOGIN'))
-            .then(history.push("/login"))
+            .then(res => {
+                console.log(res)
+                if (res.data) {
+                    console.log("Successful SignUp")
+                        .then(history.push("/dashboard"))
+                }
+            })
             .catch(err => console.log(err))
     }
 
@@ -47,11 +54,11 @@ function Home() {
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
-                                <input onChange={handleInputChange} type="email" className="form-control" placeholder="name@example.com" name="email" />
+                                <input onChange={handleInputChange} type="email" className="form-control" placeholder="name@example.com" />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
-                                <input onChange={handleInputChange} type="password" className="form-control" placeholder="" name="password" />
+                                <input onChange={handleInputChange} type="password" className="form-control" placeholder="" />
                             </div>
                             <div className="mb-3">
                                 <button className="btn viewBtn width-full">Sign Up</button>

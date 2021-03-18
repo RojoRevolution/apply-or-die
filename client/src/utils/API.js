@@ -1,5 +1,9 @@
 import axios from "axios";
 
+
+
+
+
 export default {
   getApps: function () {
     return axios.get("/api/logs");
