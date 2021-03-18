@@ -1,9 +1,5 @@
 import axios from "axios";
 
-
-
-
-
 export default {
   getApps: function () {
     return axios.get("/api/logs");
@@ -24,8 +20,11 @@ export default {
   //   return axios.put("/api/logs/" + id);
   // }
   createUser: function (formData) {
-    console.log('CREATE USER FUNCTION')
     return axios.post("/api/user/signup", formData);
+  },
+  logInUser: function (formData) {
+    console.log('LOGIN FUNCTION')
+    return axios.post("/api/user/login", formData);
   },
 
 };

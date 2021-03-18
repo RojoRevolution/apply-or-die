@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Footer from "../components/Exterior/Footer";
 import API from "../utils/API";
-import { useHistory } from "react-router-dom";
 
-
-
-function Home() {
+function LogIn() {
     let history = useHistory();
 
     const [formObject, setFormObject] = useState({})
@@ -22,7 +19,7 @@ function Home() {
         event.preventDefault();
         API.createUser({
             email: formObject.email,
-            password: formObject.password,
+            password: formObject.password
         })
             .then(console.log('REDIRECTING TO LOGIN'))
             .then(history.push("/dashboard"))
@@ -71,4 +68,4 @@ function Home() {
     )
 }
 
-export default Home;
+export default LogIn;
