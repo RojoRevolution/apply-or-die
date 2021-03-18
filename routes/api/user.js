@@ -7,11 +7,28 @@ var passport = require("../../config/passport");
 // router.route("/login",)
 //     // This get should be find by email not id
 //     .get(userController.findById)
-router.post("/login", passport.authenticate("local"), function (req, res) {
+// router.post("/login", passport.authenticate("local"), function (req, res) {
+//     console.log("/login request.body: ", req.body)
+//     console.log('///// Sign In Success ////');
+//     res.json(req.user);
+// })
+
+router.post("/login", passport.authenticate("local"
+    // {
+    //     successRedirect: "/dashboard",
+    //     failureRedirect: "/",
+    // }
+), function (req, res, next) {
     console.log("/login request.body: ", req.body)
     console.log('///// Sign In Success ////');
+    console.log('REQ SESSION', req.session)
+    console.log('REQ USER', req.user)
     res.json(req.user);
-})
+    // res.json({
+    //     user: req.user,
+    //     loggedIn: true
+    // });
+});
 
 
 // router.route("/signup").post(userController.create);
@@ -55,7 +72,9 @@ router.post("/signup", function (req, res, next) {
             db.User.create({
                 email: newUser.email,
                 password: newUser.password
-            }).then(function () {
+            }).then(function (data) {
+                console.log('DATA: ', data)
+                console.log(req.session)
                 console.log('====================')
                 console.log('REDIRECTING TO LOGIN')
                 console.log('====================')
@@ -76,9 +95,23 @@ router.post("/signup", function (req, res, next) {
 // });
 
 
-router.route("/user_data")
-    // Route for getting some data about our user to be used client side
-    .get(userController.findById)
+// router.route("/user_data")
+//     // Route for getting some data about our user to be used client side
+//     .get(userController.findById)
+
+router.get("/api/user_data", function (req, res) {
+    if (!req.user) {
+        // The user is not logged in, send back an empty object
+        res.json({});
+    } else {
+        // Otherwise send back the user's email and id
+        // Sending back a password, even a hashed password, isn't a good idea
+        res.json({
+            email: req.user.email,
+            id: req.user.id
+        });
+    }
+});
 
 
 module.exports = router;

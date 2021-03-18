@@ -24,10 +24,11 @@ function Home() {
             password: formObject.password,
         })
             .then(res => {
-                console.log(res)
+                console.log('RES DATA: ', res)
                 if (res.data) {
                     console.log("Successful SignUp")
-                        .then(history.push("/dashboard"))
+
+                    history.push("/dashboard")
                 }
             })
             .catch(err => console.log(err))

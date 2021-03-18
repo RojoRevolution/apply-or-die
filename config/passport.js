@@ -31,7 +31,8 @@ var db = require("../models");
 // ));
 
 passport.use(new LocalStrategy(
-    function (username, password, done) {
+    function (email, password, done) {
+        console.log('IN LOCAL STRATEGY');
         db.User.findOne({
             email: email
         }, function (err, user) {
@@ -55,10 +56,12 @@ passport.use(new LocalStrategy(
 // Sequelize needs to serialize and deserialize the user
 // Just consider this part boilerplate needed to make it all work
 passport.serializeUser(function (user, cb) {
+    console.log('SERIALIZE FUNCTION');
     cb(null, user);
 });
 
 passport.deserializeUser(function (obj, cb) {
+    console.log('DESERIALIZE FUNCTION');
     cb(null, obj);
 });
 
