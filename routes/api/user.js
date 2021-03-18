@@ -13,12 +13,13 @@ var passport = require("../../config/passport");
 //     res.json(req.user);
 // })
 
-router.post("/login", passport.authenticate("local"
-    // {
-    //     successRedirect: "/dashboard",
-    //     failureRedirect: "/",
-    // }
-), function (req, res, next) {
+router.post("/login", passport.authenticate("local",
+    {
+        // successRedirect: "/dashboard",
+        failureRedirect: "/",
+    }
+    // ), function (req, res, next) {
+), function (req, res) {
     console.log("/login request.body: ", req.body)
     console.log('///// Sign In Success ////');
     console.log('REQ SESSION', req.session)
@@ -29,6 +30,18 @@ router.post("/login", passport.authenticate("local"
     //     loggedIn: true
     // });
 });
+
+// router.post("/login", passport.authenticate("local", {
+//     failureRedirect: "/signup"
+// }),
+//     function (req, res) {
+//         console.log(req.user)
+//         // console.log(req.user)
+//         const userInfo = { port: process.env.PORT, user: req.user }
+//         res.json(userInfo)
+//         console.log(process.env.PORT)
+//     }
+// );
 
 
 // router.route("/signup").post(userController.create);
@@ -67,7 +80,7 @@ router.post("/signup", function (req, res, next) {
             })
             console.log("Email", newUser.email)
             console.log("PW", newUser.password)
-            newUser.password = newUser.generateHash(req.body.password);
+            // newUser.password = newUser.generateHash(req.body.password);
             console.log('HASHED', newUser.password)
             db.User.create({
                 email: newUser.email,
