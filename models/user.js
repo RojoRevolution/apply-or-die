@@ -17,10 +17,10 @@ const userSchema = new Schema({
 
 });
 
+// Bcrypt Methods
 userSchema.methods.generateHash = function (password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 }
-
 userSchema.methods.validPassword = function (password, encrypted) {
     return bcrypt.compareSync(password, encrypted);
 }

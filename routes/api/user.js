@@ -4,43 +4,46 @@ const userController = require("../../controllers/UserController");
 var passport = require("../../config/passport");
 
 
-// router.post("/login", passport.authenticate("local"), function (req, res) {
-//     console.log('///// Sign In Success ////');
-//     res.json(req.user);
-// })
+// router.route("/login",)
+//     // This get should be find by email not id
+//     .get(userController.findById)
+router.post("/login", passport.authenticate("local"), function (req, res) {
+    console.log("/login request.body: ", req.body)
+    console.log('///// Sign In Success ////');
+    res.json(req.user);
+})
 
 
-router.route("/login",)
-    // This get should be find by email not id
-    .get(userController.findById)
+// router.route("/signup").post(userController.create);
+router.post("/signup", function (req, res) {
+    console.log('//// API ROUTE ////')
+    console.log("/signup req.body: ", req.body)
+    db.User.create({
+        email: req.body.email,
+        password: req.body.password
+    })
+        .then(function () {
+            console.log('====================')
+            console.log('REDIRECTING TO LOGIN')
+            console.log('====================')
+            res.redirect(307, "/api/login");
+        })
+        .catch(function (err) {
+            res.status(401).json(err);
+        });
+});
+
+
+// Route for logging user out
+// app.get("/logout", function (req, res) {
+//     req.logout();
+//     res.redirect("/");
+// });
+
 
 router.route("/user_data")
     // Route for getting some data about our user to be used client side
     .get(userController.findById)
-
-
-
-// router.post("/signup", function (req, res) {
-//     db.User.findOne({ email: req.body.email }), function (err, user) {
-//         if (err) throw err;
-//         if (user) {
-//             console.log("User already exists")
-//             return res.json("This user already exists")
-//         }
-//         if (!user) {
-//             let newUser = new db.User({
-//                 email: req.body.email,
-//                 password: req.body.password
-//             })
-//             newUser
-//         }
-//     }
-// })
-
-
-
-router.route("/signup")
-    .post(userController.create);
 
 
 module.exports = router;
