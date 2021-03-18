@@ -45,18 +45,13 @@ router.post("/signup", function (req, res, next) {
         }
         if (!user) {
             let newUser = new db.User({
-                email: req.body.username,
+                email: req.body.email,
                 password: req.body.password
             })
+            console.log("Email", newUser.email)
             console.log("PW", newUser.password)
             newUser.password = newUser.generateHash(req.body.password);
             console.log('HASHED', newUser.password)
-            // newUser.create(function (err) {
-            //     if (err) throw err;
-            //     console.log("user saved!");
-            //     // redirects to the login route as a post route *307*
-            //     res.redirect(307, "/api/users/login")
-            // });
             db.User.create({
                 email: newUser.email,
                 password: newUser.password
