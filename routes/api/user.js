@@ -2,6 +2,7 @@ const db = require("../../models/");
 const router = require("express").Router();
 const userController = require("../../controllers/UserController");
 var passport = require("../../config/passport");
+const bcrypt = require("bcryptjs/dist/bcrypt");
 
 
 // router.route("/login",)
@@ -13,60 +14,93 @@ var passport = require("../../config/passport");
 //     res.json(req.user);
 // })
 
-router.post("/login", passport.authenticate("local",
-    {
-        successRedirect: "/dashboard",
-        failureRedirect: "/",
-    }
-    // ), function (req, res, next) {
-), function (req, res) {
-    console.log("/login request.body: ", req.body)
-    console.log('///// Sign In Success ////');
-    console.log('REQ SESSION', req.session)
-    console.log('REQ USER', req.user)
-    res.json(req.user);
-    // res.json({
-    //     user: req.user,
-    //     loggedIn: true
-    // });
-});
+// router.post("/login", passport.authenticate("local",
+//     {
+//         successRedirect: "/dashboard",
+//         failureRedirect: "/",
+//     }
+//     // ), function (req, res, next) {
+// ), function (req, res) {
+//     console.log("/login request.body: ", req.body)
+//     console.log('///// Sign In Success ////');
+//     console.log('REQ SESSION', req.session)
+//     console.log('REQ USER', req.user)
+//     res.json(req.user);
+//     // res.json({
+//     //     user: req.user,
+//     //     loggedIn: true
+//     // });
+// });
 
-router.post("/signup", function (req, res, next) {
-    console.log('//// API ROUTE ////')
-    console.log("/signup req.body: ", req.body)
-    console.log("/signup email: ", req.body.email)
-    db.User.findOne({ email: req.body.email }, function (err, user) {
+router.post("/login", (req, res, next) => {
+    passport.authenticate("local", (err, user, info) => {
         if (err) throw err;
-        if (user) {
-            console.log("Account with this email already exists")
-            return res.json("Account with this email already exists");
+        if (!user) res.send("User does not exist");
+        else {
+            req.Login(user, (err) => {
+                if (err) throw err;
+                res.send("Successfully Authenticated");
+                console.log("Successfully Authenticated")
+                console.log(req.user);
+            });
         }
-        if (!user) {
-            let newUser = new db.User({
+    })(req, res, next);
+})
+
+
+
+// router.post("/signup", function (req, res, next) {
+//     console.log('//// API ROUTE ////')
+//     console.log("/signup req.body: ", req.body)
+//     console.log("/signup email: ", req.body.email)
+//     db.User.findOne({ email: req.body.email }, function (err, user) {
+//         if (err) throw err;
+//         if (user) {
+//             console.log("Account with this email already exists")
+//             return res.json("Account with this email already exists");
+//         }
+//         if (!user) {
+//             let newUser = new db.User({
+//                 email: req.body.email,
+//                 password: req.body.password
+//             })
+//             console.log("Email", newUser.email)
+//             console.log("PW", newUser.password)
+//             // newUser.password = newUser.generateHash(req.body.password);
+//             console.log('HASHED', newUser.password)
+//             db.User.create({
+//                 email: newUser.email,
+//                 password: newUser.password
+//             }).then(function (data) {
+//                 console.log('DATA: ', data)
+//                 console.log(req.session)
+//                 console.log('====================')
+//                 console.log('REDIRECTING TO LOGIN')
+//                 console.log('====================')
+//                 res.redirect(307, "/api/user/login");
+//             })
+//                 .catch(function (err) {
+//                     res.status(401).json(err);
+//                 });
+//         }
+//     })
+// });
+
+router.post("/signup", (req, res) => {
+    db.User.findOne({ email: req.body.email }, async (err, doc) => {
+        if (err) throw err;
+        if (doc) res.send("This user already exists");
+        if (!doc) {
+            const hashedPassword = await bcrypt.hash(req.body.password, 10);
+            const newUser = new db.User({
                 email: req.body.email,
-                password: req.body.password
-            })
-            console.log("Email", newUser.email)
-            console.log("PW", newUser.password)
-            // newUser.password = newUser.generateHash(req.body.password);
-            console.log('HASHED', newUser.password)
-            db.User.create({
-                email: newUser.email,
-                password: newUser.password
-            }).then(function (data) {
-                console.log('DATA: ', data)
-                console.log(req.session)
-                console.log('====================')
-                console.log('REDIRECTING TO LOGIN')
-                console.log('====================')
-                res.redirect(307, "/api/user/login");
-            })
-                .catch(function (err) {
-                    res.status(401).json(err);
-                });
+                password: hashedPassword
+            });
+            await db.User.create(newUser);
+            res.send("User Created")
         }
     })
-});
+})
 
 
 // Route for logging user out
