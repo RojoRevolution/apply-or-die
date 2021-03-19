@@ -41,6 +41,7 @@ router.post("/login", (req, res, next) => {
                 if (err) throw err;
                 res.send("Successfully Authenticated");
                 console.log("Successfully Authenticated")
+                res.redirect("/dashboard");
                 console.log(req.user);
             });
         }
@@ -102,6 +103,15 @@ router.post("/signup", (req, res) => {
     })
 })
 
+router.get("/info", (req, res) => {
+    res.send(req.user);
+})
+
+router.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/login");
+});
+
 
 // Route for logging user out
 // app.get("/logout", function (req, res) {
@@ -109,21 +119,19 @@ router.post("/signup", (req, res) => {
 //     res.redirect("/");
 // });
 
-
-
-router.get("/api/user_data", function (req, res) {
-    if (!req.user) {
-        // The user is not logged in, send back an empty object
-        res.json({});
-    } else {
-        // Otherwise send back the user's email and id
-        // Sending back a password, even a hashed password, isn't a good idea
-        res.json({
-            email: req.user.email,
-            id: req.user.id
-        });
-    }
-});
+// router.get("/user_data", function (req, res) {
+//     if (!req.user) {
+//         // The user is not logged in, send back an empty object
+//         res.json({});
+//     } else {
+//         // Otherwise send back the user's email and id
+//         // Sending back a password, even a hashed password, isn't a good idea
+//         res.json({
+//             email: req.user.email,
+//             id: req.user.id
+//         });
+//     }
+// });
 
 
 module.exports = router;

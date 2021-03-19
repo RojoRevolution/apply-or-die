@@ -30,5 +30,7 @@ export default {
     console.log('LOGIN FUNCTION')
     return axios.post("/api/user/login", formData);
   },
-
+  getUser: function () {
+    return axios.get("/api/user/info");
+  }
 };
