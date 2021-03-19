@@ -1,7 +1,9 @@
 const db = require("../../models/");
 const router = require("express").Router();
 const userController = require("../../controllers/UserController");
-var passport = require("../../config/passport");
+const passport = require('passport');
+require("../../config/passport")(passport);
+// var passport = require("../../config/passport");
 const bcrypt = require("bcryptjs/dist/bcrypt");
 
 
@@ -14,39 +16,44 @@ const bcrypt = require("bcryptjs/dist/bcrypt");
 //     res.json(req.user);
 // })
 
-// router.post("/login", passport.authenticate("local",
-//     {
-//         successRedirect: "/dashboard",
-//         failureRedirect: "/",
-//     }
-//     // ), function (req, res, next) {
-// ), function (req, res) {
-//     console.log("/login request.body: ", req.body)
-//     console.log('///// Sign In Success ////');
-//     console.log('REQ SESSION', req.session)
-//     console.log('REQ USER', req.user)
-//     res.json(req.user);
-//     // res.json({
-//     //     user: req.user,
-//     //     loggedIn: true
-//     // });
-// });
+router.post("/login", passport.authenticate("local",
+    {
+        successRedirect: "/dashboard",
+        failureRedirect: "/",
+    }
+    // ), function (req, res, next) {
+), function (req, res) {
+    console.log("/login request.body: ", req.body)
+    console.log('///// Sign In Success ////');
+    console.log('REQ SESSION', req.session)
+    console.log('REQ USER', req.user)
+    res.json(req.user);
+    // res.json({
+    //     user: req.user,
+    //     loggedIn: true
+    // });
+});
 
-router.post("/login", (req, res, next) => {
-    passport.authenticate("local", (err, user, info) => {
-        if (err) throw err;
-        if (!user) res.send("User does not exist");
-        else {
-            req.Login(user, (err) => {
-                if (err) throw err;
-                res.send("Successfully Authenticated");
-                console.log("Successfully Authenticated")
-                res.redirect("/dashboard");
-                console.log(req.user);
-            });
-        }
-    })(req, res, next);
-})
+
+
+// router.post("/login", (req, res, next) => {
+//     console.log(res.data)
+//     passport.authenticate("local", (err, user, info) => {
+//         console.log("User: ", user)
+//         console.log(info)
+//         if (err) throw err;
+//         if (!user) res.send("User does not exist");
+//         else {
+//             req.Login(user, (err) => {
+//                 if (err) throw err;
+//                 res.send("Successfully Authenticated");
+//                 console.log("Successfully Authenticated")
+//                 res.redirect("/dashboard");
+//                 console.log(req.user);
+//             });
+//         }
+//     })(req, res, next);
+// })
 
 
 
@@ -87,21 +94,44 @@ router.post("/login", (req, res, next) => {
 //     })
 // });
 
+// router.post("/signup", (req, res) => {
+//     db.User.findOne({ email: req.body.email }, async (err, doc) => {
+//         if (err) throw err;
+//         if (doc) res.send("This user already exists");
+//         if (!doc) {
+//             const hashedPassword = await bcrypt.hash(req.body.password, 10);
+//             const newUser = new db.User({
+//                 email: req.body.email,
+//                 password: hashedPassword
+//             });
+//             await db.User.create(newUser);
+//             res.send("User Created")
+//         }
+//     }).then((data) => {
+//         console.log('====== REDIRECTING TO LOGIN ======')
+//         res.redirect(307, "/api/user/login");
+//     }).catch((err) => {
+//         res.status(401).json(err)
+//     })
+// })
+
 router.post("/signup", (req, res) => {
     db.User.findOne({ email: req.body.email }, async (err, doc) => {
         if (err) throw err;
-        if (doc) res.send("This user already exists");
+        if (doc) res.send("User Already Exists");
         if (!doc) {
             const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
             const newUser = new db.User({
-                email: req.body.email,
-                password: hashedPassword
+                username: req.body.username,
+                password: hashedPassword,
             });
             await db.User.create(newUser);
-            res.send("User Created")
+            // res.send("User Created");
+            res.redirect(307, "/api/user/login");
         }
-    })
-})
+    });
+});
 
 router.get("/info", (req, res) => {
     res.send(req.user);

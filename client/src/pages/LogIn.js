@@ -23,8 +23,10 @@ function Home() {
     function handleSubmit(event) {
         event.preventDefault();
         API.logIn({
-            email: formObject.email,
-            password: formObject.password,
+            data: {
+                email: formObject.email,
+                password: formObject.password,
+            },
             withCredentials: true,
             // URL might not be needed since it's provided in utils/API
             // url: "http://localhost:3000/api/user/login"

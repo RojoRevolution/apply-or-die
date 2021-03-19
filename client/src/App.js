@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import API from "./utils/API"
 import Dashboard from "./Pages/Dashboard";
 import Search from "./Pages/Search";
 import NoMatch from "./Pages/NoMatch";
@@ -8,7 +10,6 @@ import EditEntry from "./Pages/EditEntry";
 import Home from "./Pages/Home";
 import LogIn from "./Pages/LogIn";
 import NewNote from "./Pages/NewNote";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 import { useAtom } from "jotai";
 import { loggedInStatus } from "./utils/Atoms"

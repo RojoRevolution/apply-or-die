@@ -1,16 +1,18 @@
 // var passport = require("passport");
 const bcrypt = require("bcryptjs");
-var LocalStrategy = require("passport-local").Strategy;
 var db = require("../models");
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
 
 
 module.exports = function (passport) {
     passport.use(
         new LocalStrategy((email, password, done) => {
             db.User.findOne({ emai: email }, (err, user) => {
+                console.log('//// IN PASSPORT /////')
                 if (err) throw err;
                 if (!user) return done(null, false);
-                bycrypt.compare(password, user.password, (err, result) => {
+                bcrypt.compare(password, user.password, (err, result) => {
                     if (err) throw err;
                     if (result === true) {
                         return done(null, user);
