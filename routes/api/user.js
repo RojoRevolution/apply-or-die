@@ -1,10 +1,10 @@
 const db = require("../../models/");
 const router = require("express").Router();
 const userController = require("../../controllers/UserController");
-const passport = require('passport');
-require("../../config/passport")(passport);
-// var passport = require("../../config/passport");
-const bcrypt = require("bcryptjs/dist/bcrypt");
+// const passport = require('passport');
+// require("../../config/passport")(passport);
+const passport = require("../../config/passport");
+const bcrypt = require("bcryptjs");
 
 
 // router.route("/login",)
@@ -33,6 +33,8 @@ router.post("/login", passport.authenticate("local",
     //     loggedIn: true
     // });
 });
+
+
 
 
 
@@ -123,7 +125,7 @@ router.post("/signup", (req, res) => {
             const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
             const newUser = new db.User({
-                username: req.body.username,
+                email: req.body.email,
                 password: hashedPassword,
             });
             await db.User.create(newUser);

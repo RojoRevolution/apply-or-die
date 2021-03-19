@@ -31,15 +31,7 @@ function Home() {
             // URL might not be needed since it's provided in utils/API
             // url: "http://localhost:3000/api/user/login"
         }).then(res => {
-            // For some reason the response is comng in under Confif instead of data. Config needs to be parsed.
-            // let parsedData = JSON.parse(res.config.data)
-            // console.log("Parsed Email: ", parsedData.email)
             console.log('Login Res: ', res)
-            // if (res.data) {
-            //     console.log("Successful LogIn")
-            //     // setLoggedin(true)
-            //     history.push("/dashboard")
-            // }
         })
             .catch(err => console.log(err))
     }
