@@ -1,9 +1,9 @@
 const db = require("../../models/");
 const router = require("express").Router();
 const userController = require("../../controllers/UserController");
-// const passport = require('passport');
+const passport = require('passport');
 // require("../../config/passport")(passport);
-const passport = require("../../config/passport");
+// const passport = require("../../config/passport");
 const bcrypt = require("bcryptjs");
 
 
@@ -16,46 +16,54 @@ const bcrypt = require("bcryptjs");
 //     res.json(req.user);
 // })
 
-router.post("/login", passport.authenticate("local",
-    {
-        successRedirect: "/dashboard",
-        failureRedirect: "/",
-    }
-    // ), function (req, res, next) {
-), function (req, res) {
-    console.log("/login request.body: ", req.body)
-    console.log('///// Sign In Success ////');
-    console.log('REQ SESSION', req.session)
-    console.log('REQ USER', req.user)
-    res.json(req.user);
-    // res.json({
-    //     user: req.user,
-    //     loggedIn: true
-    // });
-});
+// router.post("/login", passport.authenticate("local",
+//     {
+//         successRedirect: "/dashboard",
+//         failureRedirect: "/",
+//     }
+//     // ), function (req, res, next) {
+// ), function (req, res) {
+//     console.log("/login request.body: ", req.body)
+//     console.log('///// Sign In Success ////');
+//     console.log('REQ SESSION', req.session)
+//     console.log('REQ USER', req.user)
+//     // res.json(req.user);
+//     // res.json({
+//     //     user: req.user,
+//     //     loggedIn: true
+//     // });
+// });
+
+// router.post("/login", passport.authenticate("local"), function (req, res) {
+//     console.log(req.body)
+//     console.log('///// API/LOGIN ////');
+//     console.log(req.user)
+//     res.json(req.user);
+// });
 
 
 
+router.post("/login", (req, res, next) => {
+    console.log("RES BODY: ", req.body)
+    const userEmail = req.body.data.email
+    passport.authenticate("local", (err, user, info) => {
+        console.log("User: ", user)
+        console.log(info)
+        if (err) throw err;
+        if (!user) res.send("User does not exist");
+        else {
+            req.Login(user, (err) => {
+                if (err) throw err;
+                res.send("Successfully Authenticated");
+                console.log("Successfully Authenticated")
+                // res.redirect("/dashboard");
+                res.redirect(307, "/dashboard");
 
-
-// router.post("/login", (req, res, next) => {
-//     console.log(res.data)
-//     passport.authenticate("local", (err, user, info) => {
-//         console.log("User: ", user)
-//         console.log(info)
-//         if (err) throw err;
-//         if (!user) res.send("User does not exist");
-//         else {
-//             req.Login(user, (err) => {
-//                 if (err) throw err;
-//                 res.send("Successfully Authenticated");
-//                 console.log("Successfully Authenticated")
-//                 res.redirect("/dashboard");
-//                 console.log(req.user);
-//             });
-//         }
-//     })(req, res, next);
-// })
+                console.log(req.user);
+            });
+        }
+    })(req, res, next);
+})
 
 
 

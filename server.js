@@ -26,7 +26,7 @@ app.use(session({ secret: "chimichanga", resave: true, saveUninitialized: true }
 app.use(cookieParser("chimichanga"))
 app.use(passport.initialize());
 app.use(passport.session());
-// require("./config/passport")(passport);
+require("./config/passport")(passport);
 
 // Add routes, both API and view
 app.use(routes);
