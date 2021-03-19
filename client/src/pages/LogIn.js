@@ -25,14 +25,18 @@ function Home() {
         API.logIn({
             email: formObject.email,
             password: formObject.password,
-        }).then(res => {
-            console.log('Login Res: ', res)
-            if (res.data) {
-                console.log("Successful LogIn")
-                setLoggedin(true)
-                history.push("/dashboard")
-            }
         })
+            .then(res => {
+                // For some reason the response is comng in under Confif instead of data. Config needs to be parsed.
+                let parsedData = JSON.parse(res.config.data)
+                console.log("Parsed Email: ", parsedData.email)
+                console.log('Login Res: ', res)
+                if (res.data) {
+                    console.log("Successful LogIn")
+                    // setLoggedin(true)
+                    history.push("/dashboard")
+                }
+            })
             .catch(err => console.log(err))
     }
 

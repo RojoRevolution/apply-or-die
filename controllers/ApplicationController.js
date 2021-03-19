@@ -26,16 +26,17 @@ module.exports = {
     console.log(req.params.id)
     console.log(req.body)
     db.Application
-      .findByOneAndUpdate(
+      .findByIdandUpdate(
         { _id: req.params.id },
-        { $push: { notes: req.body } }
+        { $push: { notes: req.body } },
+        { new: true }
 
       )
-      // .findOneAndUpdate({ _id: req.params.id }, { notes: notes.push(req.body) })
-
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+
   remove: function (req, res) {
     db.Application
       .findById({ _id: req.params.id })

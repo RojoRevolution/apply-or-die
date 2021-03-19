@@ -28,7 +28,9 @@ function Home() {
             password: formObject.password,
         })
             .then(res => {
+                console.log(res)
                 console.log('SignUp Res: ', res)
+                // This method technically won't work because a res is always given even if it is incorrect
                 if (res.data) {
                     console.log("Successful SignUp")
                     setLoggedin(true)

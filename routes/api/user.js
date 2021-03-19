@@ -15,7 +15,7 @@ var passport = require("../../config/passport");
 
 router.post("/login", passport.authenticate("local",
     {
-        // successRedirect: "/dashboard",
+        successRedirect: "/dashboard",
         failureRedirect: "/",
     }
     // ), function (req, res, next) {
@@ -31,38 +31,6 @@ router.post("/login", passport.authenticate("local",
     // });
 });
 
-// router.post("/login", passport.authenticate("local", {
-//     failureRedirect: "/signup"
-// }),
-//     function (req, res) {
-//         console.log(req.user)
-//         // console.log(req.user)
-//         const userInfo = { port: process.env.PORT, user: req.user }
-//         res.json(userInfo)
-//         console.log(process.env.PORT)
-//     }
-// );
-
-
-// router.route("/signup").post(userController.create);
-
-// router.post("/signup", function (req, res) {
-//     console.log('//// API ROUTE ////')
-//     console.log("/signup req.body: ", req.body)
-//     db.User.create({
-//         email: req.body.email,
-//         password: req.body.password
-//     })
-//         .then(function () {
-//             console.log('====================')
-//             console.log('REDIRECTING TO LOGIN')
-//             console.log('====================')
-//             res.redirect(307, "/api/user/login");
-//         })
-//         .catch(function (err) {
-//             res.status(401).json(err);
-//         });
-// });
 router.post("/signup", function (req, res, next) {
     console.log('//// API ROUTE ////')
     console.log("/signup req.body: ", req.body)
@@ -108,9 +76,6 @@ router.post("/signup", function (req, res, next) {
 // });
 
 
-// router.route("/user_data")
-//     // Route for getting some data about our user to be used client side
-//     .get(userController.findById)
 
 router.get("/api/user_data", function (req, res) {
     if (!req.user) {

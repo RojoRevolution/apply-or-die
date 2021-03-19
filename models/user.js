@@ -14,35 +14,11 @@ const userSchema = new Schema({
         unique: false,
         // required: [true, "password is required"]
     },
+    applications: [{ type: Schema.Types.ObjectID, ref: 'application' }]
 
 });
 
-// Bcrypt Methods
 
-// Version 1
-
-// Compare
-// userSchema.methods.validPassword = function (password, encrypted) {
-//     return bcrypt.compareSync(password, encrypted);
-// }
-// Create
-// userSchema.methods.generateHash = function (password) {
-//     return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-// }
-// userSchema.methods.generateHash = function (password) {
-//     console.log('GenerateHash Function" ', password)
-//     return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-// }
-
-// Version 2
-
-// userSchema.methods.generateHash = function (password) {
-//     return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-// }
-
-// userSchema.methods.validPassword = function (password, encrypted) {
-//     return bcrypt.compareSync(password, encrypted);
-// }
 
 // Version 3
 userSchema.methods = {
