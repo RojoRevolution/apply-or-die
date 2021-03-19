@@ -26,18 +26,18 @@ function Home() {
         API.signUp({
             email: formObject.email,
             password: formObject.password,
-        })
-            .then(res => {
-                console.log(res)
-                console.log('SignUp Res: ', res)
-                // This method technically won't work because a res is always given even if it is incorrect
-                if (res.data) {
-                    console.log("Successful SignUp")
-                    setLoggedin(true)
-                    history.push("/dashboard")
-                }
-            })
-            .catch(err => console.log(err))
+            withCredentials: true,
+            url: "http://localhost:3000/api/user/signup"
+        }).then(res => {
+            // console.log(res)
+            console.log('SignUp Res: ', res)
+            // This method technically won't work because a res is always given even if it is incorrect
+            // if (res.data) {
+            //     console.log("Successful SignUp")
+            //     setLoggedin(true)
+            //     history.push("/dashboard")
+            // }
+        }).catch(err => console.log(err))
     }
 
 
