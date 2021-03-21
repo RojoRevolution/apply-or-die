@@ -26,10 +26,10 @@ function NewNote(props) {
         event.preventDefault();
 
         // API.saveData({ _id: id }, { $push: { notes: { formObject } } })
-        API.newNote(id, formObject)
+        API.updateData(id, formObject)
             // .then(() => )
             .then(res => console.log(res.data))
-            .then(history.push("/logs/" + id))
+            // .then(history.push("/logs/" + id))
             .catch(err => console.log(err))
     }
 

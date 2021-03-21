@@ -32,18 +32,15 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  updateApp: function (req, res) {
-    db.Application
-      .findByIdAndUpdate(req.params.id, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  addNote: function (req, res) {
+  update: function (req, res) {
     console.log(req.params.id)
     console.log(req.body)
     db.Application
-      .findByIdAndUpdate(req.params.id,
+      .findByIdandUpdate(
+        { _id: req.params.id },
         { $push: { notes: req.body } },
+        { new: true }
+
       )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

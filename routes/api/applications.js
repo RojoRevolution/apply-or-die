@@ -19,8 +19,7 @@ router.route("/")
 
 router.route("/:id")
     .get(applicationController.findById)
-    .put(applicationController.updateApp)
-    .put(applicationController.addNote)
+    .post(applicationController.update)
     .delete(applicationController.remove);
 
 module.exports = router;
