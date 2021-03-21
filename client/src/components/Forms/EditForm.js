@@ -6,29 +6,31 @@ import API from "../../utils/API";
 
 function EditForm() {
 
-
     // const [appData, setAppData] = useState([])
     const { id } = useParams()
     let history = useHistory();
+    const [data, setData] = useState([])
     const [formObject, setFormObject] = useState({})
 
     useEffect(() => {
         loadData()
     }, []);
 
+    let checkedStatus;
+
     function loadData() {
         API.getOne(id)
             .then(res => {
                 // setAppData(res.data)
                 setFormObject({
-                    status: res.status,
-                    title: res.title,
-                    company: res.company,
-                    location: res.location,
-                    listing: res.listing,
-                    description: res.description
+                    status: res.data.status,
+                    title: res.data.title,
+                    company: res.data.company,
+                    location: res.data.location,
+                    listing: res.data.listing,
+                    description: res.data.description
                 })
-
+                console.log(res)
             })
             .catch(err => console.log(err));
     };
@@ -43,7 +45,7 @@ function EditForm() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        API.saveData({
+        API.updateData(id, {
             status: formObject.status,
             title: formObject.title,
             company: formObject.company,
@@ -52,9 +54,10 @@ function EditForm() {
             description: formObject.description
         })
             .then(res => console.log(res.data._id))
-            .then(history.push("/"))
+            .then(history.push("/logs/" + id))
             .catch(err => console.log(err))
     }
+
 
 
     // function Cancel() {
@@ -93,28 +96,28 @@ function EditForm() {
             </div>
             {/* Title */}
             <div className="mb-3">
-                <label htmlFor="formTitle" className="form-label">Title</label>
-                <input onChange={handleInputChange} type="input" className="form-control" id="formTitle" placeholder="Senior Web Designer" name="title" value={formObject.title} />
+                <label htmlFor="formTitle" className="form-label">Title:</label>
+                <input onChange={handleInputChange} type="input" className="form-control" id="formTitle" placeholder="Senior Web Designer" name="title" defaultValue={formObject.title} />
             </div>
             {/* Company */}
             <div className="mb-3">
-                <label htmlFor="formCompany" className="form-label">Company</label>
-                <input onChange={handleInputChange} type="input" className="form-control" id="formCompany" placeholder="" name="company" value={formObject.company} />
+                <label htmlFor="formCompany" className="form-label">Company:</label>
+                <input onChange={handleInputChange} type="input" className="form-control" id="formCompany" placeholder="" name="company" defaultValue={formObject.company} />
             </div>
             {/* Location */}
             <div className="mb-3">
-                <label htmlFor="formLocation" className="form-label">Location</label>
-                <input onChange={handleInputChange} type="input" className="form-control" id="formLocation" placeholder="" name="location" value={formObject.location} />
+                <label htmlFor="formLocation" className="form-label">Location:</label>
+                <input onChange={handleInputChange} type="input" className="form-control" id="formLocation" placeholder="" name="location" defaultValue={formObject.location} />
             </div>
             {/* URL */}
             <div className="mb-3">
                 <label htmlFor="formURL" className="form-label">Listing URL:</label>
-                <input onChange={handleInputChange} type="input" className="form-control" id="formURL" placeholder="indeed.com etc." name="listing" value={formObject.listing} />
+                <input onChange={handleInputChange} type="input" className="form-control" id="formURL" placeholder="indeed.com etc." defaultValue={formObject.listing} />
             </div>
             {/* Description */}
             <div className="mb-3">
                 <label htmlFor="formDescription" className="form-label">Listing Description</label>
-                <textarea onChange={handleInputChange} type="input" className="form-control" id="formDescription" placeholder="" name="description" value={formObject.description}>
+                <textarea onChange={handleInputChange} type="input" className="form-control" id="formDescription" placeholder="" name="description" defaultValue={formObject.description}>
                 </textarea>
             </div>
             {/* Buttons */}
