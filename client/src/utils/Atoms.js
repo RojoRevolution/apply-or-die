@@ -3,16 +3,13 @@ import { atom } from 'jotai'
 const dbState = atom({})
 const apiState = atom({})
 const sideBarContent = atom("/")
-const dbData = atom(["thisistext"])
+const dbData = atom([])
 
 const searchAtom = atom("")
 const activeBtn = atom("inactive")
 const filterStatus = atom("")
 const filterValue = atom("All")
-const sortAtom = atom({
-    click: "",
-    sort: ""
-})
+const sortAtom = atom("")
 
 const sideBarHide = atom("hide")
 const sideBarShow = atom("show")

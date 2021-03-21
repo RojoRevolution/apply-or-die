@@ -13,12 +13,9 @@ function ResultsTable() {
     const [searchInput] = useAtom(searchAtom);
     // const [filterStatus] = useAtom(filterValue);
     const [statusState, setStatusState] = useAtom(loadDB);
-    const [appsData, setAppsData] = useState([])
-    // const [appsData, setAppsData] = useState({
-    //     data: [],
-    //     statusState: "",
-    //     // search: ""
-    // })
+    // const [appsData, setAppsData] = useState([])
+    const [appsData, setAppsData] = useAtom(dbData)
+
 
 
     useEffect(() => {

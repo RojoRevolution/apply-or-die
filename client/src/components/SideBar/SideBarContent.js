@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import API from "../../utils/API";
 
 import { useAtom } from "jotai";
-import { searchAtom, sortAtom, activeBtn, filterValue, loadDB } from "../../utils/Atoms"
+import { searchAtom, sortAtom, activeBtn, dbData } from "../../utils/Atoms"
 import { SortButton, FilterButton } from "../Buttons";
 import sortContent from "../../content/sort.json";
 import filterContent from "../../content/filter.json";
@@ -54,18 +54,52 @@ function SearchContent() {
 // Sort Results Section
 function Sort() {
 
+    // const [searchInput, setSearchInput] = useAtom(searchAtom);
+    const [appsData, setAppsData] = useAtom(dbData);
     const [sortResults, setSortResults] = useAtom(sortAtom);
 
-    function sortHandler(event) {
-        event.preventDefault();
-        const click = event.target.id
-        console.log("Input:", click)
 
-        setSortResults({ click }, function () {
-            setSortResults({ sort: sortResults.click })
-        })
-        console.log('sortResults:', sortResults)
+    const sortByCompany = (event) => {
+        console.log(event.target.id)
+        const sortedCompany = appsData.sort((a, b) => {
+            if (b.company > a.company) {
+                return -1
+            }
+            if (a.company > b.company) {
+                return 1
+            }
+            return 0;
+        });
 
+        if (sortResults === "DESC") {
+            sortedCompany.reverse();
+            setSortResults("ASC");
+            console.log(sortResults)
+        } else {
+            setSortResults("DESC");
+        }
+        setAppsData(sortedCompany)
+    }
+
+    const sortByDate = (event) => {
+        console.log(event.target.id)
+        const sortedCompany = appsData.sort((a, b) => {
+            if (b.date > a.date) {
+                return -1
+            }
+            if (a.date > b.date) {
+                return 1
+            }
+            return 0;
+        });
+
+        if (sortResults === "DESC") {
+            sortedCompany.reverse();
+            setSortResults("ASC");
+        } else {
+            setSortResults("DESC");
+        }
+        setAppsData(sortedCompany)
     }
 
     return (
@@ -74,7 +108,7 @@ function Sort() {
                 <div className="my-4">
                     <h3 className="ms-2">Sort Results:</h3>
                     {sortContent.map(content => (
-                        <SortButton key={content.id} text={content.text} id={content.id} sort={sortHandler} />
+                        <SortButton key={content.id} text={content.text} id={content.id} sortByCompany={sortByCompany} sortByDate={sortByDate} />
                     ))}
                 </div>
             </div>

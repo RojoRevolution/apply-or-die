@@ -1,13 +1,29 @@
 import React from "react";
 
 import { useAtom } from "jotai";
-import { searchAtom } from "../../utils/Atoms"
+import { searchAtom, sortAtom, sortResults } from "../../utils/Atoms"
 
 
 function SortButton(props) {
+    const [searchInput] = useAtom(searchAtom);
+    const [sortResults, setSortResults] = useAtom(sortAtom);
+
+    let sort;
+    if (props.id === "sortCompanyName") {
+        console.log("A-Z")
+        sort = props.sortByCompany;
+    }
+    if (props.id === "sortDate") {
+        console.log("A-Z")
+        sort = props.sortByDate;
+    }
+
+
+
+
     return (
         <React.Fragment>
-            <button id={props.id} type="button" className='btn sortBtn' onClick={props.sort}>{props.text}</button>
+            <button id={props.id} type="button" className='btn sortBtn' onClick={sort} >{props.text}</button>
         </React.Fragment>
     );
 };

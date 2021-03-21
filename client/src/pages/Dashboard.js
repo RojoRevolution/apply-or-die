@@ -21,9 +21,6 @@ function Dashboard() {
       {/* <SideBar /> */}
       <div className="container-fluid py-5 mainContainer">
         <div>
-          <h3>Viewing: {!searchInput ? all : searchInput}
-
-          </h3>
           {/* <Link to={"/new"}><AddNew /></Link> */}
         </div>
         <ResultsTable />

@@ -1,18 +1,10 @@
 [
     {
-        "text": "Newest",
-        "id": "Newest"
+        "text": "By Date",
+        "id": "sortDate"
     },
     {
-        "text": "Oldest",
-        "id": "Oldest"
-    },
-    {
-        "text": "Company A-Z",
-        "id": "A-Z"
-    },
-    {
-        "text": "Company Z-A",
-        "id": "Z-A"
+        "text": "By Company Name",
+        "id": "sortCompanyName"
     }
 ]
