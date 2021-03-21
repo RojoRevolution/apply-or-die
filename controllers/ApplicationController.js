@@ -10,6 +10,16 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findStatus: function (req, res) {
+    console.log("Req Params: ", req.params)
+    db.Application
+      .find()
+      .select(req.params)
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .then(dbModel => console.log(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findById: function (req, res) {
     db.Application
       .findById(req.params.id)

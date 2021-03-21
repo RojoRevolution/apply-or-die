@@ -1,5 +1,9 @@
 [
     {
+        "text": "All",
+        "id": "All"
+    },
+    {
         "text": "Applied",
         "id": "Applied"
     },

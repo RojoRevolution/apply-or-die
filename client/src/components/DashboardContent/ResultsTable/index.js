@@ -4,7 +4,7 @@ import { DeleteEntry } from "../../Buttons"
 import API from "../../../utils/API";
 
 import { useAtom } from "jotai";
-import { searchAtom, dbData, filterValue, } from "../../../utils/Atoms"
+import { searchAtom, dbData, loadDB, } from "../../../utils/Atoms"
 
 
 
@@ -12,7 +12,7 @@ function ResultsTable() {
 
     const [searchInput] = useAtom(searchAtom);
     // const [filterStatus] = useAtom(filterValue);
-    const [statusState, setStatusState] = useState("")
+    const [statusState, setStatusState] = useAtom(loadDB);
     const [appsData, setAppsData] = useState([])
     // const [appsData, setAppsData] = useState({
     //     data: [],
@@ -26,6 +26,7 @@ function ResultsTable() {
         // console.log('Data', appsData)
         console.log('Status UseEffect', statusState)
     }, [statusState]);
+
 
     function loadApps() {
         API.getApps()
@@ -57,6 +58,11 @@ function ResultsTable() {
     }
 
 
+    // const RenderResults = () => {
+
+    // }
+
+
 
 
     return (
@@ -64,7 +70,8 @@ function ResultsTable() {
             <table className="results">
                 <tbody>
                     <React.Fragment>
-                        {appsData.filter(input => input.company.toLowerCase().includes(searchInput)).map(content => (
+                        {/* {appsData.filter(input => input.status.toLowerCase().includes("ghosted")).map(content => ( */}
+                        {appsData.filter(input => input.company.toLowerCase().includes(searchInput) || input.status.toLowerCase().includes(searchInput)).map(content => (
                             <tr key={content._id} className="row justify-content-between position-relative my-4 card-container">
                                 <td className="col-10">
                                     <p><span onClick={handleStatus} className={`status ${content.status}`} id={content.status}>{content.status}</span>{content.date}</p>

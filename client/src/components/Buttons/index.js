@@ -1,5 +1,8 @@
 import React from "react";
 
+import { useAtom } from "jotai";
+import { searchAtom } from "../../utils/Atoms"
+
 
 function SortButton(props) {
     return (
@@ -10,10 +13,23 @@ function SortButton(props) {
 };
 
 function FilterButton(props) {
+
+    const [searchInput] = useAtom(searchAtom);
+
+    let active;
+    if (searchInput === props.id.toLowerCase()) {
+        console.log(searchInput)
+        active = "active"
+    } else if (searchInput === "" && props.id.toLowerCase() === "all") {
+        active = "active"
+    } else {
+        active = "inactive";
+    }
+
     return (
         <React.Fragment>
-            <button id={props.id} type="button" className='btn sortBtn' onClick={props.filterStatusHandler}>{props.text}</button>
-        </React.Fragment>
+            <button id={props.id} type="button" className={`btn sortBtn ` + active} onClick={props.filterStatusHandler}>{props.text}</button>
+        </React.Fragment >
     );
 };
 

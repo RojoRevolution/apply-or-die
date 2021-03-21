@@ -6,6 +6,7 @@ const db = require("../../models");
 // Matches with "/api/logs"
 router.route("/")
     .get(applicationController.findAll)
+    .get(applicationController.findStatus)
     .post(applicationController.create);
 
 // Matches with "/api/logs/:id"

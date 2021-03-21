@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import API from "../../utils/API";
 
 import { useAtom } from "jotai";
-import { searchAtom, sortAtom, filterValue } from "../../utils/Atoms"
+import { searchAtom, sortAtom, activeBtn, filterValue, loadDB } from "../../utils/Atoms"
 import { SortButton, FilterButton } from "../Buttons";
 import sortContent from "../../content/sort.json";
 import filterContent from "../../content/filter.json";
@@ -85,36 +86,35 @@ function Sort() {
 function Filter() {
 
     // const [statusState, setStatusState] = useAtom(filterStatus);
-    const [statusFilter, setStatusFilter] = useAtom(filterValue);
+    // const [appsData, setAppsData] = useAtom(loadDB);
+    const [searchInput, setSearchInput] = useAtom(searchAtom);
+    const [activeButton, setActiveButton] = useAtom(activeBtn);
 
+    let allFilterBtns = document.querySelectorAll('inactive')
+    console.log(allFilterBtns)
 
 
     function filterStatusHandler(event) {
         // const filterButton = document.getElementById(event.target.id)
-        const click = event.target.id
+        let id = event.target.id.toLowerCase();
+        let click = event.target.id.toLowerCase();
+
+        let activeBtn = document.getElementById(event.target.id)
+        // allFilterBtns.classList.remove("active")
+
+        if (id === click) {
+            activeBtn.classList.add("active")
+        }
+
+
+
         console.log("Click:", click)
-
-        setStatusFilter(click)
-        console.log('StatusFilter:', statusFilter)
-
-
-
-        // if (statusState.value === "") {
-        //     setStatusState("active");
-        //     console.log(statusState)
-        //     filterButton.classList.add(statusState)
-        // }
-        // else if (statusState === "active") {
-        //     setStatusState({
-        //         status: "",
-        //         value: "",
-        //     });
-        //     setStatusState({
-        //         status: "fStatusActive",
-        //         value: [input],
-        //     });
-        //     filterButton.classList.remove(statusState.status)
-        // }
+        if (id === "all") {
+            setSearchInput("")
+        } else {
+            setSearchInput(click)
+        }
+        setActiveButton("active")
 
     }
 
@@ -124,7 +124,7 @@ function Filter() {
                 <div className="my-4">
                     <h3 className="ms-2">Filter by Status:</h3>
                     {filterContent.map(content => (
-                        <FilterButton key={content.id} text={content.text} id={content.id} filterStatusHandler={filterStatusHandler} />
+                        <FilterButton key={content.id} text={content.text} id={content.id} filterStatusHandler={filterStatusHandler} active={activeButton} />
                     ))}
                 </div>
             </div>
@@ -139,6 +139,9 @@ function NavigationMain() {
             <div className="divider">
                 <nav id="dashNav" className="my-4">
                     <ul>
+                        <li>
+                            <Link to={"/new"}>Add New Application</Link>
+                        </li>
                         <li>
                             <Link to={"/search"}>Search Jobs</Link>
                         </li>

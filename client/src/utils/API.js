@@ -6,8 +6,11 @@ import axios from "axios";
 
 export default {
   getApps: function () {
-    console.log("IN /utils/API")
     return axios.get("/api/logs");
+  },
+  getStatus: function (status) {
+    console.log("getStatus", status)
+    return axios.get("/api/logs/", { params: { status } });
   },
   getOne: function (id) {
     return axios.get("/api/logs/" + id);

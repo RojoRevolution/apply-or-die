@@ -6,15 +6,25 @@ import { ResultsTable } from "../components/DashboardContent/ResultsTable";
 // import dummyDB from "../content/dummyDBresults.json";
 // import API from "../utils/API"
 
+import { useAtom } from "jotai";
+import { searchAtom } from "../utils/Atoms"
+
+
 function Dashboard() {
+
+  const [searchInput] = useAtom(searchAtom);
+  const all = "All Results"
 
   return (
     <div>
       <SideBar />
       {/* <SideBar /> */}
       <div className="container-fluid py-5 mainContainer">
-        <div className="text-center">
-          <Link to={"/new"}><AddNew /></Link>
+        <div>
+          <h3>Viewing: {!searchInput ? all : searchInput}
+
+          </h3>
+          {/* <Link to={"/new"}><AddNew /></Link> */}
         </div>
         <ResultsTable />
       </div>
