@@ -18,8 +18,9 @@ export default {
   deleteOne: function (id) {
     return axios.delete("/api/logs/" + id);
   },
-  saveData: function (id, logData) {
-    return axios.post("/api/logs/" + id, logData);
+  saveData: function (logData) {
+    console.log("Log Data: ", logData)
+    return axios.post("/api/logs", logData);
   },
   updateData: function (id, logData) {
     console.log('id: ', id)
