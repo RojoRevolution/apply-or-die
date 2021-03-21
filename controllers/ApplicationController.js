@@ -40,17 +40,17 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   addNote: function (req, res) {
-    console.log(req.params.id)
-    console.log(req.body)
+    console.log("REQ ID: ", req.params.id)
+    console.log("REQ BODY: ", req.body.data)
     db.Application
-      .findByIdAndUpdate(req.params.id,
-        { $push: { notes: req.body } },
+      .updateOne(
+        { _id: req.params.id },
+        { $push: { notes: req.body.data } },
+        { safe: true, upsert: true, new: true },
       )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-
-
   remove: function (req, res) {
     db.Application
       .findById({ _id: req.params.id })
