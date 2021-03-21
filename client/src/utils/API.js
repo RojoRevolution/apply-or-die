@@ -6,6 +6,7 @@ import axios from "axios";
 
 export default {
   getApps: function () {
+    console.log("IN /utils/API")
     return axios.get("/api/logs");
   },
   getOne: function (id) {

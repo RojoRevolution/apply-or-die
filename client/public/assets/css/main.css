@@ -216,12 +216,12 @@ display: inline-block;
 }
 
 /* Status BG Colors */
-.applied {background:#7276B8;} 
-.ghosted{background:#838383;} 
-.rejected{background:#FC4445;} 
-.screen{background:#A9AF53;} 
-.interview{background:#62AF53;} 
-.offer{background: #53AF7E;}
+.Applied {background:#7276B8;} 
+.Ghosted{background:#838383;} 
+.Rejected{background:#FC4445;} 
+.Screen{background:#A9AF53;} 
+.Interview{background:#62AF53;} 
+.Offer{background: #53AF7E;}
 
 
 .editPos {
