@@ -5,30 +5,98 @@ const db = require("../models");
 
 // WILL NEED TO UPDATE FILE FOR DEPLOY
 
-// mongoose.connect(
-//   process.env.MONGODB_URI ||
-//   "mongodb://localhost/reactreadinglist"
-// );
+mongoose.connect(
+    process.env.MONGODB_URI ||
+    "mongodb://localhost/applyordie"
+);
 
-// const bookSeed = [
-//   {
-//     title: "The Dead Zone",
-//     author: "Stephen King",
-//     synopsis:
-//       "A number-one national best seller about a man who wakes up from a five-year coma able to see people's futures and the terrible fate awaiting mankind in The Dead Zone - a \"compulsive page-turner\" (The Atlanta Journal-Constitution). Johnny Smith awakens from a five-year coma after his car accident and discovers that he can see people's futures and pasts when he touches them. Many consider his talent a gift; Johnny feels cursed. His fiancée married another man during his coma, and people clamor for him to solve their problems. When Johnny has a disturbing vision after he shakes the hand of an ambitious and amoral politician, he must decide if he should take drastic action to change the future. The Dead Zone is a \"faultlessly paced...continuously engrossing\" (Los Angeles Times) novel of second sight.",
-//     date: new Date(Date.now())
-//   },
+const appSeed = [
+    {
+        // date: new Date(Date.now()),
+        date: "03/15/21",
+        status: "Applied",
+        title: "Mid Level Web Developer",
+        company: "Google Inc.",
+        location: "Austin, TX",
+        listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
+        description: "A class condimentum parturient potenti iaculis a quam tempus vivamus condimentum rutrum eget a massa sit orci habitasse penatibus bibendum.",
+        notes: ["Note 1", "Note2"]
+    },
+    {
+        // date: new Date(Date.now()),
+        date: "03/14/21",
+        status: "Ghosted",
+        title: "React Developer",
+        company: "Facebook",
+        location: "Austin, Tx",
+        listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
+        description: "A class condimentum parturient potenti iaculis a quam tempus vivamus condimentum rutrum eget a massa sit orci habitasse penatibus bibendum.",
+        notes: []
+    },
+    {
+        // date: new Date(Date.now()),
+        date: "03/13/21",
+        status: "Screen",
+        title: "Full Stack Developer",
+        company: "Frog",
+        location: "Austin, Tx",
+        listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
+        description: "A class condimentum parturient potenti iaculis a quam tempus vivamus condimentum rutrum eget a massa sit orci habitasse penatibus bibendum.",
+        notes: []
+    },
+    {
+        // date: new Date(Date.now()),
+        date: "03/12/21",
+        status: "Interview",
+        title: "Front End Developer",
+        company: "Helms Workshop",
+        location: "Austin, Tx",
+        listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
+        description: "Primis sem ac eget dui eros natoque consequat a per at dolor ultrices nullam parturient proin lectus magna cubilia ad ut. Donec vel quisque bibendum per iaculis enim condimentum a et litora facilisi accumsan adipiscing turpis torquent suspendisse scelerisque a.",
+        notes: []
+    },
+    {
+        // date: new Date(Date.now()),
+        date: "03/12/21",
+        status: "Offer",
+        title: "React Developer",
+        company: "Chimi",
+        location: "Austin, Tx",
+        listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
+        description: "Primis sem ac eget dui eros natoque consequat a per at dolor ultrices nullam parturient proin lectus magna cubilia ad ut. Donec vel quisque bibendum per iaculis enim condimentum a et litora facilisi accumsan adipiscing turpis torquent suspendisse scelerisque a.",
+        notes: []
+    },
 
-// ];
+];
 
-// db.Book
-//   .remove({})
-//   .then(() => db.Book.collection.insertMany(bookSeed))
-//   .then(data => {
-//     console.log(data.result.n + " records inserted!");
-//     process.exit(0);
-//   })
-//   .catch(err => {
-//     console.error(err);
-//     process.exit(1);
-//   });
+
+const userSeed = [
+    {
+        email: "dave@dave.com",
+        password: "123456"
+    },
+]
+
+db.Application
+    .remove({})
+    .then(() => db.Application.collection.insertMany(appSeed))
+    .then(data => {
+        console.log(data.result.n + " records inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });
+
+db.User
+    .remove({})
+    .then(() => db.User.collection.insertMany(userSeed))
+    .then(data => {
+        console.log(data.result.n + " records inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });

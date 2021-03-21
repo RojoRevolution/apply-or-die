@@ -1,0 +1,30 @@
+[
+    {
+        "text": "All",
+        "id": "All"
+    },
+    {
+        "text": "Applied",
+        "id": "Applied"
+    },
+    {
+        "text": "Ghosted",
+        "id": "Ghosted"
+    },
+    {
+        "text": "Rejected",
+        "id": "Rejected"
+    },
+    {
+        "text": "Screen",
+        "id": "Screen"
+    },
+    {
+        "text": "Interview",
+        "id": "Interview"
+    },
+    {
+        "text": "Offer",
+        "id": "Offer"
+    }
+]

@@ -1,18 +1,31 @@
-import React, { useState, useEffect } from "react";
-import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
-import API from "../utils/API";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { AddNew } from "../components/Buttons";
+import { SideBar } from "../components/SideBar/SideBar";
+import { ResultsTable } from "../components/DashboardContent/ResultsTable";
+// import dummyDB from "../content/dummyDBresults.json";
+// import API from "../utils/API"
+
+import { useAtom } from "jotai";
+import { searchAtom } from "../utils/Atoms"
+
 
 function Dashboard() {
 
+  const [searchInput] = useAtom(searchAtom);
+  const all = "All Results"
 
   return (
-    <Container>
-    </Container>
+    <div>
+      <SideBar />
+      {/* <SideBar /> */}
+      <div className="container-fluid py-5 mainContainer">
+        <div>
+          {/* <Link to={"/new"}><AddNew /></Link> */}
+        </div>
+        <ResultsTable />
+      </div>
+    </div >
   );
 }
 

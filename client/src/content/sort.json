@@ -1,0 +1,10 @@
+[
+    {
+        "text": "By Date",
+        "id": "sortDate"
+    },
+    {
+        "text": "By Company Name",
+        "id": "sortCompanyName"
+    }
+]

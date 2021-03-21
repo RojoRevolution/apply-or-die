@@ -1,0 +1,50 @@
+[
+    {
+        "id": "1",
+        "status": "Applied",
+        "date": "03/15/21",
+        "title": "Mid Level Web Developer",
+        "company": "Google Inc.",
+        "location": "Austin TX"
+    },
+    {
+        "id": "2",
+        "status": "Ghosted",
+        "date": "03/14/21",
+        "title": "React Developer",
+        "company": "Facebook",
+        "location": "Austin TX"
+    },
+    {
+        "id": "3",
+        "status": "Rejected",
+        "date": "03/12/21",
+        "title": "Front End Developer",
+        "company": "Bevy",
+        "location": "Austin TX"
+    },
+    {
+        "id": "4",
+        "status": "Screen",
+        "date": "03/10/21",
+        "title": "Full Stack Developer",
+        "company": "Frog",
+        "location": "Austin TX"
+    },
+    {
+        "id": "5",
+        "status": "Interview",
+        "date": "03/10/21",
+        "title": "Front End Developer",
+        "company": "Company",
+        "location": "Austin TX"
+    },
+    {
+        "id": "6",
+        "status": "Offer",
+        "date": "03/10/21",
+        "title": "React Developer",
+        "company": "Company",
+        "location": "Austin TX"
+    }
+]
