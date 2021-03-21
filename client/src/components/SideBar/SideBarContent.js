@@ -85,8 +85,6 @@ function Sort() {
 // Filter by status Section
 function Filter() {
 
-    // const [statusState, setStatusState] = useAtom(filterStatus);
-    // const [appsData, setAppsData] = useAtom(loadDB);
     const [searchInput, setSearchInput] = useAtom(searchAtom);
     const [activeButton, setActiveButton] = useAtom(activeBtn);
 
@@ -95,26 +93,15 @@ function Filter() {
 
 
     function filterStatusHandler(event) {
-        // const filterButton = document.getElementById(event.target.id)
         let id = event.target.id.toLowerCase();
         let click = event.target.id.toLowerCase();
 
-        let activeBtn = document.getElementById(event.target.id)
-        // allFilterBtns.classList.remove("active")
-
-        if (id === click) {
-            activeBtn.classList.add("active")
-        }
-
-
-
-        console.log("Click:", click)
         if (id === "all") {
             setSearchInput("")
         } else {
             setSearchInput(click)
         }
-        setActiveButton("active")
+
 
     }
 
