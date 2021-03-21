@@ -31,9 +31,7 @@ const appSeed = [
         location: "Austin, Tx",
         listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
         description: "A class condimentum parturient potenti iaculis a quam tempus vivamus condimentum rutrum eget a massa sit orci habitasse penatibus bibendum.",
-        notes: [{
-            noteEntry: "",
-        }]
+        notes: []
     },
     {
         // date: new Date(Date.now()),
@@ -44,9 +42,7 @@ const appSeed = [
         location: "Austin, Tx",
         listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
         description: "A class condimentum parturient potenti iaculis a quam tempus vivamus condimentum rutrum eget a massa sit orci habitasse penatibus bibendum.",
-        notes: [{
-            noteEntry: "",
-        }]
+        notes: []
     },
     {
         // date: new Date(Date.now()),
@@ -57,9 +53,7 @@ const appSeed = [
         location: "Austin, Tx",
         listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
         description: "Primis sem ac eget dui eros natoque consequat a per at dolor ultrices nullam parturient proin lectus magna cubilia ad ut. Donec vel quisque bibendum per iaculis enim condimentum a et litora facilisi accumsan adipiscing turpis torquent suspendisse scelerisque a.",
-        notes: [{
-            noteEntry: "",
-        }]
+        notes: []
     },
     {
         // date: new Date(Date.now()),
@@ -70,9 +64,7 @@ const appSeed = [
         location: "Austin, Tx",
         listing: "https://www.indeed.com/jobs?q=web%20Developer&l=Austin%2C%20TX&fromage=7&vjk=ec8bcfbeb7a4e775",
         description: "Primis sem ac eget dui eros natoque consequat a per at dolor ultrices nullam parturient proin lectus magna cubilia ad ut. Donec vel quisque bibendum per iaculis enim condimentum a et litora facilisi accumsan adipiscing turpis torquent suspendisse scelerisque a.",
-        notes: [{
-            noteEntry: "",
-        }]
+        notes: []
     },
 
 ];
