@@ -28,6 +28,8 @@ export default {
     return axios.put(`/api/logs/${id}`, logData);
   },
   newNote: function (id, noteData) {
+    console.log("Client Side: ", id)
+    console.log("Client Side: ", noteData)
     return axios.put("/api/logs/" + id, noteData);
   },
   signUp: function (formData) {

@@ -8,7 +8,7 @@ import NewNote from "../../Forms/NewNoteForm"
 
 
 
-function NewContent() {
+function ExistingContent() {
     const [data, setData] = useState([])
     const [notes, setNotes] = useState([])
     // const [newNoteForm, setNoteForm] = useState(true)
@@ -50,4 +50,4 @@ function NewContent() {
 
 }
 
-export default NewContent;
+export default ExistingContent;
