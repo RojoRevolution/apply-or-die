@@ -25,8 +25,7 @@ function NewNote(props) {
     function handleSubmit(event) {
         event.preventDefault();
 
-        // API.saveData({ _id: id }, { $push: { notes: { formObject } } })
-        API.newNote(id, formObject)
+        API.newNote(id, { noteText: formObject })
             // .then(() => )
             .then(res => console.log(res.data))
             .then(history.push("/logs/" + id))

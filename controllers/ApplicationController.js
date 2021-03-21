@@ -41,11 +41,12 @@ module.exports = {
   },
   addNote: function (req, res) {
     console.log("REQ ID: ", req.params.id)
-    console.log("REQ BODY: ", req.body.data)
+    console.log("REQ BODY: ", req.body)
+    console.log("REQ BODY: ", req.body.noteText)
     db.Application
       .updateOne(
         { _id: req.params.id },
-        { $push: { notes: req.body.data } },
+        { $push: { notes: req.body.noteText } },
       )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
