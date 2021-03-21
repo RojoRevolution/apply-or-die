@@ -69,7 +69,7 @@ function ResultsTable() {
                     <React.Fragment>
                         {/* {appsData.filter(input => input.status.toLowerCase().includes("ghosted")).map(content => ( */}
                         {appsData.filter(input => input.company.toLowerCase().includes(searchInput) || input.status.toLowerCase().includes(searchInput)).map(content => (
-                            <tr key={content._id} className="row justify-content-between position-relative my-4 card-container" data-aos="fade-left">
+                            <tr key={content._id} className="row justify-content-between position-relative my-4 card-container" data-aos="fade-up">
                                 <td className="col-10">
                                     <p><span onClick={handleStatus} className={`status ${content.status}`} id={content.status}>{content.status}</span>{content.date}</p>
                                     <h2>{content.title}</h2>
