@@ -18,15 +18,17 @@ export default {
   deleteOne: function (id) {
     return axios.delete("/api/logs/" + id);
   },
-  saveData: function (logData) {
-    return axios.post("/api/logs", logData);
+  saveData: function (id, logData) {
+    return axios.post("/api/logs/" + id, logData);
   },
   updateData: function (id, logData) {
+    console.log('id: ', id)
+    console.log('logData: ', logData)
     return axios.put(`/api/logs/${id}`, logData);
   },
-  // updateData: function (id) {
-  //   return axios.put("/api/logs/" + id);
-  // }
+  newNote: function (id, noteData) {
+    return axios.put("/api/logs/" + id, noteData);
+  },
   signUp: function (formData) {
     return axios.post("/api/user/signup", formData);
   },

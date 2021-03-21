@@ -29,16 +29,6 @@ function NewContent() {
             .catch(err => console.log(err));
     };
 
-    // function newNote(event) {
-    //     console.log("Click")
-    //     // let show = event.target.id
-    //     setNoteForm(prevState => !prevState)
-    //     console.log('Note State', newNoteForm)
-
-    // }
-
-
-
     return (
         <React.Fragment>
             <div className="p-5 position-relative card-container">
