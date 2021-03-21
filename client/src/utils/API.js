@@ -30,7 +30,7 @@ export default {
   newNote: function (id, noteData) {
     console.log("Client Side: ", id)
     console.log("Client Side: ", noteData)
-    return axios.put("/api/logs/" + id, noteData);
+    return axios.put("/api/logs/note/" + id, noteData);
   },
   signUp: function (formData) {
     return axios.post("/api/user/signup", formData);

@@ -20,7 +20,10 @@ router.route("/")
 router.route("/:id")
     .get(applicationController.findById)
     .put(applicationController.updateApp)
-    .put(applicationController.addNote)
     .delete(applicationController.remove);
+
+
+router.route("/note/:id")
+    .put(applicationController.addNote)
 
 module.exports = router;
