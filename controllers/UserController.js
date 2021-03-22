@@ -1,5 +1,8 @@
 const db = require("../models");
-
+const express = require("express");
+// const router = require("express").Router();
+const passport = require('passport');
+const bcrypt = require("bcryptjs");
 
 // Defining methods for the booksController
 module.exports = {
@@ -103,10 +106,10 @@ module.exports = {
         req.logout();
         res.redirect("/login");
     },
-    pushApplications; function(req, res) {
+    pushApplications: function (req, res) {
         console.log("REQ ID: ", req.params.id)
         console.log("REQ BODY: ", req.body.dataId)
-        db.Application
+        db.User
             .updateOne(
                 { _id: req.params.id },
                 { $push: { applications: req.body.dataId } },

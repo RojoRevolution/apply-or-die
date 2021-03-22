@@ -3,6 +3,7 @@ const applicationController = require("../../controllers/ApplicationController")
 // const { db } = require("../../models/application");
 const db = require("../../models");
 
+
 // Matches with "/api/logs"
 router.route("/")
     .get(applicationController.findAll)
