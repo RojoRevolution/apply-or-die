@@ -4,9 +4,10 @@ var passport = require("passport");
 var localStrategy = require("passport-local").Strategy;
 
 
-module.exports = function (passport) {
+module.exports = function () {
+    console.log("Before Passpor.use")
     passport.use(
-        new localStrategy((email, password, done) => {
+        new localStrategy({ usernameField: "email" }, (email, password, done) => {
             console.log('//// IN PASSPORT /////')
             db.User.findOne({ email: email }, (err, user) => {
                 // console.log('//// IN PASSPORT /////')

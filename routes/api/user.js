@@ -45,10 +45,9 @@ const bcrypt = require("bcryptjs");
 
 router.post("/login", (req, res, next) => {
     console.log("/login: ", req.body)
-    const userEmail = req.body.data.email
     passport.authenticate("local", (err, user, info) => {
         console.log("User: ", user)
-        console.log(info)
+        console.log("Message: ", info)
         if (err) throw err;
         if (!user) res.send("User does not exist");
         else {
