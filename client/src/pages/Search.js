@@ -12,12 +12,12 @@ import { apiTitle, apiLocation } from "../utils/Atoms"
 
 function SearchPage() {
 
-    const apiID = process.env.REACT_APP_API_ID;
-    const apiKEY = process.env.REACT_APP_API_KEY;
-    const results = '1';
+    // const apiID = process.env.REACT_APP_API_ID;
+    // const apiKEY = process.env.REACT_APP_API_KEY;
+    // const results = '1';
 
-    const [apiTitle, setapiTitle] = useAtom(apiTitle);
-    const [apiLocation, setapiLocation] = useAtom(apiLocation);
+    // const [apiTitle, setapiTitle] = useAtom(apiTitle);
+    // const [apiLocation, setapiLocation] = useAtom(apiLocation);
 
 
     // const search = 'Web%20Designer';

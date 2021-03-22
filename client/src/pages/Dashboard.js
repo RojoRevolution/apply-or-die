@@ -9,6 +9,8 @@ import { ResultsTable } from "../components/DashboardContent/ResultsTable";
 import { useAtom } from "jotai";
 import { searchAtom } from "../utils/Atoms"
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function Dashboard() {
 

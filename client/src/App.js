@@ -14,8 +14,8 @@ import NewNote from "./Pages/NewNote";
 import { useAtom } from "jotai";
 import { loggedInStatus } from "./utils/Atoms"
 
-// import AOS from 'aos';
-// import 'aos/dist/aos.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 // export const fakeAuth = {
@@ -38,15 +38,15 @@ function App() {
   console.log('LoggedIn: ', loggedIn)
 
 
-  // useEffect(() => {
-  //   loadAOS()
-  // }, []);
+  useEffect(() => {
+    loadAOS()
+  }, []);
 
-  // const loadAOS = () => {
-  //   AOS.init({
-  //     duration: 500
-  //   })
-  // }
+  const loadAOS = () => {
+    AOS.init({
+      duration: 500
+    })
+  }
 
   // Required Auth creates Authentication for all Interior Routes
   const RequireAuth = ({ children }) => {
