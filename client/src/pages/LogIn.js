@@ -27,7 +27,14 @@ function Home() {
             // email: formObject.email,
             password: formObject.password,
         }).then(res => {
-            console.log('Login Res: ', res)
+            console.log('Login Res: ', res.data)
+            if (res.data.email) {
+                setLoggedin(true)
+                history.push("/dashboard")
+            }
+            else {
+                console.log(" NO USER")
+            }
         })
             .catch(err => console.log(err))
     }

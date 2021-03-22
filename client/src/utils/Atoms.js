@@ -17,5 +17,8 @@ const sideBarShow = atom("show")
 const loadDB = atom("")
 const loggedInStatus = atom(false)
 
+const apiTitle = atom("")
+const apiLocation = atom("")
 
-export { dbState, apiState, sideBarContent, dbData, searchAtom, activeBtn, filterStatus, filterValue, sideBarHide, sideBarShow, sortAtom, loadDB, loggedInStatus };
+
+export { dbState, apiState, sideBarContent, dbData, searchAtom, activeBtn, filterStatus, filterValue, sideBarHide, sideBarShow, sortAtom, loadDB, loggedInStatus, apiTitle, apiLocation };

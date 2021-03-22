@@ -268,10 +268,23 @@ display: inline-block;
 }
 
 .searchInput {
+  font-family: 'Open Sans', sans-serif;
+  font-size:1rem;
+  color: #ffffff;
+  background: #ffffff;
+  border-radius:5px;
+  border: 1px solid  #464866;
+  margin: 5px;
+  transition:.25s;
+  padding: 6px 20px;
   width: 99%;
 }
 
-.search
+.searchInput:hover{
+  color:#83859D;
+  /* background: #83859D; */
+  box-shadow: 0px 0px 0px 6px rgba(221,225,230,1)
+}
 
 
  /* ================ */
