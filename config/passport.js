@@ -5,30 +5,36 @@ var localStrategy = require("passport-local").Strategy;
 
 
 module.exports = function () {
-    console.log("Before Passpor.use")
+    console.log("///// Before Passport.use")
     passport.use(
-        new localStrategy((username, password, done) => {
-            console.log('//// IN PASSPORT /////')
-            db.User.findOne({ username: username }, (err, user) => {
-                // console.log('//// IN PASSPORT /////')
-                if (err) throw err;
-                if (!user) return done(null, false);
-                bcrypt.compare(password, user.password, (err, result) => {
+        new localStrategy({
+            usernameField: 'username',
+            passwordField: 'password',
+        },
+            (username, password, done) => {
+                console.log('//// IN PASSPORT /////')
+                console.log(username, password)
+                console.log('/////////////////////')
+                db.User.findOne({ username: username }, (err, user) => {
+                    // console.log('//// IN PASSPORT /////')
                     if (err) throw err;
-                    if (result === true) {
-                        return done(null, user);
-                    } else {
-                        return done(null, false);
-                    }
+                    if (!user) return done(null, false);
+                    bcrypt.compare(password, user.password, (err, result) => {
+                        if (err) throw err;
+                        if (result === true) {
+                            return done(null, user);
+                        } else {
+                            return done(null, false);
+                        }
+                    })
                 })
             })
-        })
     );
     passport.serializeUser((user, callback) => {
         callback(null, user.id);
     });
     passport.deserializeUser((id, callback) => {
-        User.findOne({ _id: id }, (err, user) => {
+        db.User.findOne({ _id: id }, (err, user) => {
             const userInformation = {
                 username: user.username,
             };

@@ -21,7 +21,12 @@ app.use(cors({
 }))
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  console.log('===== PRODUCTION ====')
+  app.use(express.static(__dirname + "client/build"));
+}
+if (process.env.NODE_ENV === "dev") {
+  console.log('===== DEVELOPMENT ====')
+  app.use(express.static(__dirname + "client/public"));
 }
 app.use(session({ secret: "chimichanga", resave: true, saveUninitialized: true }));
 app.use(cookieParser("chimichanga"))
