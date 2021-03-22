@@ -47,21 +47,19 @@ const bcrypt = require("bcryptjs");
 router.post("/login", (req, res, next) => {
     console.log("/login: ", req.body)
     // console.log('/login Res: ', res)
-    res.json();
     passport.authenticate("local", (err, user, info) => {
         console.log("User: ", user)
         console.log("User Config: ", user.username)
         console.log("Message: ", info)
         if (err) throw err;
-        if (!user) res.send("User does not exist");
+        if (!user) res.send("User does not exist")
         else {
             req.login(user, (err) => {
+                if (err) throw err;
                 console.log('/////// IN req.login ////////');
                 console.log(user)
-                if (err) throw err;
                 // res.send("Successfully Authenticated");
                 console.log(" ////// Successfully Authenticated ///////")
-                console.log(req.user);
                 // res.redirect("/dashboard");
                 res.redirect(307, "/dashboard");
 

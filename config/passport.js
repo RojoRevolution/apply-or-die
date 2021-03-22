@@ -22,8 +22,10 @@ module.exports = function () {
                     bcrypt.compare(password, user.password, (err, result) => {
                         if (err) throw err;
                         if (result === true) {
+                            console.log('======== RESULT TRUE =======')
                             return done(null, user);
                         } else {
+                            console.log('======== RESULT TRUE =======')
                             return done(null, false);
                         }
                     })
