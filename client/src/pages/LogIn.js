@@ -4,19 +4,19 @@ import Footer from "../components/Exterior/Footer";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
 import { useAtom } from "jotai";
-import { loggedInStatus } from "../utils/Atoms"
+import { loggedInStatus, userId } from "../utils/Atoms"
 
 
 function Home() {
     let history = useHistory();
-    const [loggedIn, setLoggedin] = useAtom(loggedInStatus);
+    const [, setLoggedin] = useAtom(loggedInStatus);
+    const [, setuserId] = useAtom(userId);
 
     const [formObject, setFormObject] = useState({})
 
     function handleInputChange(event) {
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value })
-        console.log(formObject)
     };
 
 
@@ -28,8 +28,10 @@ function Home() {
             password: formObject.password,
         }).then(res => {
             console.log('Login Res: ', res.data)
+            console.log('ID: ', res.data._id)
             if (res.data.email) {
                 setLoggedin(true)
+                setuserId(res.data._id)
                 history.push("/dashboard")
             }
             else {
