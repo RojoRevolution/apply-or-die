@@ -5,13 +5,12 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     email: {
         type: String,
-        trim: true,
-        unique: true,
+        trim: true
+        // unique: true,
         // required: [true, "Username is required"]
     },
     password: {
-        type: String,
-        unique: false,
+        type: String
         // required: [true, "password is required"]
     },
     applications: [{ type: Schema.Types.ObjectID, ref: 'application' }]

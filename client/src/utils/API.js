@@ -33,6 +33,7 @@ export default {
     return axios.put("/api/logs/note/" + id, noteData);
   },
   signUp: function (formData) {
+    console.log("Sign Up: ", formData)
     return axios.post("/api/user/signup", formData);
   },
   logIn: function (formData) {

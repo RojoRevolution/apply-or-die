@@ -26,7 +26,7 @@ function Home() {
         API.signUp({
             email: formObject.email,
             password: formObject.password,
-            withCredentials: true,
+            // withCredentials: true,
             // URL might not be needed since it's provided in utils/API
             // url: "http://localhost:3000/api/user/signup"
         }).then(res => {

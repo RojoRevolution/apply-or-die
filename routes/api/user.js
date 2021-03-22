@@ -1,6 +1,6 @@
 const db = require("../../models/");
 const router = require("express").Router();
-const userController = require("../../controllers/UserController");
+// const userController = require("../../controllers/UserController");
 const passport = require('passport');
 // require("../../config/passport")(passport);
 // const passport = require("../../config/passport");
@@ -44,7 +44,7 @@ const bcrypt = require("bcryptjs");
 
 
 router.post("/login", (req, res, next) => {
-    console.log("RES BODY: ", req.body)
+    console.log("/login: ", req.body)
     const userEmail = req.body.data.email
     passport.authenticate("local", (err, user, info) => {
         console.log("User: ", user)
@@ -126,6 +126,7 @@ router.post("/login", (req, res, next) => {
 // })
 
 router.post("/signup", (req, res) => {
+    console.log("/signup: ", req.body)
     db.User.findOne({ email: req.body.email }, async (err, doc) => {
         if (err) throw err;
         if (doc) res.send("User Already Exists");
@@ -136,6 +137,8 @@ router.post("/signup", (req, res) => {
                 email: req.body.email,
                 password: hashedPassword,
             });
+
+            console.log(newUser)
             await db.User.create(newUser);
             // res.send("User Created");
             res.redirect(307, "/api/user/login");
