@@ -7,9 +7,9 @@ var localStrategy = require("passport-local").Strategy;
 module.exports = function () {
     console.log("Before Passpor.use")
     passport.use(
-        new localStrategy({ usernameField: "email" }, (email, password, done) => {
+        new localStrategy((username, password, done) => {
             console.log('//// IN PASSPORT /////')
-            db.User.findOne({ email: email }, (err, user) => {
+            db.User.findOne({ username: username }, (err, user) => {
                 // console.log('//// IN PASSPORT /////')
                 if (err) throw err;
                 if (!user) return done(null, false);
@@ -30,7 +30,7 @@ module.exports = function () {
     passport.deserializeUser((id, callback) => {
         User.findOne({ _id: id }, (err, user) => {
             const userInformation = {
-                email: user.email,
+                username: user.username,
             };
             callback(err, userInformation)
         })

@@ -24,7 +24,8 @@ function Home() {
         event.preventDefault();
         API.logIn({
             data: {
-                email: formObject.email,
+                username: formObject.username,
+                // email: formObject.email,
                 password: formObject.password,
             },
             withCredentials: true,
@@ -55,9 +56,13 @@ function Home() {
                         <h2 className="text-center">Log In</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Username:</label>
+                                <input onChange={handleInputChange} type="input" className="form-control" placeholder="" name="username" />
+                            </div>
+                            {/* <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
                                 <input onChange={handleInputChange} type="email" className="form-control" placeholder="name@example.com" name="email" />
-                            </div>
+                            </div> */}
                             <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
                                 <input onChange={handleInputChange} type="password" className="form-control" placeholder="" name="password" />

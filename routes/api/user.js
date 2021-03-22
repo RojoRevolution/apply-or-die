@@ -1,4 +1,5 @@
 const db = require("../../models/");
+const express = require("express");
 const router = require("express").Router();
 // const userController = require("../../controllers/UserController");
 const passport = require('passport');
@@ -44,14 +45,14 @@ const bcrypt = require("bcryptjs");
 
 
 router.post("/login", (req, res, next) => {
-    console.log("/login: ", req.body)
+    console.log("/login: ", req.body.data)
     passport.authenticate("local", (err, user, info) => {
         console.log("User: ", user)
         console.log("Message: ", info)
         if (err) throw err;
         if (!user) res.send("User does not exist");
         else {
-            req.Login(user, (err) => {
+            req.login(user, (err) => {
                 if (err) throw err;
                 res.send("Successfully Authenticated");
                 console.log("Successfully Authenticated")
@@ -126,13 +127,14 @@ router.post("/login", (req, res, next) => {
 
 router.post("/signup", (req, res) => {
     console.log("/signup: ", req.body)
-    db.User.findOne({ email: req.body.email }, async (err, doc) => {
+    db.User.findOne({ username: req.body.username }, async (err, doc) => {
         if (err) throw err;
         if (doc) res.send("User Already Exists");
         if (!doc) {
             const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
             const newUser = new db.User({
+                username: req.body.username,
                 email: req.body.email,
                 password: hashedPassword,
             });

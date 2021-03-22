@@ -38,6 +38,7 @@ export default {
   },
   logIn: function (formData) {
     console.log('LOGIN FUNCTION')
+    console.log('Data: ', formData)
     return axios.post("/api/user/login", formData);
   },
   getUser: function () {
