@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { AddNew } from "../Buttons"
 import API from "../../utils/API";
 import { useAtom } from "jotai";
 import { apiTitle, apiLocation } from "../../utils/Atoms"
 
-function SearchBar(props) {
-    const [apiTitle, setApiTitle] = useAtom(apiTitle);
-    const [apiLocation, setApiLocation] = useAtom(apiLocation);
+function SearchBar() {
+    // const [apiTitle] = useAtom(apiTitle);
+    // const [apiLocation] = useAtom(apiLocation);
 
     const [formObject, setFormObject] = useState({})
 
