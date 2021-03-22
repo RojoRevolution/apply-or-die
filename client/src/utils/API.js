@@ -27,9 +27,12 @@ export default {
     console.log('logData: ', logData)
     return axios.put(`/api/logs/${id}`, logData);
   },
+  newLog: function (id, dataId) {
+    console.log("User ID: ", id)
+    console.log("Data ID: ", dataId)
+    return axios.put("/api/user/newapp/" + id, dataId);
+  },
   newNote: function (id, noteData) {
-    console.log("Client Side: ", id)
-    console.log("Client Side: ", noteData)
     return axios.put("/api/logs/note/" + id, noteData);
   },
   signUp: function (formData) {
