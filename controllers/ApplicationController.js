@@ -33,16 +33,16 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  updateApp: function (req, res) {
-    db.Application
-      .findByIdAndUpdate(req.params.id, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // updateApp: function (req, res) {
+  //   db.Application
+  //     .findByIdAndUpdate(req.params.id, req.body)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
   addNote: function (req, res) {
-    console.log("REQ ID: ", req.params.id)
-    console.log("REQ BODY: ", req.body)
-    console.log("REQ BODY: ", req.body.noteText)
+    // console.log("REQ ID: ", req.params.id)
+    // console.log("REQ BODY: ", req.body)
+    // console.log("REQ BODY: ", req.body.noteText)
     db.Application
       .updateOne(
         { _id: req.params.id },
