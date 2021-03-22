@@ -42,7 +42,8 @@ function Home() {
         }).catch(err => console.log(err))
     }
 
-
+    // Set page title
+    document.title = 'Welcome | Apply or Die'
     return (
         <main>
             <div className="signUpBg">

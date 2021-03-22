@@ -37,7 +37,8 @@ function Home() {
             .catch(err => console.log(err))
     }
 
-
+    // Set page title
+    document.title = 'Login | Apply or Die'
     return (
         <main>
             <div className="logInBg">

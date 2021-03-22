@@ -15,6 +15,8 @@ function Dashboard() {
   const [searchInput] = useAtom(searchAtom);
   const all = "All Results"
 
+  // Set page title
+  document.title = 'Dashboard | Apply or Die'
   return (
     <div>
       <SideBar />

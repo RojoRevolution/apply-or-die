@@ -45,9 +45,10 @@ const bcrypt = require("bcryptjs");
 
 
 router.post("/login", (req, res, next) => {
-    console.log("/login: ", req.body.data)
+    console.log("/login: ", req)
     passport.authenticate("local", (err, user, info) => {
         console.log("User: ", user)
+        console.log("User Config: ", user.config)
         console.log("Message: ", info)
         if (err) throw err;
         if (!user) res.send("User does not exist");

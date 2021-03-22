@@ -30,7 +30,8 @@ function SearchPage() {
 
     // getAll()
 
-
+    // Set page title
+    document.title = 'Search For Jobs | Apply or Die'
     return (
         <div>
             <InnerSideBar />

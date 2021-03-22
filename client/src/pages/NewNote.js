@@ -8,7 +8,8 @@ import NewNoteForm from "../components/Forms/NewNoteForm";
 function SearchPage() {
 
 
-
+    // Set page title
+    document.title = 'Add a New Note | Apply or Die'
     return (
         <div>
             <InnerSideBar />

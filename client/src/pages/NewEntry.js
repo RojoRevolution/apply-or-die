@@ -8,7 +8,8 @@ import NewContent from "../components/DashboardContent/NewContent";
 function SearchPage() {
 
 
-
+    // Set page title
+    document.title = 'Add New Application | Apply or Die'
     return (
         <div>
             <InnerSideBar />
