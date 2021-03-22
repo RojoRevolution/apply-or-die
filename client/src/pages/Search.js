@@ -3,6 +3,7 @@ import React from "react";
 import { APItable } from "../components/DashboardContent/ResultsTable";
 import dummyAPI from '../content/dummyAPI.json'
 import { InnerSideBar } from "../components/SideBar/SideBar";
+import SearchBar from "../components/SearchBar"
 
 
 function SearchPage() {
@@ -36,6 +37,7 @@ function SearchPage() {
         <div>
             <InnerSideBar />
             <div className="container-fluid py-5 mainContainer">
+                <SearchBar />
                 <APItable key={dummyAPI.id} data={dummyAPI} id={dummyAPI.id} date={dummyAPI.date} title={dummyAPI.title} company={dummyAPI.company} location={dummyAPI.location} />
             </div>
         </div>

@@ -48,6 +48,14 @@ html {
 margin:0;
 }
 
+.padding-none {
+padding:0;
+}
+
+.margin-0-auto {
+  margin: 0 auto;
+}
+
 .disp-inline {
 display: inline-block;
 }
@@ -157,7 +165,6 @@ display: inline-block;
   border: 1px solid #bebfcd;
 }
 
-
 .results {
   width: 100%;
 }
@@ -256,6 +263,17 @@ display: inline-block;
   display:inline-block
 }
 
+.searchInputDiv {
+  max-width: 600px;
+}
+
+.searchInput {
+  width: 99%;
+}
+
+.search
+
+
  /* ================ */
 /* Exterior Pages */
 /* ================ */
@@ -283,7 +301,6 @@ display: inline-block;
   text-align:center;
   z-index: 3;
 }
-
 
 .signUpGradient {
   background: rgb(70,72,102);

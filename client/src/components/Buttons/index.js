@@ -57,6 +57,14 @@ function AddNew() {
     );
 };
 
+function Search() {
+    return (
+        <React.Fragment>
+            <button className="btn addNewBtn">Search</button>
+        </React.Fragment>
+    );
+};
+
 function DeleteEntry(props) {
     return (
         <React.Fragment>
@@ -65,4 +73,4 @@ function DeleteEntry(props) {
     )
 }
 
-export { SortButton, FilterButton, AddNew, DeleteEntry };
+export { SortButton, FilterButton, AddNew, DeleteEntry, Search };

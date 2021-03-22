@@ -26,9 +26,6 @@ function Home() {
             username: formObject.username,
             // email: formObject.email,
             password: formObject.password,
-
-            // URL might not be needed since it's provided in utils/API
-            // url: "http://localhost:3000/api/user/login"
         }).then(res => {
             console.log('Login Res: ', res)
         })

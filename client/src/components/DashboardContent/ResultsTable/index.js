@@ -54,14 +54,6 @@ function ResultsTable() {
         console.log('StatusFilter:', status)
     }
 
-
-    // const RenderResults = () => {
-
-    // }
-
-
-
-
     return (
         <div id="userData" className="container-fluid py-3">
             <table className="results">
@@ -95,21 +87,23 @@ function ResultsTable() {
 function APItable(props) {
 
     return (
-        <table>
-            <tbody>
-                {props.data.map(content => (
-                    <tr key={content.id} className="row justify-content-between my-4 card-container">
-                        <td className="col-10">
-                            <h2>{content.title}</h2>
-                            <p className="margin-none">{content.company} | {content.location}</p>
-                        </td>
-                        <td className="col text-center viewBtnColAPI">
-                            <button id={content.id} className="viewBtn">View More</button>
-                        </td>
-                    </tr>
-                ))}
-            </tbody>
-        </table>
+        <div id="userData" className="container-fluid py-3">
+            <table className="results">
+                <tbody>
+                    {props.data.map(content => (
+                        <tr key={content.id} className="row justify-content-between my-4 card-container">
+                            <td className="col-10">
+                                <h2>{content.title}</h2>
+                                <p className="margin-none">{content.company} | {content.location}</p>
+                            </td>
+                            <td className="col text-center viewBtnColAPI">
+                                <button id={content.id} className="viewBtn">View More</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     )
 }
 
