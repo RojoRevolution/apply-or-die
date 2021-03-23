@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import API from "./utils/API"
-import Dashboard from "./Pages/Dashboard";
-import Search from "./Pages/Search";
-import NoMatch from "./Pages/NoMatch";
-import NewEntry from "./Pages/NewEntry";
-import SingleEntry from "./Pages/SingleEntry";
-import EditEntry from "./Pages/EditEntry";
-import Home from "./Pages/Home";
-import LogIn from "./Pages/LogIn";
-import NewNote from "./Pages/NewNote";
+import Dashboard from "./pages/Dashboard";
+import Search from "./pages/Search";
+import NoMatch from "./pages/NoMatch";
+import NewEntry from "./pages/NewEntry";
+import SingleEntry from "./pages/SingleEntry";
+import EditEntry from "./pages/EditEntry";
+import Home from "./pages/Home";
+import LogIn from "./pages/LogIn";
+import NewNote from "./pages/NewNote";
 
 import { useAtom } from "jotai";
 import { loggedInStatus } from "./utils/Atoms"
