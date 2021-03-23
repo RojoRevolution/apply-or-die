@@ -4,6 +4,7 @@ const dbState = atom({})
 const apiState = atom({})
 const sideBarContent = atom("/")
 const dbData = atom([])
+const populateData = atom({})
 
 const searchAtom = atom("")
 const activeBtn = atom("inactive")
@@ -22,4 +23,4 @@ const apiTitle = atom("")
 const apiLocation = atom("")
 
 
-export { dbState, apiState, sideBarContent, dbData, searchAtom, activeBtn, filterStatus, filterValue, sideBarHide, sideBarShow, sortAtom, loadDB, loggedInStatus, userId, apiTitle, apiLocation };
+export { dbState, apiState, sideBarContent, dbData, populateData, searchAtom, activeBtn, filterStatus, filterValue, sideBarHide, sideBarShow, sortAtom, loadDB, loggedInStatus, userId, apiTitle, apiLocation };

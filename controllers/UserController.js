@@ -104,7 +104,7 @@ module.exports = {
         db.User
             .updateOne(
                 { _id: req.params.id },
-                { $push: { applications: req.body.dataId } },
+                { $push: { userEntries: req.body.dataId } },
             )
             .then(dbModel => {
                 res.json(dbModel)
