@@ -27,19 +27,28 @@ export default {
     console.log('logData: ', logData)
     return axios.put(`/api/logs/${id}`, logData);
   },
+  newLog: function (id, dataId) {
+    console.log("User ID: ", id)
+    console.log("Data ID: ", dataId)
+    return axios.put("/api/user/newapp/" + id, dataId);
+  },
   newNote: function (id, noteData) {
-    console.log("Client Side: ", id)
-    console.log("Client Side: ", noteData)
     return axios.put("/api/logs/note/" + id, noteData);
   },
   signUp: function (formData) {
+    console.log("Sign Up: ", formData)
     return axios.post("/api/user/signup", formData);
   },
   logIn: function (formData) {
     console.log('LOGIN FUNCTION')
+    console.log('Data: ', formData.data)
     return axios.post("/api/user/login", formData);
   },
-  getUser: function () {
-    return axios.get("/api/user/info");
+  getUser: function (id) {
+    // console.log("API Route: ", id)
+    return axios.get("/api/user/info/" + id);
+  },
+  logOut: function () {
+    return axios.get("/api/user/logout");
   }
 };

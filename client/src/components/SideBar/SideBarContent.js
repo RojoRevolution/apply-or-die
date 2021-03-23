@@ -6,6 +6,8 @@ import { useAtom } from "jotai";
 import { searchAtom, sortAtom, activeBtn, dbData } from "../../utils/Atoms"
 import { SortButton, FilterButton } from "../Buttons";
 import sortContent from "../../content/sort.json";
+import { useHistory } from "react-router-dom";
+
 import filterContent from "../../content/filter.json";
 
 // Logo Section
@@ -155,6 +157,7 @@ function Filter() {
 
 // Navigation Section
 function NavigationMain() {
+
     return (
         <div className="container-fluid px-3 mb-3">
             <div className="divider">
@@ -170,7 +173,7 @@ function NavigationMain() {
                             <a href="#">View Stats</a>
                         </li>
                         <li>
-                            <Link to={"/"}>Log Out</Link>
+                            <Link to={"/login"}>Log Out</Link>
                         </li>
                     </ul>
                 </nav>
@@ -198,7 +201,7 @@ function NavigationInterior() {
                             <a href="#">View Stats</a>
                         </li>
                         <li>
-                            <Link to={"/"}>Log Out</Link>
+                            <Link to={"/login"}>Log Out</Link>
                         </li>
                     </ul>
                 </nav>

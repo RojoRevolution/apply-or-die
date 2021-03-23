@@ -1,17 +1,25 @@
-import React from "react";
 // import API from '../utils/API
+import React from "react";
 import { APItable } from "../components/DashboardContent/ResultsTable";
 import dummyAPI from '../content/dummyAPI.json'
 import { InnerSideBar } from "../components/SideBar/SideBar";
+import SearchBar from "../components/SearchBar"
+
+import { useAtom } from "jotai";
+import { apiTitle, apiLocation } from "../utils/Atoms"
+
 
 
 function SearchPage() {
 
+    // const apiID = process.env.REACT_APP_API_ID;
+    // const apiKEY = process.env.REACT_APP_API_KEY;
+    // const results = '1';
+
+    // const [apiTitle, setapiTitle] = useAtom(apiTitle);
+    // const [apiLocation, setapiLocation] = useAtom(apiLocation);
 
 
-    // const apiID = 'acdc5b19';
-    // const apiKEY = '4e793282d539b513354aaab9e6fcbbb9';
-    // const results = '10';
     // const search = 'Web%20Designer';
     // const where = 'Austin%20Texas'
 
@@ -30,11 +38,13 @@ function SearchPage() {
 
     // getAll()
 
-
+    // Set page title
+    document.title = 'Search For Jobs | Apply or Die'
     return (
         <div>
             <InnerSideBar />
             <div className="container-fluid py-5 mainContainer">
+                <SearchBar />
                 <APItable key={dummyAPI.id} data={dummyAPI} id={dummyAPI.id} date={dummyAPI.date} title={dummyAPI.title} company={dummyAPI.company} location={dummyAPI.location} />
             </div>
         </div>

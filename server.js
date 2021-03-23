@@ -6,6 +6,7 @@ const cors = require('cors');
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser")
 
+
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -20,8 +21,12 @@ app.use(cors({
 }))
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
+  console.log('===== PRODUCTION ====')
   app.use(express.static("client/build"));
 }
+// if (process.env.NODE_ENV === "dev") {
+//   app.use(express.static(__dirname + "client/public"));
+// }
 app.use(session({ secret: "chimichanga", resave: true, saveUninitialized: true }));
 app.use(cookieParser("chimichanga"))
 app.use(passport.initialize());

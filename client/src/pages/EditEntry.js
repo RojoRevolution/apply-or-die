@@ -8,7 +8,8 @@ import EditFormContent from "../components/DashboardContent/ExistingContent/Edit
 function SearchPage() {
 
 
-
+    // Set page title
+    document.title = 'Edit Entry | Apply or Die'
     return (
         <div>
             <InnerSideBar />

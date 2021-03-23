@@ -8,7 +8,8 @@ import ExistingContent from "../components/DashboardContent/ExistingContent";
 function AppLog() {
 
 
-
+    // Set page title
+    document.title = 'Viewing Application | Apply or Die'
     return (
         <div>
             <InnerSideBar />

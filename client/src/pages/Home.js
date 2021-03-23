@@ -4,14 +4,14 @@ import Footer from "../components/Exterior/Footer";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
 import { useAtom } from "jotai";
-import { loggedInStatus } from "../utils/Atoms"
+import { loggedInStatus, userId } from "../utils/Atoms"
 
 
 
 function Home() {
     let history = useHistory();
-    const [loggedIn, setLoggedin] = useAtom(loggedInStatus);
-
+    const [, setLoggedin] = useAtom(loggedInStatus);
+    const [, setuserId] = useAtom(userId);
     const [formObject, setFormObject] = useState({})
 
     function handleInputChange(event) {
@@ -24,24 +24,28 @@ function Home() {
     function handleSubmit(event) {
         event.preventDefault();
         API.signUp({
+            username: formObject.username,
             email: formObject.email,
             password: formObject.password,
-            withCredentials: true,
+            // withCredentials: true,
             // URL might not be needed since it's provided in utils/API
             // url: "http://localhost:3000/api/user/signup"
         }).then(res => {
             // console.log(res)
             console.log('SignUp Res: ', res)
-            // This method technically won't work because a res is always given even if it is incorrect
-            // if (res.data) {
-            //     console.log("Successful SignUp")
-            //     setLoggedin(true)
-            //     history.push("/dashboard")
-            // }
+            if (res.data.email) {
+                setLoggedin(true)
+                setuserId(res.data._id)
+                history.push("/dashboard")
+            }
+            else {
+                console.log(" NO USER")
+            }
         }).catch(err => console.log(err))
     }
 
-
+    // Set page title
+    document.title = 'Welcome | Apply or Die'
     return (
         <main>
             <div className="signUpBg">
@@ -60,6 +64,10 @@ function Home() {
                     <div className="card-container mt-5 userForm">
                         <h2 className="text-center">Sign up</h2>
                         <form onSubmit={handleSubmit}>
+                            <div className="mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Username:</label>
+                                <input onChange={handleInputChange} type="input" className="form-control" placeholder="" name="username" />
+                            </div>
                             <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
                                 <input onChange={handleInputChange} type="email" className="form-control" placeholder="name@example.com" name="email" />

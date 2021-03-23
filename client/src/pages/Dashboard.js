@@ -9,12 +9,16 @@ import { ResultsTable } from "../components/DashboardContent/ResultsTable";
 import { useAtom } from "jotai";
 import { searchAtom } from "../utils/Atoms"
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function Dashboard() {
 
   const [searchInput] = useAtom(searchAtom);
   const all = "All Results"
 
+  // Set page title
+  document.title = 'Dashboard | Apply or Die'
   return (
     <div>
       <SideBar />

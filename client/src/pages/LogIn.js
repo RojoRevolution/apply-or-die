@@ -4,39 +4,45 @@ import Footer from "../components/Exterior/Footer";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
 import { useAtom } from "jotai";
-import { loggedInStatus } from "../utils/Atoms"
+import { loggedInStatus, userId } from "../utils/Atoms"
 
 
 function Home() {
     let history = useHistory();
-    const [loggedIn, setLoggedin] = useAtom(loggedInStatus);
+    const [, setLoggedin] = useAtom(loggedInStatus);
+    const [, setuserId] = useAtom(userId);
 
     const [formObject, setFormObject] = useState({})
 
     function handleInputChange(event) {
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value })
-        console.log(formObject)
     };
 
 
     function handleSubmit(event) {
         event.preventDefault();
         API.logIn({
-            data: {
-                email: formObject.email,
-                password: formObject.password,
-            },
-            withCredentials: true,
-            // URL might not be needed since it's provided in utils/API
-            // url: "http://localhost:3000/api/user/login"
+            username: formObject.username,
+            // email: formObject.email,
+            password: formObject.password,
         }).then(res => {
-            console.log('Login Res: ', res)
+            console.log('Login Res: ', res.data)
+            console.log('ID: ', res.data._id)
+            if (res.data.email) {
+                setLoggedin(true)
+                setuserId(res.data._id)
+                history.push("/dashboard")
+            }
+            else {
+                console.log(" NO USER")
+            }
         })
             .catch(err => console.log(err))
     }
 
-
+    // Set page title
+    document.title = 'Login | Apply or Die'
     return (
         <main>
             <div className="logInBg">
@@ -55,9 +61,13 @@ function Home() {
                         <h2 className="text-center">Log In</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Username:</label>
+                                <input onChange={handleInputChange} type="input" className="form-control" placeholder="" name="username" />
+                            </div>
+                            {/* <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
                                 <input onChange={handleInputChange} type="email" className="form-control" placeholder="name@example.com" name="email" />
-                            </div>
+                            </div> */}
                             <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
                                 <input onChange={handleInputChange} type="password" className="form-control" placeholder="" name="password" />

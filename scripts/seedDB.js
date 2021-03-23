@@ -72,6 +72,7 @@ const appSeed = [
 
 const userSeed = [
     {
+        username: "dave",
         email: "dave@dave.com",
         password: "123456"
     },

@@ -3,11 +3,16 @@ import { useHistory } from "react-router-dom";
 
 import API from "../../utils/API";
 
+import { useAtom } from "jotai";
+import { userId } from "../../utils/Atoms"
+
 
 function LogForm() {
     let history = useHistory();
 
     const [formObject, setFormObject] = useState({})
+    const [ID, setID] = useAtom(userId);
+
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -25,6 +30,12 @@ function LogForm() {
             listing: formObject.listing,
             description: formObject.description
         })
+            // .then(({ _id }) => {
+            .then(res => {
+                console.log("USER ID: ", ID)
+                console.log("RES ID: ", res.data._id)
+                API.newLog(ID, { dataId: res.data._id })
+            })
             .then(history.push("/dashboard"))
             .catch(err => console.log(err))
     }
