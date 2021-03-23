@@ -3,13 +3,15 @@ import APItable from "../components/DashboardContent/ResultsTable/ApiTable"
 import { InnerSideBar } from "../components/SideBar/SideBar";
 import SearchBar from "../components/SearchBar"
 import API from "../utils/API";
+import { MenuBtn } from "../components/Buttons/index"
 
 import { useAtom } from "jotai";
-import { apiResults } from "../utils/Atoms"
+import { apiResults, sideBar } from "../utils/Atoms"
 
 
 
 function SearchPage() {
+    const [sidebarWidth] = useAtom(sideBar);
 
     const apiID = process.env.REACT_APP_API_ID;
     const apiKEY = process.env.REACT_APP_API_KEY;
@@ -53,8 +55,9 @@ function SearchPage() {
     document.title = 'Search For Jobs | Apply or Die'
     return (
         <div>
-            <InnerSideBar />
+            <InnerSideBar width={sidebarWidth} />
             <div className="container-fluid py-5 mainContainer">
+                <MenuBtn />
                 <SearchBar onSubmit={handleFormSubmit} inputChange={handleInputChange} />
                 <APItable data={apiData} />
             </div>

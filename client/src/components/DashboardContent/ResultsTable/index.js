@@ -14,6 +14,8 @@ function ResultsTable() {
     const [statusState, setStatusState] = useAtom(loadDB);
     const [ID, setID] = useAtom(userId);
     const [refData, setRefData] = useAtom(populateData)
+    let dataArray = Array.from(refData)
+
 
     useEffect(() => {
         loadApps()
@@ -46,21 +48,28 @@ function ResultsTable() {
             <table className="results">
                 <tbody>
                     <React.Fragment>
-                        {refData.filter(input => input.company.toLowerCase().includes(searchInput) || input.status.toLowerCase().includes(searchInput)).reverse().map(content => (
-                            <tr key={content._id} className="row justify-content-between position-relative my-4 card-container" data-aos="fade-up">
-                                <td className="col-10">
-                                    <p><span onClick={handleStatus} className={`status ${content.status}`} id={content.status}>{content.status}</span>{content.date}</p>
-                                    <h2>{content.title}</h2>
-                                    <p className="margin-none">{content.company} | {content.location}</p>
-                                </td>
-                                <td className="col text-center viewBtnCol">
-                                    <Link to={"/logs/" + content._id}><button id={content._id} className="viewBtn">View More</button></Link>
-                                </td>
+                        {dataArray.length === 0 ?
+                            <tr className="row justify-content-between position-relative my-4 card-container" data-aos="fade-up">
                                 <td>
-                                    <DeleteEntry id={content._id} onClick={() => deleteOne(content._id)} />
+                                    <p>No Applications have been entered. To get started, add a new application from the left hand menu</p>
                                 </td>
                             </tr>
-                        ))}
+                            :
+                            refData.filter(input => input.company.toLowerCase().includes(searchInput) || input.status.toLowerCase().includes(searchInput)).reverse().map(content => (
+                                <tr key={content._id} className="row justify-content-between position-relative my-4 card-container" data-aos="fade-up">
+                                    <td className="col-10">
+                                        <p><span onClick={handleStatus} className={`status ${content.status}`} id={content.status}>{content.status}</span>{content.date}</p>
+                                        <h2>{content.title}</h2>
+                                        <p className="margin-none">{content.company} | {content.location}</p>
+                                    </td>
+                                    <td className="col text-center viewBtnCol">
+                                        <Link to={"/logs/" + content._id}><button id={content._id} className="viewBtn">View More</button></Link>
+                                    </td>
+                                    <td>
+                                        <DeleteEntry id={content._id} onClick={() => deleteOne(content._id)} />
+                                    </td>
+                                </tr>
+                            ))}
                     </React.Fragment>
                 </tbody>
             </table>
