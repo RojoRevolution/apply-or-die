@@ -34,18 +34,10 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    // update: function (req, res) {
-    //     console.log("REQ ID: ", req.params.id)
-    //     console.log("REQ BODY: ", req.body.data)
-    //     db.Application
-    //         .updateOne(
-    //             { _id: req.params.id },
-    //             { $push: { notes: req.body.data } },
-    //             { safe: true, upsert: true, new: true },
-    //         )
-    //         .then(dbModel => res.json(dbModel))
-    //         .catch(err => res.status(422).json(err));
-    // },
+    populateEntries: function (req, res) {
+        db.User.findById(req.params.id).populate('userEntries')
+            .then(data => res.json(data))
+    },
     remove: function (req, res) {
         db.User
             .findById({ _id: req.params.id })

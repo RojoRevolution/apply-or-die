@@ -14,13 +14,14 @@ router.route("/info")
 router.route("/logout")
     .get(UserController.logOut)
 
-
 router.route("/logout")
     .get(UserController.logOut)
 
 router.route("/newapp/:id")
     .put(UserController.pushApplications)
 
+router.route("/info/:id")
+    .get(UserController.populateEntries)
 
 
 
