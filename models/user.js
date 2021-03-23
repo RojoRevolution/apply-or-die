@@ -19,7 +19,7 @@ const userSchema = new Schema({
         type: String
         // required: [true, "password is required"]
     },
-    applications: [{ type: Schema.Types.ObjectID, ref: 'application' }]
+    userEntries: [{ type: Schema.Types.ObjectID, ref: 'Application' }]
 
 });
 
