@@ -50,20 +50,6 @@ function App() {
 
   // Required Auth creates Authentication for all Interior Routes
   const RequireAuth = ({ children }) => {
-    // API.getUser({
-    //   withCredentials: true
-    // })
-    //   .then((res) => {
-    //     setLoggedIn(true);
-    //     console.log("Logged in Status")
-    //     console.log(res.data);
-    //     console.log(loggedIn)
-    //     if (!loggedIn) {
-    //       return <Redirect to={"/login"} />
-    //     }
-    //     return children;
-    //   })
-
     if (!loggedIn) {
       console.log("Not Logged In")
       return <Redirect to={"/login"} />

@@ -4,7 +4,7 @@ import { DeleteEntry } from "../../Buttons"
 import API from "../../../utils/API";
 
 import { useAtom } from "jotai";
-import { searchAtom, dbData, loadDB, } from "../../../utils/Atoms"
+import { searchAtom, dbData, loadDB, userId } from "../../../utils/Atoms"
 
 
 
@@ -14,6 +14,8 @@ function ResultsTable() {
     // const [filterStatus] = useAtom(filterValue);
     const [statusState, setStatusState] = useAtom(loadDB);
     // const [appsData, setAppsData] = useState([])
+    const [ID, setID] = useAtom(userId);
+
     const [appsData, setAppsData] = useAtom(dbData)
 
 
@@ -26,9 +28,11 @@ function ResultsTable() {
 
 
     function loadApps() {
-        API.getApps()
+        // API.getApps()
+        API.getUser(ID)
             .then(res => {
-                setAppsData(res.data)
+                console.log(data)
+                // setAppsData(res.data)
                 // setAppsData({
                 //     data: res.data,
                 //     // statusState: filterStatus,

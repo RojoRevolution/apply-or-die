@@ -44,7 +44,8 @@ export default {
     console.log('Data: ', formData.data)
     return axios.post("/api/user/login", formData);
   },
-  getUser: function (id, data) {
-    return axios.get("/api/user/info/" + id, data);
+  getUser: function (id) {
+    console.log("API Route: ", id)
+    return axios.get("/api/user/info/" + id);
   }
 };
