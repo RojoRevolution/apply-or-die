@@ -23,16 +23,13 @@ function Logo() {
     );
 };
 
-// Filter By Company Section
+// ================================
+// Company Name Search Section
+// ================================
 function SearchContent() {
 
     const [searchInput, setSearchInput] = useAtom(searchAtom);
-
-    // Search Form functions
-    function handleFormSubmit(event) {
-        event.preventDefault();
-    }
-
+    // On input change, update the searchAtom
     function handleInputChange(event) {
         const input = event.target.value;
         setSearchInput(input)
@@ -42,7 +39,7 @@ function SearchContent() {
         <div className="container-fluid px-3 mb-3">
             <div className="divider">
                 <div className="py-4">
-                    <form onSubmit={handleFormSubmit}>
+                    <form>
                         <div className="mb-3">
                             <input type="input" className="form-control" id="searchByCompany" placeholder="Filter By Company:" onChange={handleInputChange} />
                         </div>
@@ -53,14 +50,15 @@ function SearchContent() {
     );
 };
 
-// Sort Results Section
+// ================================
+// Sort Buttons Section
+// ================================
 function Sort() {
 
-    // const [searchInput, setSearchInput] = useAtom(searchAtom);
     const [appsData, setAppsData] = useAtom(dbData);
     const [sortResults, setSortResults] = useAtom(sortAtom);
 
-
+    // Sort ASC or DSC by company name
     const sortByCompany = (event) => {
         console.log(event.target.id)
         const sortedCompany = appsData.sort((a, b) => {
@@ -83,6 +81,7 @@ function Sort() {
         setAppsData(sortedCompany)
     }
 
+    // Sort ASC or DSC by date
     const sortByDate = (event) => {
         console.log(event.target.id)
         const sortedCompany = appsData.sort((a, b) => {
@@ -118,7 +117,9 @@ function Sort() {
     );
 };
 
-// Filter by status Section
+// ================================
+// Filter Button Section
+// ================================
 function Filter() {
 
     const [searchInput, setSearchInput] = useAtom(searchAtom);
@@ -127,18 +128,17 @@ function Filter() {
     let allFilterBtns = document.querySelectorAll('inactive')
     console.log(allFilterBtns)
 
-
+    // Handle On Click
     function filterStatusHandler(event) {
         let id = event.target.id.toLowerCase();
         let click = event.target.id.toLowerCase();
 
+        // Set the search atom to an empty string when clicking all to display all results
         if (id === "all") {
             setSearchInput("")
         } else {
             setSearchInput(click)
         }
-
-
     }
 
     return (
@@ -155,7 +155,9 @@ function Filter() {
     );
 };
 
-// Navigation Section
+// ================================
+// Main Navigation 
+// ================================
 function NavigationMain() {
 
     return (
@@ -183,8 +185,9 @@ function NavigationMain() {
 };
 
 
-
+// ================================
 // Interior Navigation Section
+// ================================
 function NavigationInterior() {
     return (
         <div className="container-fluid px-3 mb-3">
@@ -210,7 +213,9 @@ function NavigationInterior() {
     );
 };
 
+// ================================
 // Copyright text section
+// ================================
 function CopyRight() {
     return (
         <div className="container-fluid px-3 mb-3">

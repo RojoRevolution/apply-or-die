@@ -5,7 +5,7 @@ import { InnerSideBar } from "../components/SideBar/SideBar";
 import NewContent from "../components/DashboardContent/NewContent";
 
 
-function SearchPage() {
+function NewEntry() {
 
 
     // Set page title
@@ -21,4 +21,4 @@ function SearchPage() {
 }
 
 
-export default SearchPage;
+export default NewEntry;

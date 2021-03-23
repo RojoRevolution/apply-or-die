@@ -1,12 +1,11 @@
 
 import React from "react";
-
-
 import { Logo, SearchContent, Sort, Filter, NavigationMain, CopyRight, NavigationInterior } from "./SideBarContent";
 
-
+// ================================
+// Dashboard / Home Sidebar
+// ================================
 function SideBar() {
-
     return (
         <div className="sidebar">
             <div>
@@ -21,6 +20,9 @@ function SideBar() {
     );
 }
 
+// ================================
+// Interio Pages Sidebar
+// ================================
 function InnerSideBar() {
     return (
         <div className="sidebar">

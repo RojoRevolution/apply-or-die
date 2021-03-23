@@ -5,9 +5,7 @@ import { InnerSideBar } from "../components/SideBar/SideBar";
 import NewNoteForm from "../components/Forms/NewNoteForm";
 
 
-function SearchPage() {
-
-
+function NewNote() {
     // Set page title
     document.title = 'Add a New Note | Apply or Die'
     return (
@@ -21,4 +19,4 @@ function SearchPage() {
 }
 
 
-export default SearchPage;
+export default NewNote;

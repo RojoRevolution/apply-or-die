@@ -11,25 +11,23 @@ function Home() {
     let history = useHistory();
     const [, setLoggedin] = useAtom(loggedInStatus);
     const [, setuserId] = useAtom(userId);
-
     const [formObject, setFormObject] = useState({})
 
+    // Handle the input change as you type
     function handleInputChange(event) {
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value })
     };
 
-
+    // Handle the form Submit
     function handleSubmit(event) {
         event.preventDefault();
         API.logIn({
             username: formObject.username,
-            // email: formObject.email,
             password: formObject.password,
         }).then(res => {
-            console.log('Login Res: ', res.data)
-            console.log('ID: ', res.data._id)
             if (res.data.email) {
+                // If there is a proper response, \sSet this atom to true so RequireAuth will pass
                 setLoggedin(true)
                 setuserId(res.data._id)
                 history.push("/dashboard")
