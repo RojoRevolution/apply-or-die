@@ -20,7 +20,7 @@ router.route("/")
 
 router.route("/:id")
     .get(applicationController.findById)
-    // .put(applicationController.updateApp)
+    .put(applicationController.updateApp)
     .delete(applicationController.remove);
 
 
