@@ -13,7 +13,10 @@ function EditForm() {
     const [formObject, setFormObject] = useState({})
 
     useEffect(() => {
-        loadData()
+        loadData();
+        return () => {
+            setFormObject({}); // This worked for me
+        };
     }, []);
 
     let checkedStatus;
@@ -70,27 +73,27 @@ function EditForm() {
             < div className="pb-4">
                 <p>Status:</p>
                 <div className="form-check form-check-inline">
-                    <input onClick={handleInputChange} className="form-check-input" type="radio" name="status" id="radioApplied" value="applied" />
+                    <input onClick={handleInputChange} className="form-check-input" type="radio" name="status" id="radioApplied" value="Applied" />
                     <label className="form-check-label" htmlFor="checkApplied">Applied</label>
                 </div>
                 <div className="form-check form-check-inline">
-                    <input onClick={handleInputChange} className="form-check-input" type="radio" name="status" id="radioGhosted" value="ghosted" />
+                    <input onClick={handleInputChange} className="form-check-input" type="radio" name="status" id="radioGhosted" value="Ghosted" />
                     <label className="form-check-label" htmlFor="checkGhosted">Ghosted</label>
                 </div>
                 <div className="form-check form-check-inline">
-                    <input onClick={handleInputChange} className="form-check-input" type="radio" name="status" id="radioRejected" value="rejected" />
+                    <input onClick={handleInputChange} className="form-check-input" type="radio" name="status" id="radioRejected" value="Rejected" />
                     <label className="form-check-label" htmlFor="rejected">Rejected</label>
                 </div>
                 <div className="form-check form-check-inline">
-                    <input onClick={handleInputChange} className="form-check-input" type="radio" name="status" id="radioScreen" value="screen" />
+                    <input onClick={handleInputChange} className="form-check-input" type="radio" name="status" id="radioScreen" value="Screen" />
                     <label className="form-check-label" htmlFor="checkScreen">Screen</label>
                 </div>
                 <div className="form-check form-check-inline">
-                    <input onClick={handleInputChange} className="form-check-input" type="radio" name="status" id="radioInterview" value="interview" />
+                    <input onClick={handleInputChange} className="form-check-input" type="radio" name="status" id="radioInterview" value="Interview" />
                     <label className="form-check-label" htmlFor="checkInterview">Interview</label>
                 </div>
                 <div className="form-check form-check-inline">
-                    <input onClick={handleInputChange} className="form-check-input" type="radio" name="status" id="radioOffer" value="offer" htmlFor="checkOffer" />
+                    <input onClick={handleInputChange} className="form-check-input" type="radio" name="status" id="radioOffer" value="Offer" htmlFor="checkOffer" />
                     <label className="form-check-label" htmlFor="offer">Offer</label>
                 </div>
             </div>
