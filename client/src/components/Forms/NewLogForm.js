@@ -13,7 +13,6 @@ function LogForm() {
     const [formObject, setFormObject] = useState({})
     const [ID, setID] = useAtom(userId);
 
-
     function handleInputChange(event) {
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value })
@@ -30,7 +29,6 @@ function LogForm() {
             listing: formObject.listing,
             description: formObject.description
         })
-            // .then(({ _id }) => {
             .then(res => {
                 console.log("USER ID: ", ID)
                 console.log("RES ID: ", res.data._id)
@@ -40,10 +38,6 @@ function LogForm() {
             .catch(err => console.log(err))
     }
 
-
-    // function Cancel() {
-    //     console.log('Cancel')
-    // }
 
     return (
         <form className="pt-5" id="newLogForm" onSubmit={handleSubmit}>
