@@ -19,30 +19,20 @@ function ResultsTable() {
     const [refData, setRefData] = useAtom(populateData)
     const [appsData, setAppsData] = useAtom(dbData)
 
+    const [didMount, setDidMount] = useState(false);
+
+
 
 
     useEffect(() => {
         loadApps()
-        // console.log('Data', appsData)
-        // console.log('Status UseEffect', statusState)
     }, [refData]);
 
-
     function loadApps() {
-        // API.getApps()
         API.getUser(ID)
             .then(res => {
-                // console.log(res)
-                // console.log(res.data.userEntries)
                 setRefData(res.data.userEntries)
-                // setAppsData(res.data)
-                // setAppsData({
-                //     data: res.data,
-                //     // statusState: filterStatus,
-                //     // search: searchInput
-                // })
             })
-            // .then(res => console.log(appsData))
             .catch(err => console.log(err));
     };
 
@@ -92,27 +82,28 @@ function ResultsTable() {
 
 
 
-function APItable(props) {
+// function APItable(props) {
+//     console.log("Props Data: ", props.data)
+//     return (
+//         <div id="userData" className="container-fluid py-3">
+//             <table className="results">
+//                 <tbody>
+//                     {props.data.map(content => (
+//                         <tr key={content.id} className="row justify-content-between my-4 card-container" data-aos="fade-up">
+//                             <td className="col-10">
+//                                 <h2>{content.title.replace(/(<([^>]+)>)/ig, '')}</h2>
+//                                 <p className="margin-none">{content.company.display_name} | {content.location.display_name}</p>
+//                             </td>
+//                             <td className="col text-center viewBtnColAPI">
+//                                 <a href={content.redirect_url} target="_blank"><button id={content.id} className="viewBtn">View More</button></a>
+//                             </td>
+//                         </tr>
+//                     ))}
+//                 </tbody>
+//             </table>
+//         </div>
+//     )
+// }
 
-    return (
-        <div id="userData" className="container-fluid py-3">
-            <table className="results">
-                <tbody>
-                    {props.data.map(content => (
-                        <tr key={content.id} className="row justify-content-between my-4 card-container">
-                            <td className="col-10">
-                                <h2>{content.title}</h2>
-                                <p className="margin-none">{content.company} | {content.location}</p>
-                            </td>
-                            <td className="col text-center viewBtnColAPI">
-                                <button id={content.id} className="viewBtn">View More</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    )
-}
-
-export { ResultsTable, APItable };
+// export { ResultsTable, APItable };
+export { ResultsTable };

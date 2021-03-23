@@ -278,7 +278,7 @@ display: inline-block;
 .searchInput {
   font-family: 'Open Sans', sans-serif;
   font-size:1rem;
-  color: #ffffff;
+  color: #464866;
   background: #ffffff;
   border-radius:5px;
   border: 1px solid  #464866;
@@ -288,11 +288,10 @@ display: inline-block;
   width: 99%;
 }
 
-.searchInput:hover{
+/* .searchInput:hover{
   color:#83859D;
-  /* background: #83859D; */
   box-shadow: 0px 0px 0px 6px rgba(221,225,230,1)
-}
+} */
 
 
  /* ================ */
