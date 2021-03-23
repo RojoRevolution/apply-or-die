@@ -4,7 +4,7 @@ const dbState = atom({})
 const apiState = atom({})
 const sideBarContent = atom("/")
 const dbData = atom([])
-const populateData = atom({})
+const populateData = atom([])
 
 const searchAtom = atom("")
 const activeBtn = atom("inactive")
