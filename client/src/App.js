@@ -63,14 +63,14 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={LogIn} />
-          <RequireAuth>
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/search" component={Search} />
-            <Route exact path="/new" component={NewEntry} />
-            <Route exact path="/logs/:id" component={SingleEntry} />
-            <Route exact path="/edit/:id" component={EditEntry} />
-            <Route exact path="/newnote/:id" component={NewNote} />
-          </RequireAuth>
+          {/* <RequireAuth> */}
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/search" component={Search} />
+          <Route exact path="/new" component={NewEntry} />
+          <Route exact path="/logs/:id" component={SingleEntry} />
+          <Route exact path="/edit/:id" component={EditEntry} />
+          <Route exact path="/newnote/:id" component={NewNote} />
+          {/* </RequireAuth> */}
           <Route component={NoMatch} />
         </Switch>
       </div>

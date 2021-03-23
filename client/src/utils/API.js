@@ -5,6 +5,9 @@ import axios from "axios";
 
 
 export default {
+  apiResults: function (url) {
+    return axios.get(url);
+  },
   getApps: function () {
     return axios.get("/api/logs");
   },
