@@ -47,5 +47,8 @@ export default {
   getUser: function (id) {
     // console.log("API Route: ", id)
     return axios.get("/api/user/info/" + id);
+  },
+  logOut: function () {
+    return axios.get("/api/user/logout");
   }
 };

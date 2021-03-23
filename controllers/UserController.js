@@ -96,7 +96,7 @@ module.exports = {
     },
     logOut: function (req, res) {
         req.logout();
-        res.redirect("/login");
+        res.send("Logging Out");
     },
     pushApplications: function (req, res) {
         console.log("REQ ID: ", req.params.id)

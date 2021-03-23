@@ -117,15 +117,23 @@ display: inline-block;
     font-weight: 400;
     list-style-type:none;
     padding:.5rem;
+    transition: .25s;
+}
+
+#dashNav li:hover{
+  border-right: 5px solid #464866;
+  transition: .25s;
 }
 
  #dashNav li a {
      color: #464866;
      text-decoration: none;
+     transition: .25s;
  }
 
  #dashNav li a:hover {
      color: #DDE1E6;
+     transition: .25s;
  }
 
  .copyright {
