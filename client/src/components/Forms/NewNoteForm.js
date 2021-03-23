@@ -9,24 +9,18 @@ import API from "../../utils/API";
 
 function NewNote(props) {
     const { id } = useParams()
-    // console.log('ID:', id)
-
     let history = useHistory();
-
     const [formObject, setFormObject] = useState("")
 
     function handleInputChange(event) {
         const noteValue = event.target.value;
-        console.log(noteValue)
         setFormObject(noteValue)
-        // console.log(formObject)
     };
 
     function handleSubmit(event) {
         event.preventDefault();
 
         API.newNote(id, { noteText: formObject })
-            // .then(() => )
             .then(res => console.log(res.data))
             .then(history.push("/logs/" + id))
             .catch(err => console.log(err))

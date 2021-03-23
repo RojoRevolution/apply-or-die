@@ -1,6 +1,4 @@
 const db = require("../models");
-const express = require("express");
-// const router = require("express").Router();
 const passport = require('passport');
 const bcrypt = require("bcryptjs");
 
@@ -13,7 +11,6 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    // Find One - Will need to change it to find by email
     findById: function (req, res) {
         db.User
             .findById(req.params.id)
@@ -26,7 +23,7 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    //  Create New
+    // Create new entry
     create: function (req, res) {
         console.log("Req: ", req.body)
         db.User
@@ -34,10 +31,12 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    // Get User specific entries
     populateEntries: function (req, res) {
         db.User.findById(req.params.id).populate('userEntries')
             .then(data => res.json(data))
     },
+    // Delete
     remove: function (req, res) {
         db.User
             .findById({ _id: req.params.id })
@@ -45,48 +44,41 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    // Login Function
+    // Login Functionaliaty -- Runs Passport Middleware
     logIn: function (req, res, next) {
-        console.log("/login: ", req.body)
-        // console.log('/login Res: ', res)
         passport.authenticate("local", (err, user, info) => {
-            console.log("User: ", user)
-            console.log("User Config: ", user.username)
-            console.log("Message: ", info)
             if (err) throw err;
+            // If ther is no user, send User Does Not Exist
             if (!user) res.send("User does not exist")
+            // Otherwise use exists, run the following
             else {
                 req.login(user, (err) => {
                     if (err) throw err;
-                    console.log('/////// IN req.login ////////');
-                    console.log(user)
-                    // res.send("Successfully Authenticated");
-                    console.log(" ////// Successfully Authenticated ///////")
                     res.json(user)
-                    // res.redirect("/dashboard");
-                    // res.redirect(307, "/dashboard");
-
                 });
             }
         })(req, res, next);
     },
+    // Sign Up Functionality
     signUp: function (req, res) {
-        console.log("/signup: ", req.body)
+        // Search to see if the username already exists
         db.User.findOne({ username: req.body.username }, async (err, doc) => {
             if (err) throw err;
+            // If it does return user exists
             if (doc) res.send("User Already Exists");
+            // If it doesn't exist, create new user
             if (!doc) {
+                // Hash the password
                 const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
+                // create user with the hashed password
                 const newUser = new db.User({
                     username: req.body.username,
                     email: req.body.email,
                     password: hashedPassword,
                 });
-
-                console.log(newUser)
+                // create the user in the DB
                 await db.User.create(newUser);
-                // res.send("User Created");
+                // send response to the login middleware, then log the user in
                 res.redirect(307, "/api/user/login");
             }
         });
@@ -98,9 +90,9 @@ module.exports = {
         req.logout();
         res.send("Logging Out");
     },
+    // Push Application ID's to the user object that created them
     pushApplications: function (req, res) {
-        console.log("REQ ID: ", req.params.id)
-        console.log("REQ BODY: ", req.body.dataId)
+        // Look for the specific user then push the entry ID
         db.User
             .updateOne(
                 { _id: req.params.id },

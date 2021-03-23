@@ -1,9 +1,5 @@
 import axios from "axios";
 
-
-
-
-
 export default {
   apiResults: function (url) {
     return axios.get(url);

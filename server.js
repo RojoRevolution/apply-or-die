@@ -24,14 +24,15 @@ if (process.env.NODE_ENV === "production") {
   console.log('===== PRODUCTION ====')
   app.use(express.static("client/build"));
 }
-// if (process.env.NODE_ENV === "dev") {
-//   app.use(express.static(__dirname + "client/public"));
-// }
+
 app.use(session({ secret: "chimichanga", resave: true, saveUninitialized: true }));
 app.use(cookieParser("chimichanga"))
 app.use(passport.initialize());
 app.use(passport.session());
 require("./config/passport")(passport);
+// Middleware Ends
+// ============================================
+
 
 // Add routes, both API and view
 app.use(routes);

@@ -6,21 +6,19 @@ import { useHistory } from "react-router-dom";
 import { useAtom } from "jotai";
 import { loggedInStatus, userId } from "../utils/Atoms"
 
-
-
 function Home() {
     let history = useHistory();
     const [, setLoggedin] = useAtom(loggedInStatus);
     const [, setuserId] = useAtom(userId);
     const [formObject, setFormObject] = useState({})
 
+    // Handle the input change as you type
     function handleInputChange(event) {
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value })
-        console.log(formObject)
     };
 
-
+    // Handle the form submit
     function handleSubmit(event) {
         event.preventDefault();
         API.signUp({
@@ -28,9 +26,9 @@ function Home() {
             email: formObject.email,
             password: formObject.password,
         }).then(res => {
-            // console.log(res)
             console.log('SignUp Res: ', res)
             if (res.data.email) {
+                // If there is a proper response, \sSet this atom to true so RequireAuth will pass
                 setLoggedin(true)
                 setuserId(res.data._id)
                 history.push("/dashboard")

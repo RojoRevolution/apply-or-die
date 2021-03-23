@@ -6,10 +6,8 @@ import API from "../../utils/API";
 
 function EditForm() {
 
-    // const [appData, setAppData] = useState([])
     const { id } = useParams()
     let history = useHistory();
-    const [data, setData] = useState([])
     const [formObject, setFormObject] = useState({})
 
     useEffect(() => {
@@ -19,12 +17,9 @@ function EditForm() {
         };
     }, []);
 
-    let checkedStatus;
-
     function loadData() {
         API.getOne(id)
             .then(res => {
-                // setAppData(res.data)
                 setFormObject({
                     status: res.data.status,
                     title: res.data.title,
@@ -33,12 +28,9 @@ function EditForm() {
                     listing: res.data.listing,
                     description: res.data.description
                 })
-                console.log(res)
             })
             .catch(err => console.log(err));
     };
-
-
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -61,11 +53,6 @@ function EditForm() {
             .catch(err => console.log(err))
     }
 
-
-
-    // function Cancel() {
-    //     console.log('Cancel')
-    // }
 
     return (
         <form className="pt-5" id="newLogForm" onSubmit={handleSubmit}>

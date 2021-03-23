@@ -3,10 +3,11 @@ import React from "react";
 import { useAtom } from "jotai";
 import { searchAtom, sortAtom, sortResults } from "../../utils/Atoms"
 
+// ============================
+// Sort Buttons
+// ============================
 
 function SortButton(props) {
-    const [searchInput] = useAtom(searchAtom);
-    const [sortResults, setSortResults] = useAtom(sortAtom);
 
     let sort;
     if (props.id === "sortCompanyName") {
@@ -18,9 +19,6 @@ function SortButton(props) {
         sort = props.sortByDate;
     }
 
-
-
-
     return (
         <React.Fragment>
             <button id={props.id} type="button" className='btn sortBtn' onClick={sort} >{props.text}</button>
@@ -28,10 +26,14 @@ function SortButton(props) {
     );
 };
 
+// ============================
+// Filter Buttons
+// ============================
 function FilterButton(props) {
 
     const [searchInput] = useAtom(searchAtom);
 
+    // Logic for setting the active state
     let active;
     if (searchInput === props.id.toLowerCase()) {
         console.log(searchInput)
@@ -49,22 +51,6 @@ function FilterButton(props) {
     );
 };
 
-function AddNew() {
-    return (
-        <React.Fragment>
-            <button className="btn addNewBtn">Add New Application</button>
-        </React.Fragment>
-    );
-};
-
-function Search() {
-    return (
-        <React.Fragment>
-            <button className="btn addNewBtn">Search</button>
-        </React.Fragment>
-    );
-};
-
 function DeleteEntry(props) {
     return (
         <React.Fragment>
@@ -73,4 +59,4 @@ function DeleteEntry(props) {
     )
 }
 
-export { SortButton, FilterButton, AddNew, DeleteEntry, Search };
+export { SortButton, FilterButton, DeleteEntry };
