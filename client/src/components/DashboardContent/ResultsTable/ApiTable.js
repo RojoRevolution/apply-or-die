@@ -1,6 +1,5 @@
 import React from "react";
 
-
 function ApiTable(props) {
     console.log("Props Data: ", props.data)
     return (
