@@ -18,26 +18,12 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
-// export const fakeAuth = {
-//   signedIn: true
-// };
-
-// const RequireAuth = ({ children }) => {
-//   if (!fakeAuth.signedIn) {
-//     return <Redirect to={"/login"} />
-//   }
-
-//   return children;
-// };
-
-
-
 function App() {
 
   const [loggedIn, setLoggedIn] = useAtom(loggedInStatus);
   console.log('LoggedIn: ', loggedIn)
 
-
+  // Run AOS init when the page is hit, otherwise content wont show unless you manually reload
   useEffect(() => {
     loadAOS()
   }, []);
