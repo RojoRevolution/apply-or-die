@@ -46,7 +46,7 @@ function ResultsTable() {
             <table className="results">
                 <tbody>
                     <React.Fragment>
-                        {refData.filter(input => input.company.toLowerCase().includes(searchInput) || input.status.toLowerCase().includes(searchInput)).map(content => (
+                        {refData.filter(input => input.company.toLowerCase().includes(searchInput) || input.status.toLowerCase().includes(searchInput)).reverse().map(content => (
                             <tr key={content._id} className="row justify-content-between position-relative my-4 card-container" data-aos="fade-up">
                                 <td className="col-10">
                                     <p><span onClick={handleStatus} className={`status ${content.status}`} id={content.status}>{content.status}</span>{content.date}</p>
