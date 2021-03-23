@@ -23,20 +23,11 @@ function SearchPage() {
     const [formObject, setFormObject] = useState({})
     // const [didMount, setDidMount] = useState(false);
 
-    // useEffect(
-    //     () => {
-    //         console.log("effect");
-    //     },
-    //     []
-    // );
-
-    // useEffect(() => {
-    //     return () => {
-    //         console.log("cleaned up");
-    //     };
-    // }, []);
-
-
+    useEffect(() => {
+        return () => {
+            setApiData({}); // This worked for me
+        };
+    }, []);
 
     function handleFormSubmit(event) {
         event.preventDefault();
