@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useAtom } from "jotai";
-import { searchAtom, sortAtom, sortResults } from "../../utils/Atoms"
+import { searchAtom, sideBar } from "../../utils/Atoms"
 
 // ============================
 // Sort Buttons
@@ -59,4 +59,38 @@ function DeleteEntry(props) {
     )
 }
 
-export { SortButton, FilterButton, DeleteEntry };
+function MenuBtn() {
+    const [sidebarWidth, setsidebarWidth] = useAtom(sideBar);
+
+    const handleClick = () => {
+        setsidebarWidth("openMenu")
+    }
+
+    return (
+        <React.Fragment>
+            <div className="burgerMenu">
+                <button type="button" className="btn bg-light" aria-label="menu" onClick={handleClick}><i className="fas fa-bars"></i>
+                </button>
+            </div>
+        </React.Fragment>
+    )
+}
+
+function MenuClose() {
+    const [sidebarWidth, setsidebarWidth] = useAtom(sideBar);
+
+    const handleClick = () => {
+        setsidebarWidth("closeMenu")
+    }
+
+    return (
+        <React.Fragment>
+            <div className="closeMenuDiv">
+                <button type="button" className="btn" aria-label="closeMenu" onClick={handleClick}><i className="fas fa-times"></i>
+                </button>
+            </div>
+        </React.Fragment>
+    )
+}
+
+export { SortButton, FilterButton, DeleteEntry, MenuBtn, MenuClose };

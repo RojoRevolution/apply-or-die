@@ -1,14 +1,17 @@
 
 import React from "react";
+import { MenuClose } from "../Buttons"
 import { Logo, SearchContent, Sort, Filter, NavigationMain, CopyRight, NavigationInterior } from "./SideBarContent";
 
 // ================================
 // Dashboard / Home Sidebar
 // ================================
-function SideBar() {
+function SideBar(props) {
+
     return (
-        <div className="sidebar">
+        <div className={`sidebar ${props.width}`}>
             <div>
+                <MenuClose />
                 <Logo />
                 <SearchContent />
                 <Sort />
@@ -23,10 +26,11 @@ function SideBar() {
 // ================================
 // Interio Pages Sidebar
 // ================================
-function InnerSideBar() {
+function InnerSideBar(props) {
     return (
-        <div className="sidebar">
+        <div className={`sidebar ${props.width}`}>
             <div>
+                <MenuClose />
                 <Logo />
                 <NavigationInterior />
                 <CopyRight />
