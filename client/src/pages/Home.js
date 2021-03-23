@@ -4,14 +4,14 @@ import Footer from "../components/Exterior/Footer";
 import API from "../utils/API";
 import { useHistory } from "react-router-dom";
 import { useAtom } from "jotai";
-import { loggedInStatus } from "../utils/Atoms"
+import { loggedInStatus, userId } from "../utils/Atoms"
 
 
 
 function Home() {
     let history = useHistory();
-    const [loggedIn, setLoggedin] = useAtom(loggedInStatus);
-
+    const [, setLoggedin] = useAtom(loggedInStatus);
+    const [, setuserId] = useAtom(userId);
     const [formObject, setFormObject] = useState({})
 
     function handleInputChange(event) {
@@ -33,12 +33,14 @@ function Home() {
         }).then(res => {
             // console.log(res)
             console.log('SignUp Res: ', res)
-            // This method technically won't work because a res is always given even if it is incorrect
-            // if (res.data) {
-            //     console.log("Successful SignUp")
-            //     setLoggedin(true)
-            //     history.push("/dashboard")
-            // }
+            if (res.data.email) {
+                setLoggedin(true)
+                setuserId(res.data._id)
+                history.push("/dashboard")
+            }
+            else {
+                console.log(" NO USER")
+            }
         }).catch(err => console.log(err))
     }
 
