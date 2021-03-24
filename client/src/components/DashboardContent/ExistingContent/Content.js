@@ -1,27 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-
-
-import API from "../../../utils/API"
+import React from "react";
+import { Link } from "react-router-dom";
 
 
 function Content(props) {
-
-    const [data, setData] = useState([])
-
-    const { id } = useParams()
-
-    useEffect(() => {
-        loadData()
-    }, []);
-
-    function loadData() {
-        API.getOne(id)
-            .then(res => {
-                setData(res.data)
-            })
-            .catch(err => console.log(err));
-    };
 
     return (
         <div>
