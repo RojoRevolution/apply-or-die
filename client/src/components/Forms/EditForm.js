@@ -35,7 +35,6 @@ function EditForm() {
     function handleInputChange(event) {
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value })
-        console.log(formObject)
     };
 
     function handleSubmit(event) {
@@ -48,7 +47,6 @@ function EditForm() {
             listing: formObject.listing,
             description: formObject.description
         })
-            .then(res => console.log(res.data._id))
             .then(history.push("/logs/" + id))
             .catch(err => console.log(err))
     }

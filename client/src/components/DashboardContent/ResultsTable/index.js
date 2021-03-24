@@ -30,7 +30,6 @@ function ResultsTable() {
     };
 
     function deleteOne(id) {
-        console.log("DELETE CLICKED")
         API.deleteOne(id)
             .then(res => loadApps())
             .catch(err => console.log(err));
@@ -40,7 +39,6 @@ function ResultsTable() {
         event.preventDefault()
         const status = event.target.id
         setStatusState(status)
-        console.log('StatusFilter:', status)
     }
 
     return (

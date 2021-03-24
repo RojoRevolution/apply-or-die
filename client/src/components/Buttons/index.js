@@ -11,11 +11,9 @@ function SortButton(props) {
 
     let sort;
     if (props.id === "sortCompanyName") {
-        console.log("A-Z")
         sort = props.sortByCompany;
     }
     if (props.id === "sortDate") {
-        console.log("A-Z")
         sort = props.sortByDate;
     }
 
@@ -36,7 +34,6 @@ function FilterButton(props) {
     // Logic for setting the active state
     let active;
     if (searchInput === props.id.toLowerCase()) {
-        console.log(searchInput)
         active = "active"
     } else if (searchInput === "" && props.id.toLowerCase() === "all") {
         active = "active"

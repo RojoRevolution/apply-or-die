@@ -21,7 +21,7 @@ function NewNote(props) {
         event.preventDefault();
 
         API.newNote(id, { noteText: formObject })
-            .then(res => console.log(res.data))
+            // .then(res => console.log(res.data))
             .then(history.push("/logs/" + id))
             .catch(err => console.log(err))
     }
