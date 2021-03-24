@@ -167,9 +167,6 @@ function NavigationMain() {
                             <Link to={"/search"}>Search Jobs</Link>
                         </li>
                         <li>
-                            <a href="#">View Stats</a>
-                        </li>
-                        <li>
                             <Link to={"/login"}>Log Out</Link>
                         </li>
                     </ul>
@@ -194,9 +191,6 @@ function NavigationInterior() {
                         </li>
                         <li>
                             <Link to={"/search"}>Search Jobs</Link>
-                        </li>
-                        <li>
-                            <a href="#">View Stats</a>
                         </li>
                         <li>
                             <Link to={"/login"}>Log Out</Link>
