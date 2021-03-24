@@ -15,7 +15,7 @@ function SearchPage() {
 
     const apiID = process.env.REACT_APP_API_ID;
     const apiKEY = process.env.REACT_APP_API_KEY;
-    const resultsPerPage = '2';
+    const resultsPerPage = '30';
 
     const [apiData, setApiData] = useAtom(apiResults);
 
