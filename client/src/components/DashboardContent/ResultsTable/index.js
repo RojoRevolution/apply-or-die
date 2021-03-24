@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { DeleteEntry } from "../../Buttons"
 import API from "../../../utils/API";
@@ -11,15 +11,15 @@ import { searchAtom, loadDB, userId, populateData } from "../../../utils/Atoms"
 function ResultsTable() {
 
     const [searchInput] = useAtom(searchAtom);
-    const [statusState, setStatusState] = useAtom(loadDB);
-    const [ID, setID] = useAtom(userId);
+    const [, setStatusState] = useAtom(loadDB);
+    const [ID] = useAtom(userId);
     const [refData, setRefData] = useAtom(populateData)
     let dataArray = Array.from(refData)
 
 
     useEffect(() => {
         loadApps()
-    }, [refData]);
+    }, [dataArray]);
 
     function loadApps() {
         API.getUser(ID)

@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import API from "../../utils/API";
 
 import { useAtom } from "jotai";
-import { searchAtom, sortAtom, activeBtn, dbData } from "../../utils/Atoms"
+import { searchAtom, sortAtom, activeBtn, populateData, dbData } from "../../utils/Atoms"
 import { SortButton, FilterButton } from "../Buttons";
 import sortContent from "../../content/sort.json";
-import { useHistory } from "react-router-dom";
 
 import filterContent from "../../content/filter.json";
 
@@ -28,7 +26,7 @@ function Logo() {
 // ================================
 function SearchContent() {
 
-    const [searchInput, setSearchInput] = useAtom(searchAtom);
+    const [, setSearchInput] = useAtom(searchAtom);
     // On input change, update the searchAtom
     function handleInputChange(event) {
         const input = event.target.value;
@@ -55,12 +53,15 @@ function SearchContent() {
 // ================================
 function Sort() {
 
-    const [appsData, setAppsData] = useAtom(dbData);
+    // const [appsData, setAppsData] = useAtom(dbData);
+    const [refData, setRefData] = useAtom(populateData)
+    let sortedArray = Array.from(refData)
+
     const [sortResults, setSortResults] = useAtom(sortAtom);
 
     // Sort ASC or DSC by company name
     const sortByCompany = (event) => {
-        const sortedCompany = appsData.sort((a, b) => {
+        const sortedCompany = sortedArray.sort((a, b) => {
             if (b.company > a.company) {
                 return -1
             }
@@ -77,12 +78,13 @@ function Sort() {
         } else {
             setSortResults("DESC");
         }
-        setAppsData(sortedCompany)
+        // setAppsData(sortedCompany)
+        setRefData(sortedCompany)
     }
 
     // Sort ASC or DSC by date
     const sortByDate = (event) => {
-        const sortedCompany = appsData.sort((a, b) => {
+        const sortedCompany = sortedArray.sort((a, b) => {
             if (b.date > a.date) {
                 return -1
             }
@@ -98,7 +100,8 @@ function Sort() {
         } else {
             setSortResults("DESC");
         }
-        setAppsData(sortedCompany)
+        // setAppsData(sortedCompany)
+        setRefData(sortedCompany)
     }
 
     return (
@@ -120,8 +123,8 @@ function Sort() {
 // ================================
 function Filter() {
 
-    const [searchInput, setSearchInput] = useAtom(searchAtom);
-    const [activeButton, setActiveButton] = useAtom(activeBtn);
+    const [, setSearchInput] = useAtom(searchAtom);
+    const [activeButton] = useAtom(activeBtn);
 
     // Handle On Click
     function filterStatusHandler(event) {

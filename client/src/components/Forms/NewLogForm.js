@@ -11,7 +11,7 @@ function LogForm() {
     let history = useHistory();
 
     const [formObject, setFormObject] = useState({})
-    const [ID, setID] = useAtom(userId);
+    const [ID] = useAtom(userId);
 
     function handleInputChange(event) {
         const { name, value } = event.target;
