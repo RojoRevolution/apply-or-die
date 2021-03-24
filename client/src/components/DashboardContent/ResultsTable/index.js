@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { DeleteEntry } from "../../Buttons"
 import API from "../../../utils/API";
@@ -11,15 +11,15 @@ import { searchAtom, loadDB, userId, populateData } from "../../../utils/Atoms"
 function ResultsTable() {
 
     const [searchInput] = useAtom(searchAtom);
-    const [statusState, setStatusState] = useAtom(loadDB);
-    const [ID, setID] = useAtom(userId);
+    const [, setStatusState] = useAtom(loadDB);
+    const [ID] = useAtom(userId);
     const [refData, setRefData] = useAtom(populateData)
     let dataArray = Array.from(refData)
 
 
     useEffect(() => {
         loadApps()
-    }, [refData]);
+    }, [dataArray]);
 
     function loadApps() {
         API.getUser(ID)
@@ -56,7 +56,7 @@ function ResultsTable() {
                             refData.filter(input => input.company.toLowerCase().includes(searchInput) || input.status.toLowerCase().includes(searchInput)).reverse().map(content => (
                                 <tr key={content._id} className="row justify-content-between position-relative my-4 card-container" data-aos="fade-up">
                                     <td className="col-10">
-                                        <p><span onClick={handleStatus} className={`status ${content.status}`} id={content.status}>{content.status}</span>{content.date}</p>
+                                        <p><span onClick={handleStatus} className={`status ${content.status}`} id={content.status}>{content.status}</span>{content.date.slice(0, 10)}</p>
                                         <h2>{content.title}</h2>
                                         <p className="margin-none">{content.company} | {content.location}</p>
                                     </td>

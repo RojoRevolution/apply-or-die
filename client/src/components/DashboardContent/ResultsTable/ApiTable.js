@@ -22,7 +22,7 @@ function ApiTable(props) {
                                     <p className="margin-none">{content.company.display_name} | {content.location.display_name}</p>
                                 </td>
                                 <td className="col text-center viewBtnColAPI">
-                                    <a href={content.redirect_url} target="_blank"><button id={content.id} className="viewBtn">View More</button></a>
+                                    <a href={content.redirect_url} target="_blank" rel="noopener noreferrer"><button id={content.id} className="viewBtn">View More</button></a>
                                 </td>
                             </tr>
                         ))

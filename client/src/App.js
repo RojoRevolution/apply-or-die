@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import API from "./utils/API"
 import Dashboard from "./pages/Dashboard";
 import Search from "./pages/Search";
 import NoMatch from "./pages/NoMatch";
@@ -20,7 +19,7 @@ import 'aos/dist/aos.css';
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useAtom(loggedInStatus);
+  const [loggedIn] = useAtom(loggedInStatus);
 
   // Run AOS init when the page is hit, otherwise content wont show unless you manually reload
   useEffect(() => {
