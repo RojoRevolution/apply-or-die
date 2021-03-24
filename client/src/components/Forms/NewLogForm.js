@@ -16,7 +16,6 @@ function LogForm() {
     function handleInputChange(event) {
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value })
-        console.log(formObject)
     };
 
     function handleSubmit(event) {
@@ -30,8 +29,6 @@ function LogForm() {
             description: formObject.description
         })
             .then(res => {
-                console.log("USER ID: ", ID)
-                console.log("RES ID: ", res.data._id)
                 API.newLog(ID, { dataId: res.data._id })
             })
             .then(history.push("/dashboard"))

@@ -26,15 +26,14 @@ function Home() {
             email: formObject.email,
             password: formObject.password,
         }).then(res => {
-            console.log('SignUp Res: ', res)
             if (res.data.email) {
-                // If there is a proper response, \sSet this atom to true so RequireAuth will pass
+                // If there is a proper response, Set these atoms
                 setLoggedin(true)
                 setuserId(res.data._id)
                 history.push("/dashboard")
             }
             else {
-                console.log(" NO USER")
+                console.log("User was not authenticated")
             }
         }).catch(err => console.log(err))
     }

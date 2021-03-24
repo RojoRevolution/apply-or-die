@@ -21,7 +21,6 @@ import 'aos/dist/aos.css';
 function App() {
 
   const [loggedIn, setLoggedIn] = useAtom(loggedInStatus);
-  console.log('LoggedIn: ', loggedIn)
 
   // Run AOS init when the page is hit, otherwise content wont show unless you manually reload
   useEffect(() => {

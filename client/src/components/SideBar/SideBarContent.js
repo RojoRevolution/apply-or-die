@@ -60,7 +60,6 @@ function Sort() {
 
     // Sort ASC or DSC by company name
     const sortByCompany = (event) => {
-        console.log(event.target.id)
         const sortedCompany = appsData.sort((a, b) => {
             if (b.company > a.company) {
                 return -1
@@ -83,7 +82,6 @@ function Sort() {
 
     // Sort ASC or DSC by date
     const sortByDate = (event) => {
-        console.log(event.target.id)
         const sortedCompany = appsData.sort((a, b) => {
             if (b.date > a.date) {
                 return -1
@@ -124,9 +122,6 @@ function Filter() {
 
     const [searchInput, setSearchInput] = useAtom(searchAtom);
     const [activeButton, setActiveButton] = useAtom(activeBtn);
-
-    let allFilterBtns = document.querySelectorAll('inactive')
-    console.log(allFilterBtns)
 
     // Handle On Click
     function filterStatusHandler(event) {

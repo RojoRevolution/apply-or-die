@@ -33,7 +33,7 @@ function Home() {
                 history.push("/dashboard")
             }
             else {
-                console.log(" NO USER")
+                console.log("User was not authenticated")
             }
         })
             .catch(err => console.log(err))
@@ -62,16 +62,11 @@ function Home() {
                                 <label htmlFor="exampleFormControlInput1" className="form-label">Username:</label>
                                 <input onChange={handleInputChange} type="input" className="form-control" placeholder="" name="username" />
                             </div>
-                            {/* <div className="mb-3">
-                                <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
-                                <input onChange={handleInputChange} type="email" className="form-control" placeholder="name@example.com" name="email" />
-                            </div> */}
                             <div className="mb-3">
                                 <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
                                 <input onChange={handleInputChange} type="password" className="form-control" placeholder="" name="password" />
                             </div>
                             <div className="mb-3">
-                                {/* <Link to={"/dashboard"}><button className="btn viewBtn width-full">Log In</button></Link> */}
                                 <button className="btn viewBtn width-full">Log In</button>
                             </div>
                             <div className="mb-3">
