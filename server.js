@@ -30,7 +30,7 @@ app.use(cors({
 
 // ==========================
 // FOR PRODUCTION
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "client/build/")));
 // ==========================
 
 app.use(session({ secret: "chimichanga", resave: true, saveUninitialized: true }));
