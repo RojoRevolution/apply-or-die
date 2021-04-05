@@ -2,7 +2,7 @@
 
 A full-stack MERN application built for Coding Bootcamp.
 
-[Live Deploy](https://applyordie.herokuapp.com/)
+[Live Deploy](https://applyordie.com)
 ![Image of Application](/misc/applyordie_promo.png)
 
 # :zap: Description
