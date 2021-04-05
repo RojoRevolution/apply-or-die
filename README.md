@@ -26,6 +26,6 @@ The main page will display all of the user's entries, which can be sorted and fi
 This project is covered under the license: MIT
 
 
-# Issues and Updates
+# :bug: Issues and Updates
 There is a few known bugs in the project that I need to get around to fix, as well a plenty of future improvements. If you spot any bugs or ideas, feel free to contact me [here](https://rojorevolution.com/about#contact).
 
