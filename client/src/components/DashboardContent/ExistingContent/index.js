@@ -27,7 +27,7 @@ function ExistingContent() {
 
     return (
         <React.Fragment>
-            <div className="p-5 position-relative card-container pre-wrap">
+            <div id="main-content" className="p-5 position-relative card-container pre-wrap">
                 <Content id={data._id} data={data} status={data.status} date={data.date} title={data.title} company={data.company} location={data.location} listing={data.listing} description={data.description} />
             </div>
             <div className="p-5 mt-5 position-relative card-container">

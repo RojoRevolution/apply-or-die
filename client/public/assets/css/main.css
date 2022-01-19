@@ -388,6 +388,10 @@ footer p {
   min-height: 250px;
 }
 
+#main-content {
+  white-space: pre-wrap;
+}
+
 .pre-wrap {
   white-space: pre-wrap;
 }
