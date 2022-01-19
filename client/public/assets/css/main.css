@@ -384,6 +384,14 @@ footer p {
   display: none;
 }
 
+#formDescription textarea.form-control {
+  min-height: 250px;
+}
+
+.pre-wrap {
+  white-space: pre-wrap;
+}
+
 /* ======================= */
 /* MEDIA QUERIES */
 /* ======================= */

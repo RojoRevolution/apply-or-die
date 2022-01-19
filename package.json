@@ -1,5 +1,6 @@
 {
-  "name": "mern",
+  "name": "applyordie",
+  "homepage": "https://applyordie.com",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,8 +9,6 @@
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
     "build": "cd client && npm run build",
-    "heroku-prebuild": "npm install -f",
-    "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",
