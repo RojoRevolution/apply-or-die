@@ -23,14 +23,14 @@ app.use(cors({
 // ==========================
 // FOR LOCAL DEV
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  console.log('===== PRODUCTION ====')
-  app.use(express.static(path.join(__dirname, "client/build")));
-}
+// if (process.env.NODE_ENV === "production") {
+//   console.log('===== PRODUCTION ====')
+//   app.use(express.static(path.join(__dirname, "client/build")));
+// }
 
 // ==========================
 // FOR PRODUCTION
-// app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, "client/build/")));
 // ==========================
 
 app.use(session({ secret: "chimichanga", resave: true, saveUninitialized: true }));
